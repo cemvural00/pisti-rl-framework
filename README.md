@@ -1,5 +1,7 @@
 # Pişti RL
 
+*Work in Progress*
+
 A modular reinforcement learning framework for learning (near-)optimal play in the Turkish card game **Pişti** (Pishti).
 
 ## Overview
@@ -35,6 +37,20 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
+## Model Storage
+
+Models are organized in a structured `models/` directory:
+
+```
+models/
+├── {algorithm}/
+│   ├── checkpoints/    # Intermediate checkpoints
+│   ├── final/          # Final trained models
+│   └── snapshots/       # Snapshots for self-play
+```
+
+See [MODEL_STORAGE.md](MODEL_STORAGE.md) for details.
+
 ## Quick Start
 
 ### Training
@@ -61,6 +77,32 @@ Or use the command-line script:
 pisti-train --config configs/default.yaml
 ```
 
+#### Training Strategies
+
+The framework supports different training strategies via configuration:
+
+**Training Against Probabilistic Agent (Recommended for Initial Training):**
+```yaml
+training:
+  opponent:
+    type: "probabilistic"  # Strong baseline opponent
+    switch_to_self_play_at: 500000  # Switch to self-play after N timesteps
+    probabilistic_config:
+      max_samples: 50
+      depth: 1
+```
+
+**Other Opponent Options:**
+- `"random"` - Random valid moves
+- `"greedy"` - Greedy capture strategy
+- `"pisti_hunter"` - Heuristic pişti-focused strategy
+- `"self_play"` - Train against past checkpoints (requires self-play enabled)
+
+**Training Flow:**
+1. Start training against probabilistic agent (strong baseline)
+2. After `switch_to_self_play_at` timesteps, automatically switch to self-play
+3. Self-play uses opponent pool of past checkpoints for diverse training
+
 ### Evaluation
 
 **Simple Evaluation:**
@@ -71,20 +113,38 @@ python -m training.eval --checkpoint ./checkpoints/pisti_model_final --opponents
 **Comprehensive Evaluation (with statistical analysis):**
 ```bash
 python -m training.evaluate_comprehensive \
-    --checkpoint ./checkpoints/pisti_model_final \
+    --checkpoint models/ppo/final/pisti_model_final \
     --opponents random,greedy,pisti_hunter,probabilistic \
     --n-episodes 1000 \
     --n-seeds 10 \
-    --output-dir results/experiment_1
+    --output-dir results/experiment_1 \
+    --cleanup-old 5  # Keep only 5 most recent results
 ```
 
 **Generate Academic Report:**
 ```bash
 python -m training.generate_report \
     --results-dir results/experiment_1 \
-    --checkpoint ./checkpoints/pisti_model_final \
+    --checkpoint models/ppo/final/pisti_model_final \
     --format markdown,latex,csv
 ```
+
+### Results Cleanup
+
+**Manual Cleanup:**
+```bash
+# Delete old results, keeping only 5 most recent
+python -m training.cleanup_results --keep-recent 5
+
+# Delete results matching a pattern
+python -m training.cleanup_results --pattern "eval_2024*"
+
+# Dry run (see what would be deleted)
+python -m training.cleanup_results --keep-recent 5 --dry-run
+```
+
+**Auto-Cleanup During Evaluation:**
+Use the `--cleanup-old N` flag in `evaluate_comprehensive` to automatically clean up old results before running new evaluation.
 
 ## Project Structure
 
