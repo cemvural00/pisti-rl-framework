@@ -12,6 +12,10 @@ from encoding.encoders import MultiHotEncoder
 from agents.deep_cfr_agent import DeepCFRAgent
 from agents.baselines import RandomValidAgent
 from engine.state import GameState
+from training.model_storage import (
+    ensure_model_directories,
+    get_checkpoint_path,
+)
 
 
 def load_config(config_path: str) -> Dict[str, Any]:
@@ -102,8 +106,12 @@ def train_deep_cfr(config_path: str):
     deep_cfr_config = training_config.get("deep_cfr", {})
     
     # Set up directories
-    save_path = logging_config.get("save_path", "./checkpoints")
-    os.makedirs(save_path, exist_ok=True)
+    models_base_dir = logging_config.get("models_dir", logging_config.get("save_path", "./models"))
+    
+    # Ensure model directories exist
+    model_dirs = ensure_model_directories(models_base_dir, "deep_cfr")
+    checkpoints_dir = model_dirs["checkpoints_dir"]
+    final_dir = model_dirs["final_dir"]
     
     # Set random seed
     seed = training_config.get("seed", 42)
@@ -201,15 +209,26 @@ def train_deep_cfr(config_path: str):
         
         # Save checkpoint
         if traversal % save_freq == 0:
-            checkpoint_path = os.path.join(save_path, f"deep_cfr_model_{traversal}_traversals")
+            checkpoint_path = get_checkpoint_path(
+                algorithm="deep_cfr",
+                timestep=traversal,
+                name_prefix="deep_cfr_model",
+                is_final=False,
+                base_dir=models_base_dir,
+            )
             agent.save(checkpoint_path + ".pt")
-            print(f"Saved checkpoint at traversal {traversal}")
+            print(f"Saved checkpoint at traversal {traversal}: {checkpoint_path}.pt")
         
         if traversal % 100 == 0:
             print(f"Traversal {traversal}/{total_traversals}")
     
     # Save final model
-    final_path = os.path.join(save_path, "deep_cfr_model_final")
+    final_path = get_checkpoint_path(
+        algorithm="deep_cfr",
+        name_prefix="deep_cfr_model",
+        is_final=True,
+        base_dir=models_base_dir,
+    )
     agent.save(final_path + ".pt")
     print(f"Training complete. Final model saved to {final_path}.pt")
 

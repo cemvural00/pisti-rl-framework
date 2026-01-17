@@ -95,6 +95,12 @@ class PistiGymEnv(Env):
         if self.engine.state is None:
             raise ValueError("Environment not initialized. Call reset() first.")
         
+        # Convert action to Python int if it's a numpy array
+        if isinstance(action, np.ndarray):
+            action = int(action.item() if action.size == 1 else action[0])
+        else:
+            action = int(action)
+        
         # Learning agent (player_0) makes move
         new_state, reward, done, info = self.engine.step(action)
         
@@ -113,6 +119,21 @@ class PistiGymEnv(Env):
             obs = self.engine.get_observation(0)
         
         self._last_obs = obs
+        
+        # CRITICAL: Always check if state is terminal, regardless of done flag
+        # This ensures terminal state is detected even if done flag wasn't set correctly
+        if self.engine.state is not None:
+            is_terminal = self.engine.state.is_terminal()
+            if is_terminal:
+                done = True  # Override done flag if state is terminal
+                # Ensure info contains final scores when terminal
+                if "score_diff" not in info and "final_scores" not in info:
+                    try:
+                        scores = self.engine.state.get_final_scores()
+                        info["final_scores"] = scores
+                        info["score_diff"] = scores[0] - scores[1]
+                    except Exception:
+                        pass
         
         # Gymnasium uses terminated and truncated separately
         terminated = done
@@ -163,3 +184,17 @@ class PistiGymEnv(Env):
     def close(self) -> None:
         """Close environment."""
         pass
+    
+    def action_masks(self) -> np.ndarray:
+        """
+        Return action mask for MaskablePPO compatibility.
+        
+        Returns:
+            (52,) boolean array where True = valid action, False = invalid
+        """
+        if self.engine.state is None:
+            return np.ones(52, dtype=bool)  # All actions valid if not initialized
+        
+        # Get action mask for current player (player_0 is the learning agent)
+        obs = self.engine.get_observation(0)
+        return obs.get("action_mask", np.ones(52, dtype=bool))

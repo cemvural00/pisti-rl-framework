@@ -91,6 +91,7 @@ class PistiGameEngine:
         
         # Check if action is legal
         legal_actions = self.state.get_legal_actions(self.state.current_player)
+        
         if action not in legal_actions:
             # Invalid action: return negative reward and don't advance
             return self.state, -10.0, False, {"invalid_action": True}
@@ -104,6 +105,18 @@ class PistiGameEngine:
         # Calculate reward
         player_id = self.prev_state.current_player
         use_shaping = self.reward_config.get("shaping", {}).get("enabled", False)
+        
+        # Debug: log reward type once per environment instance
+        if not hasattr(self, '_reward_type_logged'):
+            print(f"[DEBUG] Reward shaping enabled: {use_shaping}")
+            if use_shaping:
+                shaping_config = self.reward_config.get("shaping", {})
+                print(f"[DEBUG] Shaping config: capture_bonus={shaping_config.get('capture_bonus')}, "
+                      f"ace_bonus={shaping_config.get('ace_bonus')}, "
+                      f"pisti_bonus={shaping_config.get('pisti_bonus')}")
+            else:
+                print(f"[DEBUG] Using sparse rewards (terminal only)")
+            self._reward_type_logged = True
         
         if use_shaping:
             reward = shaped_reward(

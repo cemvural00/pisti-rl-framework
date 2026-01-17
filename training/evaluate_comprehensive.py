@@ -26,6 +26,7 @@ from agents.deep_cfr_agent import DeepCFRAgent
 from agents.r2d2_agent import R2D2Agent
 from training.metadata import load_metadata
 from training.train_sb3 import create_encoder, load_config
+from training.cleanup_results import cleanup_results
 
 
 def create_opponent(opponent_name: str, checkpoint_path: str = None):
@@ -137,6 +138,7 @@ def evaluate_comprehensive(
     n_seeds: int = 10,
     output_dir: Optional[str] = None,
     deterministic: bool = True,
+    cleanup_old: Optional[int] = None,
 ) -> Dict[str, Any]:
     """
     Comprehensive evaluation with statistical analysis.
@@ -149,10 +151,23 @@ def evaluate_comprehensive(
         n_seeds: Number of random seeds
         output_dir: Directory to save results
         deterministic: Use deterministic policy
+        cleanup_old: If specified, delete old results keeping only N most recent
     
     Returns:
         Dict with comprehensive results
     """
+    # Cleanup old results if requested
+    if cleanup_old is not None:
+        base_results_dir = os.path.dirname(output_dir) if output_dir else "results"
+        if not base_results_dir:
+            base_results_dir = "results"
+        print(f"Cleaning up old results (keeping {cleanup_old} most recent)...")
+        cleanup_results(
+            results_dir=base_results_dir,
+            keep_recent=cleanup_old,
+            dry_run=False,
+        )
+    
     if output_dir is None:
         output_dir = f"results/eval_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
     os.makedirs(output_dir, exist_ok=True)
@@ -431,6 +446,12 @@ def main():
         action="store_true",
         help="Use stochastic policy (overrides --deterministic)",
     )
+    parser.add_argument(
+        "--cleanup-old",
+        type=int,
+        default=None,
+        help="Delete old results, keeping only N most recent (default: don't cleanup)",
+    )
     
     args = parser.parse_args()
     
@@ -445,6 +466,7 @@ def main():
         n_seeds=args.n_seeds,
         output_dir=args.output_dir,
         deterministic=deterministic,
+        cleanup_old=args.cleanup_old,
     )
 
 

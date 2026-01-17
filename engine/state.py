@@ -151,14 +151,27 @@ class GameState:
             and len(new_state.hands[1]) == 0
             and len(new_state.stock) > 0
         ):
-            # Deal 4 cards to each player
-            cards_per_player = min(4, len(new_state.stock) // 2)
-            if cards_per_player > 0:
+            # Deal cards from stock: try to give 4 to each, but handle remaining cards
+            # If stock has odd number or less than 8 cards, distribute as evenly as possible
+            stock_size = len(new_state.stock)
+            if stock_size >= 8:
+                # Normal case: deal 4 to each
+                new_state.hands[0] = new_state.stock[:4]
+                new_state.hands[1] = new_state.stock[4:8]
+                new_state.stock = new_state.stock[8:]
+            elif stock_size >= 2:
+                # Less than 8 cards: distribute evenly
+                cards_per_player = stock_size // 2
                 new_state.hands[0] = new_state.stock[:cards_per_player]
-                new_state.hands[1] = new_state.stock[
-                    cards_per_player : 2 * cards_per_player
-                ]
-                new_state.stock = new_state.stock[2 * cards_per_player :]
+                new_state.hands[1] = new_state.stock[cards_per_player:2 * cards_per_player]
+                new_state.stock = new_state.stock[2 * cards_per_player:]
+            else:
+                # Only 1 card left: give it to current player (or player 0 if no current player)
+                # Actually, if there's only 1 card, we should give it to player 0 to keep game going
+                # But according to rules, if stock is exhausted and hands are empty, game should end
+                # So we should NOT deal the last card - let the game end naturally
+                # The remaining card will be handled by terminal check
+                pass
         
         return new_state
 
@@ -168,15 +181,16 @@ class GameState:
         
         Game ends when:
         - Both players have no cards in hand
-        - Stock is exhausted
+        - Stock is exhausted OR has fewer than 2 cards (can't be dealt evenly)
         - Last cards have been played
         """
         hands_empty = (
             len(self.hands[0]) == 0 and len(self.hands[1]) == 0
         )
         stock_empty = len(self.stock) == 0
+        stock_insufficient = len(self.stock) < 2  # Can't deal evenly to both players
         
-        return hands_empty and stock_empty
+        return hands_empty and (stock_empty or stock_insufficient)
 
     def get_legal_actions(self, player_id: int) -> List[int]:
         """

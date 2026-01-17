@@ -329,6 +329,7 @@ class ProbabilisticOptimalAgent:
         max_samples: int = 50,
         depth: int = 1,
         seed: Optional[int] = None,
+        temperature: float = 0.0,
     ):
         """
         Initialize probabilistic optimal agent.
@@ -337,12 +338,14 @@ class ProbabilisticOptimalAgent:
             max_samples: Maximum opponent hands to sample (for efficiency)
             depth: Lookahead depth for expectimax (currently limited to 1)
             seed: Random seed for reproducibility
+            temperature: Temperature for softmax action selection (0.0=deterministic, >0=randomized)
         """
         self.belief_tracker = BeliefTracker()
         self.action_evaluator = ActionEvaluator()
         self.max_samples = max_samples
         self.depth = depth
         self.seed = seed
+        self.temperature = max(0.0, temperature)  # Ensure non-negative
         if seed is not None:
             random.seed(seed)
             np.random.seed(seed)
@@ -451,12 +454,29 @@ class ProbabilisticOptimalAgent:
                 for action in legal_actions
             ]
         
-        # Select best action
-        if action_values:
+        # Select action based on temperature
+        if not action_values:
+            return int(legal_actions[0])
+        
+        if self.temperature > 0.0:
+            # Softmax selection with temperature
+            values_array = np.array([v for _, v in action_values])
+            
+            # Apply temperature scaling: divide values by temperature
+            scaled_values = values_array / self.temperature
+            
+            # Compute softmax probabilities
+            # Subtract max for numerical stability
+            exp_values = np.exp(scaled_values - np.max(scaled_values))
+            probs = exp_values / np.sum(exp_values)
+            
+            # Sample action from distribution
+            action_idx = np.random.choice(len(action_values), p=probs)
+            return int(action_values[action_idx][0])
+        else:
+            # Deterministic: select best action (current behavior)
             best_action = max(action_values, key=lambda x: x[1])[0]
             return int(best_action)
-        else:
-            return int(legal_actions[0])
 
     def _heuristic_action_value(self, action: int, obs: Dict) -> float:
         """

@@ -5,12 +5,17 @@ game:
   pisti_exceptions: []  # Configurable edge cases (e.g., no pişti on first capture)
 
 reward:
-  sparse: true  # Use sparse rewards (only terminal)
+  sparse: false  # Use sparse rewards (only terminal) - disabled by default to enable shaping
   shaping:
-    enabled: false  # Enable reward shaping
-    capture_bonus: 0.1  # Bonus for capturing pile
-    scoring_card_bonus: 1.0  # Bonus for capturing scoring cards (A, J, 2♣, 10♦)
+    enabled: true  # Enable reward shaping (default: enabled for better learning)
+    capture_bonus: 0.15  # Bonus for capturing pile
+    ace_bonus: 1.0  # Bonus for capturing Ace (matches game scoring)
+    jack_bonus: 1.0  # Bonus for capturing Jack (matches game scoring)
+    two_clubs_bonus: 2.0  # Bonus for capturing 2♣ (matches game scoring)
+    ten_diamonds_bonus: 3.0  # Bonus for capturing 10♦ (matches game scoring)
     pisti_bonus: 10.0  # Bonus for pişti
+    capture_pile_size_bonus: 0.05  # Bonus per card captured (pile size reward)
+    majority_bonus: 3.0  # Bonus for achieving majority advantage
 
 encoding:
   encoder_type: "MultiHotEncoder"  # Options: MultiHotEncoder, CNNEncoder, FeatureEncoder, SequenceEncoder
@@ -21,12 +26,59 @@ encoding:
 
 training:
   algorithm: "MaskablePPO"  # Options: PPO, MaskablePPO, RecurrentPPO, DQN, RainbowDQN, NFSP, DeepCFR, R2D2
-  total_timesteps: 1000000  # Total training timesteps
+  total_timesteps: 1_000_000  # Total training timesteps
   seed: 42  # Random seed
   use_deep_architecture: true  # Use deep networks (false = benchmark shallow/medium)
   
+  opponent:
+    type: "random"  # Initial opponent (overridden by curriculum if enabled)
+    switch_to_self_play_at: 0  # Deprecated: use curriculum_phases instead
+    probabilistic_config:
+      max_samples: 50
+      depth: 1
+  
+  # Curriculum learning: progressive opponent difficulty
+  curriculum:
+    enabled: true  # Enable curriculum learning
+    phases:
+      # Phase 1: Random opponent (0-200K steps) - learn basic rules
+      - timestep: 0
+        opponent_type: "random"
+        opponent_kwargs: {}
+      
+      # Phase 2: Greedy opponent (200K-400K steps) - learn to capture
+      - timestep: 200000
+        opponent_type: "greedy"
+        opponent_kwargs: {}
+      
+      # Phase 3: Pişti hunter (400K-600K steps) - learn pişti tactics
+      - timestep: 400000
+        opponent_type: "pisti_hunter"
+        opponent_kwargs: {}
+      
+      # Phase 4: Probabilistic with high temperature (600K-800K steps) - learn strategy
+      - timestep: 600000
+        opponent_type: "probabilistic"
+        opponent_kwargs:
+          temperature: 2.0  # High temperature = easier opponent
+          max_samples: 50
+          depth: 1
+      
+      # Phase 5: Probabilistic with medium temperature (800K-900K steps) - refine strategy
+      - timestep: 800000
+        opponent_type: "probabilistic"
+        opponent_kwargs:
+          temperature: 1.0  # Medium temperature
+          max_samples: 50
+          depth: 1
+      
+      # Phase 6: Self-play (900K+ steps) - optimize against self
+      - timestep: 900000
+        opponent_type: "self_play"
+        opponent_kwargs: {}
+  
   self_play:
-    enabled: true  # Enable self-play training
+    enabled: true  # Enable self-play training (used in curriculum Phase 6)
     opponent_pool_size: 5  # Maximum opponents in pool
     snapshot_frequency: 50000  # Frequency of checkpoints to add to pool
   
@@ -79,7 +131,7 @@ training:
     max_grad_norm: 0.5  # Gradient clipping
   
   maskable_ppo:
-    learning_rate: 3.0e-4
+    learning_rate: 1.0e-4
     n_steps: 2048
     batch_size: 64
     n_epochs: 10
@@ -173,4 +225,6 @@ logging:
   log_dir: "./logs"  # Directory for logs
   tensorboard_log: "./logs/tensorboard"  # TensorBoard log directory
   save_freq: 50000  # Save checkpoint every N steps
-  save_path: "./checkpoints"  # Directory for checkpoints
+  models_dir: "./models"  # Base directory for models (organized by algorithm)
+  # Legacy: kept for backward compatibility, but models_dir is preferred
+  save_path: "./checkpoints"  # Deprecated: use models_dir instead

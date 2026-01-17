@@ -11,6 +11,10 @@ from envs.pisti_gym import PistiGymEnv
 from encoding.encoders import MultiHotEncoder, SequenceEncoder
 from agents.r2d2_agent import R2D2Agent
 from agents.baselines import RandomValidAgent
+from training.model_storage import (
+    ensure_model_directories,
+    get_checkpoint_path,
+)
 
 
 def load_config(config_path: str) -> Dict[str, Any]:
@@ -44,8 +48,12 @@ def train_r2d2(config_path: str):
     r2d2_config = training_config.get("r2d2", {})
     
     # Set up directories
-    save_path = logging_config.get("save_path", "./checkpoints")
-    os.makedirs(save_path, exist_ok=True)
+    models_base_dir = logging_config.get("models_dir", logging_config.get("save_path", "./models"))
+    
+    # Ensure model directories exist
+    model_dirs = ensure_model_directories(models_base_dir, "r2d2")
+    checkpoints_dir = model_dirs["checkpoints_dir"]
+    final_dir = model_dirs["final_dir"]
     
     # Set random seed
     seed = training_config.get("seed", 42)
@@ -165,16 +173,27 @@ def train_r2d2(config_path: str):
             
             # Save checkpoint
             if timestep % save_freq == 0:
-                checkpoint_path = os.path.join(save_path, f"r2d2_model_{timestep}_steps")
+                checkpoint_path = get_checkpoint_path(
+                    algorithm="r2d2",
+                    timestep=timestep,
+                    name_prefix="r2d2_model",
+                    is_final=False,
+                    base_dir=models_base_dir,
+                )
                 agent.save(checkpoint_path + ".pt")
-                print(f"Saved checkpoint at timestep {timestep}")
+                print(f"Saved checkpoint at timestep {timestep}: {checkpoint_path}.pt")
         
         episode += 1
         if episode % 100 == 0:
             print(f"Episode {episode}, Timestep {timestep}, Reward: {episode_reward:.2f}, Epsilon: {epsilon:.3f}")
     
     # Save final model
-    final_path = os.path.join(save_path, "r2d2_model_final")
+    final_path = get_checkpoint_path(
+        algorithm="r2d2",
+        name_prefix="r2d2_model",
+        is_final=True,
+        base_dir=models_base_dir,
+    )
     agent.save(final_path + ".pt")
     print(f"Training complete. Final model saved to {final_path}.pt")
 

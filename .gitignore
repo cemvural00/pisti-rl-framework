@@ -17,8 +17,8 @@ env/
 
 # Data / outputs (change if you want to track some)
 # data/
-# results/
-# models/
+results/
+models/
 
 # Logs
 *.log
