@@ -1,25 +1,9 @@
-# Python
 __pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-.venv/
+*.pyc
 venv/
-env/
-
-# Jupyter
-.ipynb_checkpoints/
-
-# OS / editor
 .DS_Store
-.idea/
-.vscode/
-
-# Data / outputs (change if you want to track some)
-# data/
-results/
-models/
+.pytest_cache/
 logs/
-
-# Logs
-*.log
+runs/*/tb/
+runs/*/checkpoints/
+*.egg-info/

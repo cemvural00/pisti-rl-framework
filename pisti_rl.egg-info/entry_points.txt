@@ -1,3 +1,0 @@
-[console_scripts]
-pisti-eval = training.eval:main
-pisti-train = training.train_sb3:main

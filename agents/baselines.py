@@ -1,171 +1,114 @@
-"""Baseline agent policies for Pişti."""
+"""Baseline policies for Pişti.
+
+Protocol: predict(obs: Dict[str, np.ndarray], action_mask: np.ndarray) -> int
+All baselines are stateless between moves; reset() is a no-op hook.
+"""
 
 from typing import Dict
+
 import numpy as np
-from engine.cards import Card, card_to_id, id_to_card, get_rank, is_jack
+
+from engine.game import CARD_POINTS, JACK, rank_of
 
 
-class RandomValidAgent:
-    """Random agent that plays a random legal card."""
-
-    def predict(self, obs: Dict, action_mask: np.ndarray) -> int:
-        """
-        Predict action (random legal card).
-        
-        Args:
-            obs: Observation dict
-            action_mask: Boolean array of legal actions
-        
-        Returns:
-            Card ID (0-51)
-        """
-        legal_actions = np.where(action_mask)[0]
-        if len(legal_actions) == 0:
-            return 0  # Fallback
-        return int(np.random.choice(legal_actions))
+def _legal(action_mask: np.ndarray) -> np.ndarray:
+    legal = np.flatnonzero(action_mask)
+    if len(legal) == 0:
+        raise ValueError("no legal actions in mask")
+    return legal
 
 
-class GreedyCaptureAgent:
-    """Greedy agent that captures if possible, else plays low-value card."""
+class RandomAgent:
+    """Plays a uniformly random card from hand."""
+
+    def __init__(self, seed=None):
+        self.rng = np.random.default_rng(seed)
+
+    def reset(self):
+        pass
 
     def predict(self, obs: Dict, action_mask: np.ndarray) -> int:
-        """
-        Predict action (greedy capture strategy).
-        
-        Strategy:
-        1. If can capture (match top card rank or have Jack), do so
-        2. Prefer capturing with Jack if available
-        3. Else, play lowest rank card
-        
-        Args:
-            obs: Observation dict
-            action_mask: Boolean array of legal actions
-        
-        Returns:
-            Card ID (0-51)
-        """
-        legal_actions = np.where(action_mask)[0]
-        if len(legal_actions) == 0:
-            return 0
-        
-        # Get hand cards
-        hand = obs.get("hand", np.zeros(52))
-        hand_cards = [card_id for card_id in legal_actions if hand[card_id] > 0.5]
-        
-        # Get table top card
-        table_top = obs.get("table_top", np.zeros(52))
-        top_card_id = np.where(table_top > 0.5)[0]
-        
-        # If table has a card, try to capture
-        if len(top_card_id) > 0:
-            top_card_id = top_card_id[0]
-            top_rank = get_rank(top_card_id)
-            
-            # Check for Jack in hand (can capture anything)
-            jacks_in_hand = [
-                card_id
-                for card_id in hand_cards
-                if is_jack(card_id)
-            ]
-            if jacks_in_hand:
-                return int(jacks_in_hand[0])  # Play first Jack
-            
-            # Check for rank match
-            matching_cards = [
-                card_id
-                for card_id in hand_cards
-                if get_rank(card_id) == top_rank
-            ]
-            if matching_cards:
-                return int(matching_cards[0])  # Play first matching card
-        
-        # No capture possible: play lowest rank card
-        # Rank order: 2,3,4,5,6,7,8,9,10,J,Q,K,A
-        # Lower rank_id (0-12) = lower card (2 is 0, A is 12)
-        # So we want minimum rank_id
-        if hand_cards:
-            # Sort by rank_id (card_id % 13)
-            hand_cards_sorted = sorted(hand_cards, key=lambda x: x % 13)
-            return int(hand_cards_sorted[0])
-        
-        # Fallback
-        return int(legal_actions[0])
+        return int(self.rng.choice(_legal(action_mask)))
+
+
+class GreedyAgent:
+    """Captures whenever possible; otherwise discards its least valuable card.
+
+    Capture preference: rank match over Jack (saves Jacks for later).
+    Discard preference: lowest card-point value, avoiding Jacks, then low rank.
+    """
+
+    def __init__(self, seed=None):
+        self.rng = np.random.default_rng(seed)
+
+    def reset(self):
+        pass
+
+    def predict(self, obs: Dict, action_mask: np.ndarray) -> int:
+        legal = _legal(action_mask)
+        top = np.flatnonzero(obs["table_top"] > 0.5)
+
+        if len(top) > 0:
+            top_rank = rank_of(int(top[0]))
+            rank_matches = [c for c in legal if rank_of(int(c)) == top_rank]
+            if rank_matches:
+                return int(rank_matches[0])
+            jacks = [c for c in legal if rank_of(int(c)) == JACK]
+            if jacks:
+                return int(jacks[0])
+
+        def discard_cost(c):
+            c = int(c)
+            return (CARD_POINTS[c], rank_of(c) == JACK, rank_of(c))
+
+        return int(min(legal, key=discard_cost))
 
 
 class PistiHunterAgent:
-    """
-    Heuristic agent that tries to set up pişti opportunities.
-    
-    Strategy:
-    1. If can capture, do so (especially if it's a pişti opportunity)
-    2. If table has 1 card, try to match it for pişti
-    3. If table is empty or has multiple cards, play a card that might set up pişti
-    4. Prefer playing cards that opponent is less likely to match
+    """Heuristic focused on pişti opportunities.
+
+    1. Take a pişti / double pişti when available.
+    2. Capture by rank match; use a Jack only on valuable or large piles.
+    3. When discarding, prefer a rank it holds in duplicate (so it can
+       re-capture if the opponent matches) and never bait with Jacks or
+       scoring cards.
     """
 
+    def __init__(self, seed=None):
+        self.rng = np.random.default_rng(seed)
+
+    def reset(self):
+        pass
+
     def predict(self, obs: Dict, action_mask: np.ndarray) -> int:
-        """
-        Predict action (pişti hunting strategy).
-        
-        Args:
-            obs: Observation dict
-            action_mask: Boolean array of legal actions
-        
-        Returns:
-            Card ID (0-51)
-        """
-        legal_actions = np.where(action_mask)[0]
-        if len(legal_actions) == 0:
-            return 0
-        
-        # Get hand cards
-        hand = obs.get("hand", np.zeros(52))
-        hand_cards = [card_id for card_id in legal_actions if hand[card_id] > 0.5]
-        
-        # Get table state
-        table_top = obs.get("table_top", np.zeros(52))
-        table_count = int(obs.get("table_count", [0])[0])
-        top_card_id = np.where(table_top > 0.5)[0]
-        
-        # If table has exactly 1 card, try to match for pişti
-        if table_count == 1 and len(top_card_id) > 0:
-            top_card_id = top_card_id[0]
-            top_rank = get_rank(top_card_id)
-            
-            # Prefer rank match (not Jack) for regular pişti
-            matching_cards = [
-                card_id
-                for card_id in hand_cards
-                if get_rank(card_id) == top_rank and not is_jack(card_id)
-            ]
-            if matching_cards:
-                return int(matching_cards[0])
-            
-            # Or Jack for double pişti if top is Jack
-            if is_jack(top_card_id):
-                jacks_in_hand = [
-                    card_id for card_id in hand_cards if is_jack(card_id)
-                ]
-                if jacks_in_hand:
-                    return int(jacks_in_hand[0])
-        
-        # If table is empty or has multiple cards, try to set up pişti
-        # Play a card that we have duplicates of (so we can match later)
-        if table_count == 0 or table_count > 1:
-            # Count cards by rank in hand
-            rank_counts = {}
-            for card_id in hand_cards:
-                rank = get_rank(card_id)
-                if rank not in rank_counts:
-                    rank_counts[rank] = []
-                rank_counts[rank].append(card_id)
-            
-            # Prefer playing a card where we have duplicates
-            for rank, cards in rank_counts.items():
-                if len(cards) > 1:
-                    # Play one of the duplicates
-                    return int(cards[0])
-        
-        # Fallback to greedy capture strategy
-        greedy_agent = GreedyCaptureAgent()
-        return greedy_agent.predict(obs, action_mask)
+        legal = _legal(action_mask)
+        top = np.flatnonzero(obs["table_top"] > 0.5)
+        table_count = float(obs["stats"][0]) * 26.0  # un-normalize
+
+        if len(top) > 0:
+            top_card = int(top[0])
+            top_rank = rank_of(top_card)
+            rank_matches = [c for c in legal if rank_of(int(c)) == top_rank]
+            if rank_matches:
+                return int(rank_matches[0])  # includes pişti when pile == 1
+            jacks = [c for c in legal if rank_of(int(c)) == JACK]
+            pile_attractive = table_count >= 3 or CARD_POINTS[top_card] > 0
+            if jacks and pile_attractive:
+                return int(jacks[0])
+
+        ranks_held = {}
+        for c in legal:
+            ranks_held.setdefault(rank_of(int(c)), []).append(int(c))
+
+        def discard_cost(c):
+            c = int(c)
+            r = rank_of(c)
+            duplicate = len(ranks_held[r]) > 1
+            return (
+                CARD_POINTS[c],  # don't give away points
+                r == JACK,       # never bait with a Jack
+                not duplicate,   # prefer ranks we can re-match
+                r,
+            )
+
+        return int(min(legal, key=discard_cost))

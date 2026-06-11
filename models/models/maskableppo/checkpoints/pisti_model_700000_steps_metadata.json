@@ -1,0 +1,337 @@
+{
+  "config_path": "configs/default.yaml",
+  "training_config": {
+    "algorithm": "MaskablePPO",
+    "total_timesteps": 1000000,
+    "seed": 42,
+    "use_deep_architecture": true,
+    "opponent": {
+      "type": "probabilistic",
+      "switch_to_self_play_at": 500000,
+      "probabilistic_config": {
+        "max_samples": 50,
+        "depth": 1
+      }
+    },
+    "self_play": {
+      "enabled": true,
+      "opponent_pool_size": 5,
+      "snapshot_frequency": 50000
+    },
+    "network_architectures": {
+      "deep": {
+        "pi": [
+          256,
+          256,
+          128
+        ],
+        "vf": [
+          256,
+          256,
+          128
+        ],
+        "qf": [
+          256,
+          256,
+          128
+        ]
+      },
+      "shallow": {
+        "pi": [
+          64,
+          64
+        ],
+        "vf": [
+          64,
+          64
+        ],
+        "qf": [
+          64,
+          64
+        ]
+      },
+      "medium": {
+        "pi": [
+          128,
+          128
+        ],
+        "vf": [
+          128,
+          128
+        ],
+        "qf": [
+          128,
+          128
+        ]
+      },
+      "recurrent": {
+        "lstm_hidden_size": 256,
+        "lstm_layers": 2,
+        "mlp_layers": [
+          128,
+          128
+        ]
+      },
+      "nfsp": {
+        "average_strategy": [
+          256,
+          256,
+          128
+        ],
+        "best_response": [
+          256,
+          256,
+          128
+        ]
+      },
+      "deep_cfr": {
+        "counterfactual_value": [
+          256,
+          256,
+          256,
+          128
+        ],
+        "strategy": [
+          256,
+          256,
+          128
+        ]
+      }
+    },
+    "ppo": {
+      "learning_rate": 0.0003,
+      "n_steps": 2048,
+      "batch_size": 64,
+      "n_epochs": 10,
+      "gamma": 0.99,
+      "gae_lambda": 0.95,
+      "clip_range": 0.2,
+      "ent_coef": 0.01,
+      "vf_coef": 0.5,
+      "max_grad_norm": 0.5
+    },
+    "maskable_ppo": {
+      "learning_rate": 0.0003,
+      "n_steps": 2048,
+      "batch_size": 64,
+      "n_epochs": 10,
+      "gamma": 0.99,
+      "gae_lambda": 0.95,
+      "clip_range": 0.2,
+      "ent_coef": 0.01,
+      "vf_coef": 0.5,
+      "max_grad_norm": 0.5
+    },
+    "recurrent_ppo": {
+      "learning_rate": 0.0003,
+      "n_steps": 2048,
+      "batch_size": 64,
+      "n_epochs": 10,
+      "gamma": 0.99,
+      "gae_lambda": 0.95,
+      "clip_range": 0.2,
+      "ent_coef": 0.01,
+      "vf_coef": 0.5,
+      "max_grad_norm": 0.5,
+      "lstm_hidden_size": 256,
+      "lstm_layers": 2,
+      "mlp_layers": [
+        128,
+        128
+      ]
+    },
+    "dqn": {
+      "learning_rate": 0.0001,
+      "buffer_size": 100000,
+      "learning_starts": 1000,
+      "batch_size": 32,
+      "tau": 1.0,
+      "gamma": 0.99,
+      "train_freq": 4,
+      "gradient_steps": 1,
+      "target_update_interval": 1000,
+      "exploration_fraction": 0.1,
+      "exploration_initial_eps": 1.0,
+      "exploration_final_eps": 0.05
+    },
+    "rainbow_dqn": {
+      "learning_rate": 0.0001,
+      "buffer_size": 100000,
+      "learning_starts": 1000,
+      "batch_size": 32,
+      "tau": 1.0,
+      "gamma": 0.99,
+      "train_freq": 4,
+      "gradient_steps": 1,
+      "target_update_interval": 1000,
+      "exploration_fraction": 0.1,
+      "exploration_initial_eps": 1.0,
+      "exploration_final_eps": 0.05
+    },
+    "nfsp": {
+      "learning_rate": 0.0001,
+      "anticipatory_param": 0.1,
+      "average_strategy_update_freq": 1000,
+      "reservoir_buffer_size": 10000,
+      "batch_size": 32,
+      "train_freq": 4,
+      "use_gpu": false
+    },
+    "deep_cfr": {
+      "learning_rate": 0.0001,
+      "regret_matching_epsilon": 0.001,
+      "traversal_batch_size": 32,
+      "use_gpu": false
+    },
+    "r2d2": {
+      "learning_rate": 0.0001,
+      "gamma": 0.99,
+      "n_step": 5,
+      "tau": 1.0,
+      "batch_size": 32,
+      "buffer_size": 100000,
+      "learning_starts": 1000,
+      "train_freq": 4,
+      "replay_alpha": 0.6,
+      "replay_beta": 0.4,
+      "exploration_fraction": 0.1,
+      "exploration_initial_eps": 1.0,
+      "exploration_final_eps": 0.05,
+      "use_gpu": false
+    }
+  },
+  "algorithm": "MaskablePPO",
+  "hyperparameters": {
+    "learning_rate": 0.0003,
+    "n_steps": 2048,
+    "batch_size": 64,
+    "n_epochs": 10,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_range": 0.2,
+    "ent_coef": 0.01,
+    "vf_coef": 0.5,
+    "max_grad_norm": 0.5
+  },
+  "encoder_type": "MultiHotEncoder",
+  "encoder_config": {
+    "encoder_type": "MultiHotEncoder",
+    "mode": "feature",
+    "include_history": false,
+    "history_length": 10,
+    "include_cnn_views": false
+  },
+  "reward_config": {
+    "sparse": true,
+    "shaping": {
+      "enabled": false,
+      "capture_bonus": 0.1,
+      "scoring_card_bonus": 1.0,
+      "pisti_bonus": 10.0
+    }
+  },
+  "game_config": {
+    "expose_bottom_card": false,
+    "pisti_exceptions": []
+  },
+  "total_timesteps": 1000000,
+  "training_start_time": "2026-01-16T23:18:07.403874",
+  "training_end_time": "2026-01-16T23:34:44.612970",
+  "best_eval_score": 0.0,
+  "best_eval_step": 10000,
+  "git_commit_hash": "ced800ee4ae0073670677e819ae1fb70505b03df",
+  "python_version": "3.11.9 (main, Apr 19 2024, 11:43:47) [Clang 14.0.6 ]",
+  "platform_info": "macOS-14.5-arm64-arm-64bit",
+  "package_versions": {
+    "numpy": "2.2.6",
+    "gymnasium": "1.2.3",
+    "pettingzoo": "1.25.0",
+    "stable_baselines3": "2.7.1",
+    "torch": "2.9.1"
+  },
+  "policy_type": "MaskableMultiInputActorCriticPolicy",
+  "observation_space": {
+    "action_mask": {
+      "shape": [
+        52
+      ],
+      "dtype": "int8"
+    },
+    "hand": {
+      "shape": [
+        52
+      ],
+      "dtype": "float32"
+    },
+    "hand_size": {
+      "shape": [
+        1
+      ],
+      "dtype": "float32"
+    },
+    "last_capture_by": {
+      "shape": [
+        1
+      ],
+      "dtype": "float32"
+    },
+    "last_move_card": {
+      "shape": [
+        52
+      ],
+      "dtype": "float32"
+    },
+    "my_captured_count": {
+      "shape": [
+        1
+      ],
+      "dtype": "float32"
+    },
+    "opp_captured_count": {
+      "shape": [
+        1
+      ],
+      "dtype": "float32"
+    },
+    "running_score_estimate": {
+      "shape": [
+        1
+      ],
+      "dtype": "float32"
+    },
+    "score_breakdown": {
+      "shape": [
+        6
+      ],
+      "dtype": "float32"
+    },
+    "seen_cards": {
+      "shape": [
+        52
+      ],
+      "dtype": "float32"
+    },
+    "stock_remaining": {
+      "shape": [
+        1
+      ],
+      "dtype": "float32"
+    },
+    "table_count": {
+      "shape": [
+        1
+      ],
+      "dtype": "float32"
+    },
+    "table_top": {
+      "shape": [
+        52
+      ],
+      "dtype": "float32"
+    }
+  },
+  "action_space": {
+    "n": "52",
+    "dtype": "int64"
+  }
+}
