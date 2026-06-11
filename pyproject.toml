@@ -47,8 +47,8 @@ dev = [
 ]
 
 [project.scripts]
-pisti-train = "training.train_sb3:main"
-pisti-eval = "training.eval:main"
+pisti-train = "training.train:main"
+pisti-eval = "training.evaluate:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
