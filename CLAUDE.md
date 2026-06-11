@@ -4,60 +4,46 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-RL framework for the Turkish card game Pişti (2-player, imperfect information). Python 3.8+, built on Gymnasium/PettingZoo/Stable-Baselines3. A virtualenv exists at `venv/` (`venv/bin/python`).
+RL + game-theory study of the Turkish card game Pişti (2-player, zero-sum, imperfect information). The codebase was rebuilt in June 2026; anything in git history before commit `01c8903` is the old, non-functional iteration — don't resurrect patterns from it. A virtualenv lives at `venv/` (`venv/bin/python`).
 
 ## Commands
 
 ```bash
-# Install (editable, with dev tools)
-pip install -e ".[dev]"
+venv/bin/python -m pytest                # full test suite (fast, <1s)
+venv/bin/python -m pytest tests/test_game.py -q   # engine rules only
 
-# Tests
-pytest                                  # all tests
-pytest tests/test_rules.py              # single file
-pytest tests/test_probabilistic_quick.py -v   # fast probabilistic-agent checks
-pytest tests/test_full_project.py -v    # integration test across all components
-pytest --cov=engine --cov=envs --cov=encoding --cov=agents
+# Training (config-driven MaskablePPO + curriculum + self-play league)
+venv/bin/python -m training.train --config configs/default.yaml \
+    --set run_name=myrun seed=1 total_timesteps=1_000_000
 
-# Sanity scripts (standalone, no pytest)
-python scripts/minimal_check.py
-python scripts/test_full_project.py
+# Mirrored-deal round-robin tournament + Bradley-Terry ratings
+venv/bin/python -m training.evaluate --agents greedy hunter \
+    "ppo:runs/ppo_main/final_model" --n-deals 300 --out results/t.json
 
-# Training (config-driven; algorithm chosen in YAML)
-python -m training.train_sb3 --config configs/default.yaml      # PPO/MaskablePPO/RecurrentPPO/DQN/RainbowDQN
-python -m training.train_nfsp --config configs/default.yaml
-python -m training.train_deep_cfr --config configs/default.yaml
-python -m training.train_r2d2 --config configs/default.yaml
+# Approximate exploitability (train a best response vs a frozen target)
+venv/bin/python -m training.exploitability --target ppo-stoch:runs/ppo_main/final_model.zip
 
-# Evaluation
-python -m training.eval --checkpoint <path> --opponents random,greedy
-python -m training.evaluate_comprehensive --checkpoint <path> --opponents random,greedy,pisti_hunter,probabilistic --n-episodes 1000 --n-seeds 10 --output-dir results/<name>
-python -m training.generate_report --results-dir results/<name> --checkpoint <path> --format markdown,latex,csv
+# Play against an agent in the terminal
+venv/bin/python scripts/play.py --agent ppo:runs/ppo_main/final_model
 
-# Formatting
-black .   # line-length 100 (configured in pyproject.toml)
+black .   # line-length 100
 ```
 
-Important: packages are flat top-level modules (`engine`, `envs`, `encoding`, `agents`, `training`) — imports are `from engine.cards import ...`, not `from pisti_rl...`. Run everything from the repo root.
+Packages are flat top-level modules (`engine`, `encoding`, `envs`, `agents`, `training`, `analysis`); run everything from the repo root.
 
 ## Architecture
 
-Layered design with strict dependency direction: `engine` → `encoding` → `envs` → `agents`/`training`.
+Dependency direction: `engine` → `encoding` → `envs`/`agents` → `training`/`analysis`.
 
-- **`engine/`** — pure game logic, no RL dependencies. `state.py` defines `GameState` with conceptually immutable transitions (`apply_action()` returns a new state). `rules.py` has capture/pişti/scoring logic, `rewards.py` has `sparse_reward` (terminal score differential) and `shaped_reward` (per-step bonuses, weights from YAML).
-- **`envs/base.py`** — `PistiGameEngine`, the single shared engine that both environment wrappers delegate to. It owns the `GameState`, the encoder, and reward computation.
-- **`envs/pisti_gym.py`** — Gymnasium single-agent env: the learning agent is player 0; the opponent is a pluggable policy object stepped internally. **`envs/pisti_pettingzoo.py`** — PettingZoo AEC env for multi-agent/self-play.
-- **`encoding/`** — `ObservationEncoder` ABC with `MultiHotEncoder` (default), `CNNEncoder`, `FeatureEncoder`, `SequenceEncoder`. Observations are Dict spaces of 52-length multi-hot vectors (`hand`, `table_top`, `seen_cards`, `action_mask`, counts) — never raw integer card IDs.
-- **`agents/`** — everything implements the duck-typed opponent protocol `predict(obs: Dict, action_mask: np.ndarray) -> int`. Includes baselines (`RandomValidAgent`, `GreedyCaptureAgent`, `PistiHunterAgent`), `probabilistic_agent.py` (belief tracking + expectimax sampling, tunable via `max_samples`/`depth`/`temperature`), and `opponents.py` (self-play: `OpponentPool`, `FrozenCheckpointOpponent`).
-- **`training/train_sb3.py`** — main entry point. Reads the YAML config and dispatches by `training.algorithm`. Implements curriculum learning (`training.curriculum.phases` switches opponent type at timestep thresholds, ending in self-play) and the opponent pool of frozen checkpoints. `sb3_contrib` imports (MaskablePPO, RecurrentPPO, Rainbow) are guarded try/except — algorithms degrade gracefully if not installed.
+- **`engine/game.py`** — the single source of game truth. Cards are ints 0-51 (`suit*13 + rank`; J=rank 9, A=12, 2♣=39, 10♦=34). `PistiGame` is mutable and fast (~1M moves/s); search agents use `clone()`. `determinize(player, rng)` resamples all info hidden from a player (opponent hand, stock, hidden center, captured-hidden cards, with point adjustment) — this is what keeps search agents honest; never let an agent read hidden fields directly.
+- **`encoding/obs.py`** — `Observer` produces the Dict observation (hand/table_top/seen multi-hots + stats vector + action_mask). `Observer(memory=False)` zeroes the `seen` vector — the card-counting ablation.
+- **`envs/pisti_env.py`** — Gymnasium env; agent is player 0, opponent plays inside `step()`. **Reward invariant: episode return always equals `reward_scale ×` final score differential** (both "delta" and "sparse" modes; tested in `tests/test_env_and_match.py`). If you touch reward logic, keep the telescoping test green — the old codebase died by silently losing terminal rewards.
+- **`agents/`** — everything speaks `predict(obs, action_mask) -> int`. Agents with `wants_game = True` (expectimax, MixtureOpponent) additionally receive `game=`/`player=` kwargs and may only use information-set-legal data via `determinize`. `frozen.py` holds the self-play machinery: `League` (snapshot pool + mixture weights, shared across DummyVecEnv envs in-process) and `MixtureOpponent` (re-samples opponent type each episode).
+- **`training/match.py`** — mirrored ("duplicate") evaluation: each deck played twice with seats swapped (`PistiGame(first_player=0|1)` swaps hands too). All skill claims use `MatchResult.diff_ci95()`, which computes CIs over mirror-paired deals, not raw games.
+- **`training/train.py`** — curriculum phases are timestep-keyed opponent mixtures in `configs/default.yaml`. Outputs to `runs/<run_name>/` (config.yaml, eval.csv, checkpoints/, final_model.zip, metadata.json with git hash).
 
-### Key conventions
+## Conventions
 
-- **Action space**: `Discrete(52)`; `card_id = suit_id * 13 + rank_id` (recover with `divmod`).
-- **Action masking**: every observation includes `action_mask`; agents must only pick masked-legal actions.
-- **Configuration**: all game rules, reward shaping weights, network architectures, curriculum phases, and hyperparameters live in `configs/default.yaml` — prefer adding config options over hardcoding.
-- **Model storage**: `models/{algorithm}/{checkpoints,final,snapshots}/`, managed by `training/model_storage.py`. Each checkpoint gets a `{name}_metadata.json` (config, hyperparameters, git hash) via `training/metadata.py`.
-
-## Reference docs
-
-`ALGORITHMS.md` (per-algorithm details), `EVALUATION_GUIDE.md`, `MODEL_STORAGE.md`, `TESTING.md`, `MANUAL.md` (full game rules).
+- Statistical claims need mirrored deals + CIs; ad-hoc win counts over unpaired games are not acceptable for results.
+- Exploitability targets must be the *stochastic* policy (`ppo-stoch:` spec), not deterministic argmax.
+- Results JSONs go to `results/`, figures to `plots/`, training runs to `runs/` (gitignored except config/eval.csv).
