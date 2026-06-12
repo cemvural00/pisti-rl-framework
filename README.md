@@ -31,7 +31,8 @@ venv/bin/python -m training.exploitability \
     --target ppo-stoch:runs/ppo_main/final_model.zip \
     --init-from runs/ppo_main/final_model.zip
 
-# Play against the agent yourself
+# Play against the agents — browser GUI (recommended) or terminal
+venv/bin/python scripts/gui.py     # -> http://localhost:8777
 venv/bin/python scripts/play.py
 ```
 
