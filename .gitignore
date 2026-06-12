@@ -7,3 +7,4 @@ logs/
 runs/*/tb/
 runs/*/checkpoints/
 *.egg-info/
+data/

@@ -6,10 +6,12 @@
 
 import argparse
 import glob
+import json
 import os
 import random
 import sys
 import threading
+import time
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -22,8 +24,16 @@ from training.evaluate import build_agent
 app = Flask(__name__)
 
 
+GAME_LOG = "data/human_games.jsonl"
+
+
 def available_agents():
-    agents = [
+    agents = []
+    if os.path.exists("runs/ppo_main/final_model.zip"):
+        agents.append(
+            ("beast:runs/ppo_main/final_model:24", "🐲 THE BEAST (policy + search)")
+        )
+    agents += [
         ("greedy", "Greedy (heuristic)"),
         ("hunter", "Pişti Hunter (heuristic)"),
         ("expectimax:16,6", "Expectimax (search)"),
@@ -63,9 +73,9 @@ class Session:
             self.totals = [0, 0]
         self.game_no += 1
         self.human = self.game_no % 2
-        self.game = PistiGame(
-            deck=new_deck(self.rng), first_player=(self.game_no + 1) % 2
-        )
+        self.deck = new_deck(self.rng)
+        self.first_player = (self.game_no + 1) % 2
+        self.game = PistiGame(deck=list(self.deck), first_player=self.first_player)
         if hasattr(self.agent, "reset"):
             self.agent.reset()
         self.log = [f"Game {self.game_no} — {'you lead' if self.game.current == self.human else self.agent_name + ' leads'}"]
@@ -101,7 +111,36 @@ class Session:
             s = g.scores()
             self.totals[0] += s[self.human]
             self.totals[1] += s[1 - self.human]
+            self._log_game()
         return events
+
+    def _log_game(self):
+        """Append the finished game to the human-games log. The deck plus
+        the move sequence reconstructs every state exactly, so these games
+        can later be used for training (imitation, opponent modeling)."""
+        g = self.game
+        record = {
+            "ts": time.strftime("%Y-%m-%dT%H:%M:%S"),
+            "agent": self.agent_name,
+            "game_no": self.game_no,
+            "human_seat": self.human,
+            "first_player": self.first_player,
+            "deck": self.deck,
+            "moves": [
+                {"player": p, "card": c, "captured": cap, "pisti": pk}
+                for p, c, cap, pk in g.history
+            ],
+            "scores": list(g.scores()),
+            "human_score": g.scores()[self.human],
+            "agent_score": g.scores()[1 - self.human],
+            "winner": (
+                "human" if g.winner() == self.human
+                else ("tie" if g.winner() is None else "agent")
+            ),
+        }
+        os.makedirs(os.path.dirname(GAME_LOG), exist_ok=True)
+        with open(GAME_LOG, "a") as f:
+            f.write(json.dumps(record) + "\n")
 
     def _event(self, player, card, info):
         who = "you" if player == self.human else self.agent_name
@@ -330,7 +369,7 @@ async function play(c){
   const agents = await (await fetch('/api/agents')).json();
   document.getElementById('agent').innerHTML =
     agents.map(a=>`<option value="${a[0]}">${a[1]}</option>`).join('');
-  const pref = agents.find(a=>a[0].includes('ppo_main'));
+  const pref = agents.find(a=>a[0].startsWith('beast')) || agents.find(a=>a[0].includes('ppo_main'));
   if (pref) document.getElementById('agent').value = pref[0];
   newMatch();
 })();

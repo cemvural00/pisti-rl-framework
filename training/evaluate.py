@@ -59,6 +59,13 @@ def build_agent(spec: str, seed: int = 0):
         path = spec.split(":", 1)[1]
         name = "stoch-" + os.path.basename(path).replace(".zip", "")
         return name, FrozenPolicyAgent.load(path, deterministic=False), Observer()
+    if spec.startswith("beast:"):
+        from agents.beast import BeastAgent
+
+        parts = spec.split(":")
+        path = parts[1]
+        n = int(parts[2]) if len(parts) > 2 else 32
+        return f"beast{n}", BeastAgent(path, n_samples=n, seed=seed), Observer()
     if spec.startswith("nfsp:"):
         from agents.nfsp import NFSPAgent
 
