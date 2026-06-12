@@ -1,0 +1,54 @@
+{
+  "greedy": {
+    "games": 400,
+    "win_rate": 0.527,
+    "mean_diff": 1.15,
+    "captures_per_game": 4.65,
+    "pistis_per_game": 0.71,
+    "double_pistis_per_game": 0.0,
+    "bait_rate": 0.096,
+    "risky_discards_per_game": 2.29,
+    "jack_discards_per_game": 0.005,
+    "jack_capture_mean_pile": 3.56,
+    "jack_capture_mean_points": 0.77
+  },
+  "hunter": {
+    "games": 400,
+    "win_rate": 0.516,
+    "mean_diff": 0.58,
+    "captures_per_game": 4.52,
+    "pistis_per_game": 0.657,
+    "double_pistis_per_game": 0.0,
+    "bait_rate": 0.048,
+    "risky_discards_per_game": 2.39,
+    "jack_discards_per_game": 0.098,
+    "jack_capture_mean_pile": 4.32,
+    "jack_capture_mean_points": 0.85
+  },
+  "expectimax16": {
+    "games": 400,
+    "win_rate": 0.623,
+    "mean_diff": 5.46,
+    "captures_per_game": 4.83,
+    "pistis_per_game": 0.82,
+    "double_pistis_per_game": 0.0,
+    "bait_rate": 0.08,
+    "risky_discards_per_game": 2.44,
+    "jack_discards_per_game": 0.1,
+    "jack_capture_mean_pile": 4.41,
+    "jack_capture_mean_points": 0.81
+  },
+  "ppo_main": {
+    "games": 400,
+    "win_rate": 0.608,
+    "mean_diff": 4.12,
+    "captures_per_game": 5.01,
+    "pistis_per_game": 0.718,
+    "double_pistis_per_game": 0.0,
+    "bait_rate": 0.08,
+    "risky_discards_per_game": 2.44,
+    "jack_discards_per_game": 0.113,
+    "jack_capture_mean_pile": 4.18,
+    "jack_capture_mean_points": 0.83
+  }
+}

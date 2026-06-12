@@ -1,0 +1,81 @@
+{
+  "git_hash": "4c1caa2c4be77466b658f967ac655fd35749f1ea",
+  "started": "2026-06-12 06:23:02",
+  "platform": "macOS-14.5-arm64-arm-64bit",
+  "python": "3.11.9",
+  "config": {
+    "run_name": "ppo_nomem",
+    "out_dir": "runs",
+    "seed": 3,
+    "n_envs": 8,
+    "total_timesteps": 6000000,
+    "reward": {
+      "mode": "delta",
+      "scale": 0.1
+    },
+    "observer": {
+      "memory": false
+    },
+    "ppo": {
+      "learning_rate": 0.0003,
+      "n_steps": 256,
+      "batch_size": 512,
+      "n_epochs": 4,
+      "gamma": 0.999,
+      "gae_lambda": 0.95,
+      "clip_range": 0.2,
+      "ent_coef": 0.01,
+      "vf_coef": 0.5,
+      "max_grad_norm": 0.5,
+      "net_arch": [
+        256,
+        256
+      ]
+    },
+    "curriculum": [
+      {
+        "at": 0,
+        "weights": {
+          "random": 0.5,
+          "greedy": 0.5
+        }
+      },
+      {
+        "at": 300000,
+        "weights": {
+          "greedy": 0.6,
+          "hunter": 0.4
+        }
+      },
+      {
+        "at": 1000000,
+        "weights": {
+          "greedy": 0.2,
+          "hunter": 0.2,
+          "pool": 0.4,
+          "latest": 0.2
+        }
+      },
+      {
+        "at": 2500000,
+        "weights": {
+          "greedy": 0.1,
+          "hunter": 0.1,
+          "expectimax": 0.1,
+          "pool": 0.45,
+          "latest": 0.25
+        }
+      }
+    ],
+    "selfplay": {
+      "snapshot_freq": 250000,
+      "pool_size": 12
+    },
+    "eval": {
+      "freq": 250000,
+      "n_deals": 150
+    }
+  },
+  "wall_seconds": 2444.1,
+  "finished": "2026-06-12 07:03:46"
+}

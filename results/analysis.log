@@ -1,0 +1,46 @@
+queue finished; starting analysis 07:03:51
+tournament: ['random', 'greedy', 'hunter', 'expectimax16', 'ppo_main', 'ppo_s1', 'ppo_s2', 'nomem-ppo_nomem'], 250 mirrored deals per pair
+  random vs greedy: win=0.230 diff=-10.75±1.19 (0s)
+  random vs hunter: win=0.221 diff=-10.63±1.19 (0s)
+  random vs expectimax16: win=0.228 diff=-10.28±1.14 (4s)
+  random vs ppo_main: win=0.219 diff=-11.58±1.16 (2s)
+  random vs ppo_s1: win=0.238 diff=-10.22±1.23 (2s)
+  random vs ppo_s2: win=0.190 diff=-11.09±1.18 (2s)
+  random vs nomem-ppo_nomem: win=0.228 diff=-9.71±1.20 (2s)
+  greedy vs hunter: win=0.487 diff=-0.28±0.65 (0s)
+  greedy vs expectimax16: win=0.405 diff=-3.59±1.25 (4s)
+  greedy vs ppo_main: win=0.412 diff=-2.36±1.31 (2s)
+  greedy vs ppo_s1: win=0.454 diff=-2.51±1.18 (2s)
+  greedy vs ppo_s2: win=0.416 diff=-2.49±1.15 (2s)
+  greedy vs nomem-ppo_nomem: win=0.504 diff=-0.09±1.25 (2s)
+  hunter vs expectimax16: win=0.455 diff=-2.40±1.19 (4s)
+  hunter vs ppo_main: win=0.429 diff=-2.12±1.30 (2s)
+  hunter vs ppo_s1: win=0.453 diff=-2.12±1.14 (2s)
+  hunter vs ppo_s2: win=0.446 diff=-1.68±1.10 (2s)
+  hunter vs nomem-ppo_nomem: win=0.502 diff=+0.65±1.20 (2s)
+  expectimax16 vs ppo_main: win=0.479 diff=+0.39±1.18 (7s)
+  expectimax16 vs ppo_s1: win=0.534 diff=+0.66±1.19 (7s)
+  expectimax16 vs ppo_s2: win=0.491 diff=-0.01±1.13 (7s)
+  expectimax16 vs nomem-ppo_nomem: win=0.526 diff=+2.08±1.15 (7s)
+  ppo_main vs ppo_s1: win=0.504 diff=+0.05±1.11 (5s)
+  ppo_main vs ppo_s2: win=0.509 diff=+0.41±1.29 (5s)
+  ppo_main vs nomem-ppo_nomem: win=0.548 diff=+2.49±1.31 (5s)
+  ppo_s1 vs ppo_s2: win=0.493 diff=+0.32±1.09 (5s)
+  ppo_s1 vs nomem-ppo_nomem: win=0.564 diff=+2.87±1.19 (5s)
+  ppo_s2 vs nomem-ppo_nomem: win=0.544 diff=+2.11±1.26 (5s)
+
+Bradley-Terry ratings (Elo-like):
+              ppo_main:  1549.5
+                ppo_s2:  1547.4
+          expectimax16:  1542.2
+                ppo_s1:  1536.0
+       nomem-ppo_nomem:  1509.7
+                hunter:  1509.1
+                greedy:  1497.4
+                random:  1308.8
+saved -> results/tournament.json
+greedy -> {"games": 400, "win_rate": 0.527, "mean_diff": 1.15, "captures_per_game": 4.65, "pistis_per_game": 0.71, "double_pistis_per_game": 0.0, "bait_rate": 0.096, "risky_discards_per_game": 2.29, "jack_discards_per_game": 0.005, "jack_capture_mean_pile": 3.56, "jack_capture_mean_points": 0.77}
+hunter -> {"games": 400, "win_rate": 0.516, "mean_diff": 0.58, "captures_per_game": 4.52, "pistis_per_game": 0.657, "double_pistis_per_game": 0.0, "bait_rate": 0.048, "risky_discards_per_game": 2.39, "jack_discards_per_game": 0.098, "jack_capture_mean_pile": 4.32, "jack_capture_mean_points": 0.85}
+expectimax16 -> {"games": 400, "win_rate": 0.623, "mean_diff": 5.46, "captures_per_game": 4.83, "pistis_per_game": 0.82, "double_pistis_per_game": 0.0, "bait_rate": 0.08, "risky_discards_per_game": 2.44, "jack_discards_per_game": 0.1, "jack_capture_mean_pile": 4.41, "jack_capture_mean_points": 0.81}
+ppo_main -> {"games": 400, "win_rate": 0.608, "mean_diff": 4.12, "captures_per_game": 5.01, "pistis_per_game": 0.718, "double_pistis_per_game": 0.0, "bait_rate": 0.08, "risky_discards_per_game": 2.44, "jack_discards_per_game": 0.113, "jack_capture_mean_pile": 4.18, "jack_capture_mean_points": 0.83}
+analysis complete 07:21:03

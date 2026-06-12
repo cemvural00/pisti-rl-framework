@@ -1,0 +1,170 @@
+{
+  "random vs greedy": {
+    "deal_var_share": 0.4231918395549794,
+    "seat_advantage_pts": 1.228,
+    "seat_adv_ci95": 1.3802515815516765,
+    "skill_gap_pts": -10.748
+  },
+  "random vs hunter": {
+    "deal_var_share": 0.45431651616343194,
+    "seat_advantage_pts": -0.226,
+    "seat_adv_ci95": 1.3063788770626004,
+    "skill_gap_pts": -10.634
+  },
+  "random vs expectimax16": {
+    "deal_var_share": 0.4095133347111823,
+    "seat_advantage_pts": 0.466,
+    "seat_adv_ci95": 1.3714705066621655,
+    "skill_gap_pts": -10.282
+  },
+  "random vs ppo_main": {
+    "deal_var_share": 0.3724862979757382,
+    "seat_advantage_pts": 0.246,
+    "seat_adv_ci95": 1.5039896096453875,
+    "skill_gap_pts": -11.578
+  },
+  "random vs ppo_s1": {
+    "deal_var_share": 0.43715692688994606,
+    "seat_advantage_pts": 1.238,
+    "seat_adv_ci95": 1.3861650237727556,
+    "skill_gap_pts": -10.222
+  },
+  "random vs ppo_s2": {
+    "deal_var_share": 0.4611732322733164,
+    "seat_advantage_pts": 0.04,
+    "seat_adv_ci95": 1.2802931501657915,
+    "skill_gap_pts": -11.088
+  },
+  "random vs nomem-ppo_nomem": {
+    "deal_var_share": 0.4556471113572241,
+    "seat_advantage_pts": 0.558,
+    "seat_adv_ci95": 1.3129270307915564,
+    "skill_gap_pts": -9.714
+  },
+  "greedy vs hunter": {
+    "deal_var_share": 0.10055649907618627,
+    "seat_advantage_pts": 2.132,
+    "seat_adv_ci95": 1.9354787558388789,
+    "skill_gap_pts": -0.276
+  },
+  "greedy vs expectimax16": {
+    "deal_var_share": 0.41472111004384105,
+    "seat_advantage_pts": 2.278,
+    "seat_adv_ci95": 1.4636324293672858,
+    "skill_gap_pts": -3.586
+  },
+  "greedy vs ppo_main": {
+    "deal_var_share": 0.41862667001103226,
+    "seat_advantage_pts": 2.054,
+    "seat_adv_ci95": 1.520454051151911,
+    "skill_gap_pts": -2.362
+  },
+  "greedy vs ppo_s1": {
+    "deal_var_share": 0.3310287355383813,
+    "seat_advantage_pts": 1.958,
+    "seat_adv_ci95": 1.657089430051121,
+    "skill_gap_pts": -2.506
+  },
+  "greedy vs ppo_s2": {
+    "deal_var_share": 0.33692274265678074,
+    "seat_advantage_pts": 1.782,
+    "seat_adv_ci95": 1.5954065023174964,
+    "skill_gap_pts": -2.49
+  },
+  "greedy vs nomem-ppo_nomem": {
+    "deal_var_share": 0.36498056948604274,
+    "seat_advantage_pts": 2.876,
+    "seat_adv_ci95": 1.6167948465209017,
+    "skill_gap_pts": -0.088
+  },
+  "hunter vs expectimax16": {
+    "deal_var_share": 0.34690097578604984,
+    "seat_advantage_pts": 3.004,
+    "seat_adv_ci95": 1.5928926915031585,
+    "skill_gap_pts": -2.4
+  },
+  "hunter vs ppo_main": {
+    "deal_var_share": 0.43027982552851335,
+    "seat_advantage_pts": 2.066,
+    "seat_adv_ci95": 1.479437236420535,
+    "skill_gap_pts": -2.122
+  },
+  "hunter vs ppo_s1": {
+    "deal_var_share": 0.3037150570380481,
+    "seat_advantage_pts": 2.342,
+    "seat_adv_ci95": 1.7071800039403622,
+    "skill_gap_pts": -2.122
+  },
+  "hunter vs ppo_s2": {
+    "deal_var_share": 0.30572132441917776,
+    "seat_advantage_pts": 2.05,
+    "seat_adv_ci95": 1.6418117458574055,
+    "skill_gap_pts": -1.682
+  },
+  "hunter vs nomem-ppo_nomem": {
+    "deal_var_share": 0.3327700453884645,
+    "seat_advantage_pts": 2.634,
+    "seat_adv_ci95": 1.6711065283331734,
+    "skill_gap_pts": 0.65
+  },
+  "expectimax16 vs ppo_main": {
+    "deal_var_share": 0.3403295912280483,
+    "seat_advantage_pts": 0.586,
+    "seat_adv_ci95": 1.638694167562947,
+    "skill_gap_pts": 0.39
+  },
+  "expectimax16 vs ppo_s1": {
+    "deal_var_share": 0.3808149631259962,
+    "seat_advantage_pts": 1.902,
+    "seat_adv_ci95": 1.501787178000407,
+    "skill_gap_pts": 0.662
+  },
+  "expectimax16 vs ppo_s2": {
+    "deal_var_share": 0.2915857649531306,
+    "seat_advantage_pts": 0.924,
+    "seat_adv_ci95": 1.7607269032376198,
+    "skill_gap_pts": -0.008
+  },
+  "expectimax16 vs nomem-ppo_nomem": {
+    "deal_var_share": 0.3338227005269329,
+    "seat_advantage_pts": 1.828,
+    "seat_adv_ci95": 1.6074438823679815,
+    "skill_gap_pts": 2.076
+  },
+  "ppo_main vs ppo_s1": {
+    "deal_var_share": 0.3005675221553948,
+    "seat_advantage_pts": 0.882,
+    "seat_adv_ci95": 1.6872863819712238,
+    "skill_gap_pts": 0.054
+  },
+  "ppo_main vs ppo_s2": {
+    "deal_var_share": 0.36867949394473043,
+    "seat_advantage_pts": 1.222,
+    "seat_adv_ci95": 1.6838111067799924,
+    "skill_gap_pts": 0.406
+  },
+  "ppo_main vs nomem-ppo_nomem": {
+    "deal_var_share": 0.3901628825720826,
+    "seat_advantage_pts": 1.888,
+    "seat_adv_ci95": 1.624899092040999,
+    "skill_gap_pts": 2.492
+  },
+  "ppo_s1 vs ppo_s2": {
+    "deal_var_share": 0.2753509539846073,
+    "seat_advantage_pts": 1.568,
+    "seat_adv_ci95": 1.7602850148485618,
+    "skill_gap_pts": 0.32
+  },
+  "ppo_s1 vs nomem-ppo_nomem": {
+    "deal_var_share": 0.3059616303168971,
+    "seat_advantage_pts": 1.896,
+    "seat_adv_ci95": 1.7694804660965286,
+    "skill_gap_pts": 2.872
+  },
+  "ppo_s2 vs nomem-ppo_nomem": {
+    "deal_var_share": 0.3641758542279089,
+    "seat_advantage_pts": 2.358,
+    "seat_adv_ci95": 1.6374944230293453,
+    "skill_gap_pts": 2.114
+  }
+}
