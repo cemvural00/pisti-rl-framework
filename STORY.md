@@ -20,7 +20,7 @@ Three clean tiers, and the gaps *between* tiers are statistically bulletproof (p
 
 | tier | who | what separates them |
 |---|---|---|
-| 🥇 | RL agents + expectimax search | ~2–3.5 pts/game over the heuristics |
+| 🥇 | RL agents (PPO ×3, DQN) + expectimax search | ~2–3.5 pts/game over the heuristics |
 | 🥈 | amnesiac RL, pişti-hunter, greedy | competent capture play |
 | 🥉 | random | −10.5 pts/game vs everyone. bless. |
 
@@ -38,7 +38,17 @@ This is the result we'd frame and hang on a wall. For each training snapshot, we
 
 For contrast: the same assassin protocol takes **+3.2 pts/game** off greedy, forever. The scripted agents never stop being food; the RL agent left the menu.
 
-**The predictability tax.** Greedy and hunter aren't exploitable because they're weak — they're exploitable because they're *deterministic*. Same situation, same card, every time. Meanwhile the expectimax agent — whose only randomness is Monte-Carlo sampling noise — measures **+0.06 (unexploitable) without any training at all**. In imperfect-information games, the equilibrium strategy is a *mixed* strategy: a little unpredictability isn't style, it's armor. The RL agent had to learn this; the search agent got it by accident.
+**The predictability tax.** Greedy and hunter aren't exploitable because they're weak — they're exploitable because they're *predictable from the table alone*: if you can see the pile, you know what greedy will do. Meanwhile the expectimax agent — whose only randomness is Monte-Carlo sampling noise — measures **+0.06 (unexploitable) without any training at all**. Unpredictability isn't style, it's armor. But where the armor actually comes from surprised us — see the next section.
+
+## 2½. We made a prediction. The data killed it.
+
+Game theory says equilibrium play in hidden-information games requires *mixed strategies* — you must randomize. So we registered a prediction: a **DQN**, which ends training as a purely *deterministic* policy (always the argmax, zero dice), should pay the predictability tax even if it climbs the ladder. We trained one in the identical self-play league and sent the assassin after it.
+
+Result: DQN reached the top tier (statistically tied with all three PPO seeds, beat every heuristic) — and the assassin took **+0.23 ±0.98 off it. Statistically zero. Unexploitable.** Prediction: dead. 🪦
+
+The autopsy is the best insight of the study: **you don't need dice when you have a hidden hand.** A deterministic rule applied to *private* information — your cards, your memory of the deal — is already unpredictable from across the table, because the shuffle supplies the randomness. The opponent can't predict your "deterministic" move without knowing your hand. Greedy's real sin was never determinism; it's that its moves are predictable *from public information alone* (and its habits never change). The mixing that game theory demands was hiding in the deck the whole time.
+
+Bonus DQN fact: off-policy replay is brutally sample-efficient here — DQN matched greedy after **~50k steps**; PPO needed ~1.5M (30×) to get there.
 
 ## 3. Card counting is the entire game
 
@@ -91,7 +101,8 @@ The agent's only feedback, ever, was the final score differential. From that alo
 |---|---|
 | engine speedup after rewrite | **180×** (5.7k → 1M moves/s) |
 | cost of amnesia | **≈ 2.5 pts/game** — the whole skill gap |
-| the predictability tax | **≈ +3.2 pts/game** of exploitability, forever |
+| the predictability tax (scripted agents) | **≈ +3.2 pts/game** of exploitability, forever |
+| the determinism tax (league-trained DQN) | **zero** — the hidden hand supplies the dice |
 | first-mover advantage | **≈ +1.6 pts/game** |
 | single-hand luck | ±16 pts around a +2.4 skill signal |
 | time to unexploitable | ~4M self-play steps (~45 min on an M1) |

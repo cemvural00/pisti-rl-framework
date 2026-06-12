@@ -11,6 +11,7 @@ We train reinforcement learning agents to play the Turkish card game **Pişti** 
 3. **Card counting is worth ≈ 2.5 points per game.** Ablating the agent's memory of seen cards costs 2.1–2.9 pts/game against its memory-equipped twins — roughly the entire gap between a greedy heuristic and the best agents. In Pişti, memory *is* the skill.
 4. **Luck is large but not overwhelming:** between equally strong agents the deal explains ~30–46% of outcome variance, and there is a consistent **first-mover advantage of ≈ +1.6 pts/game**.
 5. The RL agent independently discovers human-recognizable tactics: jack discipline (saving Jacks for piles of 4.2 cards on average vs greedy's 3.6) and a higher capture tempo (5.0 captures/game).
+6. **A masked DQN trained in the same league reaches the same top tier (BT 1531 [1522, 1540]) and is equally unexploitable (+0.23 ±0.98)** — falsifying our pre-registered guess that its deterministic policy would pay the "predictability tax." Private information already supplies the mixing; what matters is rich conditioning + self-play, not a stochastic action rule. DQN was also far more sample-efficient early (parity with greedy by ~50k steps vs PPO's ~1.5M).
 
 ## 1. Setup
 
@@ -30,6 +31,7 @@ The engine (`engine/game.py`) runs at ~1M moves/s and exposes `determinize(playe
 | `expectimax` | PIMC: 16 determinizations × greedy rollouts per legal action |
 | `ppo_main/s1/s2` | MaskablePPO (256×256), 6M steps, 3 seeds |
 | `ppo_nomem` | identical, but the `seen` (card-memory) observation is zeroed |
+| `dqn_main` | masked DQN (Q-values masked inside the network forward pass; ε-greedy and warm-up sample legal actions only), same 6M-step curriculum + self-play league |
 
 **Training:** the env's per-step reward is the change in score differential between the agent's decision points, which telescopes exactly to the final score differential — the true game objective, densely distributed, with no shaping hyperparameters. Opponents follow a curriculum of scripted baselines that transitions into a self-play league (snapshot pool + live mirror) from 1M steps. One 6M-step run ≈ 67 min on the M1.
 
@@ -41,16 +43,19 @@ Round-robin tournament, 250 mirrored deals (500 games) per pair, deterministic p
 
 | rank | agent | Bradley–Terry (Elo-like) | 95% CI |
 |---|---|---|---|
-| 1 | ppo_main | 1549.5 | [1541, 1558] |
-| 2 | ppo_s2 | 1547.4 | [1539, 1557] |
-| 3 | expectimax | 1542.2 | [1534, 1550] |
-| 4 | ppo_s1 | 1536.0 | [1528, 1545] |
-| 5 | ppo_nomem | 1509.7 | [1501, 1519] |
-| 6 | hunter | 1509.1 | [1501, 1517] |
-| 7 | greedy | 1497.4 | [1489, 1506] |
-| 8 | random | 1308.8 | [1298, 1319] |
+| 1 | ppo_main | 1544.4 | [1536, 1553] |
+| 2 | ppo_s2 | 1543.4 | [1535, 1552] |
+| 3 | expectimax | 1539.4 | [1531, 1548] |
+| 4 | ppo_s1 | 1534.5 | [1527, 1542] |
+| 5 | dqn_main | 1531.2 | [1522, 1540] |
+| 6 | hunter | 1504.4 | [1497, 1513] |
+| 7 | ppo_nomem | 1504.3 | [1496, 1512] |
+| 8 | greedy | 1492.8 | [1484, 1501] |
+| 9 | random | 1305.6 | [1296, 1316] |
 
-Three tiers emerge, separated by non-overlapping CIs: **{ppo seeds, expectimax} > {ppo_nomem, hunter, greedy} > {random}**. Differences *within* a tier are not statistically distinguishable.
+*(9-agent tournament, `results/tournament_v2.json`; the shared matchups replicate the earlier 8-agent tournament exactly — same seeds and deals — so only the ratings refit.)*
+
+Three tiers emerge, separated by non-overlapping CIs: **{ppo seeds, expectimax, dqn} > {ppo_nomem, hunter, greedy} > {random}**. Differences *within* a tier are not statistically distinguishable.
 
 Head-to-heads (mean pts/game ± 95% CI; p-values are paired t-tests on mirror-paired deal differences, Holm–Bonferroni corrected across all 28 matches; \* = significant at α=0.05):
 
@@ -62,6 +67,10 @@ Head-to-heads (mean pts/game ± 95% CI; p-values are paired t-tests on mirror-pa
 | ppo_main vs ppo_nomem | 0.548 | +2.49 ±1.31 | 0.004 | \* |
 | ppo_s1 vs ppo_nomem | 0.564 | +2.87 ±1.19 | 7e-05 | \* |
 | ppo_s2 vs ppo_nomem | 0.544 | +2.11 ±1.26 | 0.014 | \* |
+| dqn_main vs greedy | 0.567 | +2.59 ±1.29 | 0.002 | \* |
+| dqn_main vs hunter | 0.547 | +1.90 ±1.22 | 0.037 | \* |
+| dqn_main vs ppo_nomem | 0.561 | +2.68 ±1.26 | 0.001 | \* |
+| dqn_main vs ppo_main | 0.510 | +0.43 ±1.16 | 1.0 | tie |
 | ppo_main vs expectimax | 0.521 | −0.39 ±1.18 | 1.0 | tie |
 | ppo_main vs ppo_s1 | 0.504 | +0.05 ±1.11 | 1.0 | tie |
 | ppo_main vs ppo_s2 | 0.509 | +0.41 ±1.29 | 1.0 | tie |
@@ -87,8 +96,11 @@ True Nash-distance is intractable here, so we report a lower bound: train a **be
 | greedy | +3.20 ±1.01 | 0.59 | 4.3e-10 |
 | hunter | +3.25 ±0.99 | 0.59 | 1.4e-10 |
 | expectimax (light) | **+0.06 ±0.96** | 0.49 | 0.90 |
+| dqn @ 6M (deterministic) | **+0.23 ±0.98** | 0.50 | 0.64 |
 
 The exploitability of the 4M and final policies is **not statistically distinguishable from zero** (p = 0.24, 0.31), while every checkpoint up to 2M and both scripted heuristics are exploitable at overwhelming significance. Read the final numbers as "≤ ~1.4 pts/game with 95% confidence" (upper end of the CI), not as exactly zero — and as lower bounds given the fixed BR protocol.
+
+**A falsified hypothesis (and what it taught us).** We added the DQN specifically to test the prediction that its *deterministic* greedy policy would be exploitable like the scripted heuristics (~+3), since equilibrium play in imperfect-information games requires mixing. The data said no: **+0.23 ±0.98 (p = 0.64)**. The resolution is that mixing does not require a stochastic action rule — a deterministic function of *private* information (your hidden hand, your card memory) is already unpredictable from the opponent's seat, because the deal supplies the randomness. What actually separates the exploitable from the unexploitable in our table is **conditioning richness and self-play training**: greedy/hunter are predictable *from public information alone* and have systematic habits; both league-trained agents and belief-sampling search are not. Determinism per se carries no measurable tax.
 
 Three observations (`plots/exploitability.png`):
 
