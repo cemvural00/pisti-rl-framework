@@ -1,0 +1,53 @@
+{
+  "match151:RL vs greedy": {
+    "single_game": 0.588,
+    "match_151": 0.697,
+    "mean_hands_per_match": 10.0
+  },
+  "match151:memory vs amnesia": {
+    "single_game": 0.548,
+    "match_151": 0.687,
+    "mean_hands_per_match": 10.0
+  },
+  "match151:search vs RL": {
+    "single_game": 0.521,
+    "match_151": 0.48,
+    "mean_hands_per_match": 10.6
+  },
+  "match151:greedy vs hunter": {
+    "single_game": 0.513,
+    "match_151": 0.53,
+    "mean_hands_per_match": 9.8
+  },
+  "deck_decides:RL vs greedy": {
+    "same_winner_both_seatings": 0.396,
+    "split_by_seat_or_skill": 0.532,
+    "involves_tie": 0.072
+  },
+  "deck_decides:memory vs amnesia": {
+    "same_winner_both_seatings": 0.384,
+    "split_by_seat_or_skill": 0.552,
+    "involves_tie": 0.064
+  },
+  "deck_decides:search vs RL": {
+    "same_winner_both_seatings": 0.288,
+    "split_by_seat_or_skill": 0.62,
+    "involves_tie": 0.092
+  },
+  "deck_decides:greedy vs hunter": {
+    "same_winner_both_seatings": 0.116,
+    "split_by_seat_or_skill": 0.812,
+    "involves_tie": 0.072
+  },
+  "storm": {
+    "mean": 2.36,
+    "std": 16.28,
+    "min": -54,
+    "max": 60
+  },
+  "pisti": {
+    "mean_per_player_per_game": 0.516,
+    "share_of_player_games_with_pisti": 0.376,
+    "max_in_one_game": 6
+  }
+}
