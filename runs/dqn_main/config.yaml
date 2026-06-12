@@ -1,0 +1,53 @@
+algorithm: dqn
+curriculum:
+- at: 0
+  weights:
+    greedy: 0.5
+    random: 0.5
+- at: 300000
+  weights:
+    greedy: 0.6
+    hunter: 0.4
+- at: 1000000
+  weights:
+    greedy: 0.2
+    hunter: 0.2
+    latest: 0.2
+    pool: 0.4
+- at: 2500000
+  weights:
+    expectimax: 0.1
+    greedy: 0.1
+    hunter: 0.1
+    latest: 0.25
+    pool: 0.45
+dqn:
+  batch_size: 256
+  buffer_size: 300000
+  exploration_final_eps: 0.05
+  exploration_fraction: 0.2
+  gamma: 0.999
+  gradient_steps: 4
+  learning_rate: 0.0001
+  learning_starts: 20000
+  net_arch:
+  - 256
+  - 256
+  target_update_interval: 10000
+  train_freq: 4
+eval:
+  freq: 250000
+  n_deals: 150
+n_envs: 8
+observer:
+  memory: true
+out_dir: runs
+reward:
+  mode: delta
+  scale: 0.1
+run_name: dqn_main
+seed: 0
+selfplay:
+  pool_size: 12
+  snapshot_freq: 250000
+total_timesteps: 6000000

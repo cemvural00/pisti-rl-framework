@@ -180,26 +180,53 @@ def train(cfg: Dict) -> str:
     league.set_weights(cfg["curriculum"][0]["weights"])
     env = make_vec_env(cfg, league)
 
-    ppo = cfg["ppo"]
-    model = MaskablePPO(
-        "MultiInputPolicy",
-        env,
-        learning_rate=ppo["learning_rate"],
-        n_steps=ppo["n_steps"],
-        batch_size=ppo["batch_size"],
-        n_epochs=ppo["n_epochs"],
-        gamma=ppo["gamma"],
-        gae_lambda=ppo["gae_lambda"],
-        clip_range=ppo["clip_range"],
-        ent_coef=ppo["ent_coef"],
-        vf_coef=ppo["vf_coef"],
-        max_grad_norm=ppo["max_grad_norm"],
-        policy_kwargs={"net_arch": ppo["net_arch"]},
-        seed=cfg["seed"],
-        verbose=0,
-        tensorboard_log=os.path.join(run_dir, "tb"),
-        device="cpu",
-    )
+    algo = cfg.get("algorithm", "maskable_ppo")
+    if algo == "maskable_ppo":
+        ppo = cfg["ppo"]
+        model = MaskablePPO(
+            "MultiInputPolicy",
+            env,
+            learning_rate=ppo["learning_rate"],
+            n_steps=ppo["n_steps"],
+            batch_size=ppo["batch_size"],
+            n_epochs=ppo["n_epochs"],
+            gamma=ppo["gamma"],
+            gae_lambda=ppo["gae_lambda"],
+            clip_range=ppo["clip_range"],
+            ent_coef=ppo["ent_coef"],
+            vf_coef=ppo["vf_coef"],
+            max_grad_norm=ppo["max_grad_norm"],
+            policy_kwargs={"net_arch": ppo["net_arch"]},
+            seed=cfg["seed"],
+            verbose=0,
+            tensorboard_log=os.path.join(run_dir, "tb"),
+            device="cpu",
+        )
+    elif algo == "dqn":
+        from agents.masked_dqn import MaskedDQN, MaskedDQNPolicy
+
+        dqn = cfg["dqn"]
+        model = MaskedDQN(
+            MaskedDQNPolicy,
+            env,
+            learning_rate=dqn["learning_rate"],
+            buffer_size=dqn["buffer_size"],
+            learning_starts=dqn["learning_starts"],
+            batch_size=dqn["batch_size"],
+            gamma=dqn["gamma"],
+            train_freq=dqn["train_freq"],
+            gradient_steps=dqn["gradient_steps"],
+            target_update_interval=dqn["target_update_interval"],
+            exploration_fraction=dqn["exploration_fraction"],
+            exploration_final_eps=dqn["exploration_final_eps"],
+            policy_kwargs={"net_arch": dqn["net_arch"]},
+            seed=cfg["seed"],
+            verbose=0,
+            tensorboard_log=os.path.join(run_dir, "tb"),
+            device="cpu",
+        )
+    else:
+        raise ValueError(f"unknown algorithm: {algo}")
     league.live_model = model
 
     meta = {

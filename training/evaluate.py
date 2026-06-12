@@ -59,6 +59,15 @@ def build_agent(spec: str, seed: int = 0):
         path = spec.split(":", 1)[1]
         name = "stoch-" + os.path.basename(path).replace(".zip", "")
         return name, FrozenPolicyAgent.load(path, deterministic=False), Observer()
+    if spec.startswith("dqn:"):
+        from agents.frozen import FrozenPolicyAgent
+        from agents.masked_dqn import MaskedDQN
+
+        path = spec.split(":", 1)[1]
+        name = os.path.basename(os.path.dirname(path))
+        model = MaskedDQN.load(path, device="cpu")
+        model.policy.set_training_mode(False)
+        return name, FrozenPolicyAgent(model.policy, deterministic=True), Observer()
     raise ValueError(f"unknown agent spec: {spec}")
 
 

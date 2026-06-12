@@ -23,12 +23,22 @@ from agents.expectimax import ExpectimaxAgent
 
 
 class FrozenPolicyAgent:
-    """A (Maskable)PPO policy behind the predict(obs, mask) protocol."""
+    """A frozen policy (MaskablePPO or MaskedDQN) behind predict(obs, mask).
+
+    MaskablePPO policies take an `action_masks` kwarg; DQN policies mask
+    inside the Q-network (the mask is part of the observation), so we
+    detect once which calling convention the policy supports.
+    """
 
     def __init__(self, policy, deterministic: bool = False, name: str = "frozen"):
+        import inspect
+
         self.policy = policy
         self.deterministic = deterministic
         self.name = name
+        self._takes_masks = (
+            "action_masks" in inspect.signature(policy.predict).parameters
+        )
 
     @classmethod
     def snapshot(cls, model, name: str = "snapshot") -> "FrozenPolicyAgent":
@@ -49,11 +59,16 @@ class FrozenPolicyAgent:
         pass
 
     def predict(self, obs: Dict, action_mask: np.ndarray, **_) -> int:
-        action, _state = self.policy.predict(
-            obs,
-            deterministic=self.deterministic,
-            action_masks=np.asarray(action_mask, dtype=bool),
-        )
+        if self._takes_masks:
+            action, _state = self.policy.predict(
+                obs,
+                deterministic=self.deterministic,
+                action_masks=np.asarray(action_mask, dtype=bool),
+            )
+        else:
+            action, _state = self.policy.predict(
+                obs, deterministic=self.deterministic
+            )
         return int(action)
 
 
