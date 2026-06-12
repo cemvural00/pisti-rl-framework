@@ -1,0 +1,2 @@
+=== nfsp training Fri Jun 12 11:51:30 +03 2026 ===
+[        1] greedy: win=0.26 diff=-10.00±1.88  hunter: win=0.24 diff=-9.58±1.79  expectimax: win=0.20 diff=-11.71±2.76

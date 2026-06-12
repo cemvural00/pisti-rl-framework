@@ -1,0 +1,2 @@
+timesteps,win_greedy,diff_greedy,ci_greedy,win_hunter,diff_hunter,ci_hunter,win_expectimax,diff_expectimax,ci_expectimax
+1,0.26,-10.0,1.88,0.245,-9.58,1.788,0.2045,-11.712,2.761

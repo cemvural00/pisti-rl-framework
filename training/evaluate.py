@@ -59,6 +59,18 @@ def build_agent(spec: str, seed: int = 0):
         path = spec.split(":", 1)[1]
         name = "stoch-" + os.path.basename(path).replace(".zip", "")
         return name, FrozenPolicyAgent.load(path, deterministic=False), Observer()
+    if spec.startswith("nfsp:"):
+        from agents.nfsp import NFSPAgent
+
+        path = spec.split(":", 1)[1]
+        name = os.path.basename(os.path.dirname(path)) or "nfsp"
+        return name, NFSPAgent.load(path, mode="avg", seed=seed), Observer()
+    if spec.startswith("nfsp-br:"):
+        from agents.nfsp import NFSPAgent
+
+        path = spec.split(":", 1)[1]
+        name = "br-" + (os.path.basename(os.path.dirname(path)) or "nfsp")
+        return name, NFSPAgent.load(path, mode="br", seed=seed), Observer()
     if spec.startswith("dqn:"):
         from agents.frozen import FrozenPolicyAgent
         from agents.masked_dqn import MaskedDQN

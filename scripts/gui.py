@@ -35,6 +35,9 @@ def available_agents():
         if "nomem" in run:
             spec = f"ppo-nomem:{path[:-4]}"
         agents.append((spec, f"{run} (trained RL)"))
+    for path in sorted(glob.glob("runs/*/final.pt")):
+        run = os.path.basename(os.path.dirname(path))
+        agents.append((f"nfsp:{path}", f"{run} (avg policy)"))
     return agents
 
 
