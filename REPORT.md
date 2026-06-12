@@ -7,7 +7,7 @@
 We train reinforcement learning agents to play the Turkish card game **Pişti** (2-player, zero-sum, imperfect information) and analyze the result with game-theoretic instruments. Main findings:
 
 1. **Self-play PPO converges to equilibrium-grade robustness.** A dedicated best response wins +11.0 points/game against the early policy, but only **+0.5 ±0.9 (statistically zero)** against the final one. The policy crosses below the scripted heuristics' exploitability (~+3.2) at ~2M steps and matches determinized search (~+0.1) by 4M.
-2. **The RL agent and Perfect-Information-Monte-Carlo expectimax tie at the top of the ladder**, both ~2–3.5 pts/game ahead of greedy/heuristic play (Bradley–Terry: 1550 vs 1542; head-to-head −0.4 ±1.2).
+2. **The RL agent and Perfect-Information-Monte-Carlo expectimax tie at the top of the ladder**, both ~2–3.5 pts/game ahead of greedy/heuristic play (Bradley–Terry: 1550 vs 1542; head-to-head −0.4 ±1.2, p = 1.0). All cross-tier gaps are significant after Holm–Bonferroni correction; all within-tier orderings are statistical ties (§2).
 3. **Card counting is worth ≈ 2.5 points per game.** Ablating the agent's memory of seen cards costs 2.1–2.9 pts/game against its memory-equipped twins — roughly the entire gap between a greedy heuristic and the best agents. In Pişti, memory *is* the skill.
 4. **Luck is large but not overwhelming:** between equally strong agents the deal explains ~30–46% of outcome variance, and there is a consistent **first-mover advantage of ≈ +1.6 pts/game**.
 5. The RL agent independently discovers human-recognizable tactics: jack discipline (saving Jacks for piles of 4.2 cards on average vs greedy's 3.6) and a higher capture tempo (5.0 captures/game).
@@ -37,47 +37,58 @@ The engine (`engine/game.py`) runs at ~1M moves/s and exposes `determinize(playe
 
 ## 2. The ladder
 
-Round-robin tournament, 250 mirrored deals (500 games) per pair, deterministic play for trained policies:
+Round-robin tournament, 250 mirrored deals (500 games) per pair, deterministic play for trained policies. Ratings carry deal-level bootstrap 95% CIs (1000 resamples):
 
-| rank | agent | Bradley–Terry (Elo-like) |
-|---|---|---|
-| 1 | ppo_main | 1549.5 |
-| 2 | ppo_s2 | 1547.4 |
-| 3 | expectimax | 1542.2 |
-| 4 | ppo_s1 | 1536.0 |
-| 5 | ppo_nomem | 1509.7 |
-| 6 | hunter | 1509.1 |
-| 7 | greedy | 1497.4 |
-| 8 | random | 1308.8 |
+| rank | agent | Bradley–Terry (Elo-like) | 95% CI |
+|---|---|---|---|
+| 1 | ppo_main | 1549.5 | [1541, 1558] |
+| 2 | ppo_s2 | 1547.4 | [1539, 1557] |
+| 3 | expectimax | 1542.2 | [1534, 1550] |
+| 4 | ppo_s1 | 1536.0 | [1528, 1545] |
+| 5 | ppo_nomem | 1509.7 | [1501, 1519] |
+| 6 | hunter | 1509.1 | [1501, 1517] |
+| 7 | greedy | 1497.4 | [1489, 1506] |
+| 8 | random | 1308.8 | [1298, 1319] |
 
-Selected head-to-heads (mean score diff ± 95% CI, positive = row wins):
+Three tiers emerge, separated by non-overlapping CIs: **{ppo seeds, expectimax} > {ppo_nomem, hunter, greedy} > {random}**. Differences *within* a tier are not statistically distinguishable.
 
-| matchup | win rate | pts/game |
-|---|---|---|
-| ppo_main vs greedy | 0.588 | **+2.36 ±1.31** |
-| ppo_main vs hunter | 0.571 | **+2.12 ±1.30** |
-| ppo_main vs expectimax | 0.521 | −0.39 ±1.18 (tie) |
-| expectimax vs greedy | 0.595 | **+3.59 ±1.25** |
-| ppo_main vs ppo_nomem | 0.548 | **+2.49 ±1.31** |
-| greedy vs hunter | 0.487 | −0.28 ±0.65 (tie) |
+Head-to-heads (mean pts/game ± 95% CI; p-values are paired t-tests on mirror-paired deal differences, Holm–Bonferroni corrected across all 28 matches; \* = significant at α=0.05):
 
-The three RL seeds finish within ~14 Elo of each other and are mutually statistically tied — self-play training is reproducible in strength, not just in curve shape. See `plots/ratings.png`, `plots/tournament_heatmap.png`, `plots/training_curves.png`.
+| matchup | win rate | pts/game | p (Holm) | |
+|---|---|---|---|---|
+| ppo_main vs greedy | 0.588 | +2.36 ±1.31 | 0.007 | \* |
+| ppo_main vs hunter | 0.571 | +2.12 ±1.30 | 0.018 | \* |
+| expectimax vs greedy | 0.595 | +3.59 ±1.25 | 1.2e-06 | \* |
+| ppo_main vs ppo_nomem | 0.548 | +2.49 ±1.31 | 0.004 | \* |
+| ppo_s1 vs ppo_nomem | 0.564 | +2.87 ±1.19 | 7e-05 | \* |
+| ppo_s2 vs ppo_nomem | 0.544 | +2.11 ±1.26 | 0.014 | \* |
+| ppo_main vs expectimax | 0.521 | −0.39 ±1.18 | 1.0 | tie |
+| ppo_main vs ppo_s1 | 0.504 | +0.05 ±1.11 | 1.0 | tie |
+| ppo_main vs ppo_s2 | 0.509 | +0.41 ±1.29 | 1.0 | tie |
+| greedy vs hunter | 0.487 | −0.28 ±0.65 | 1.0 | tie |
+| greedy vs ppo_nomem | 0.504 | −0.09 ±1.25 | 1.0 | tie |
+
+Full table: `results/tournament_significance.json` (Wilcoxon signed-rank p-values agree with the t-tests throughout).
+
+**What is significant and what is noise.** All claims of the form "trained agents beat heuristics" and "memory beats no-memory" survive multiple-comparison correction comfortably. The *ordering within the top tier* (ppo_main > ppo_s2 > expectimax > ppo_s1, a 14-Elo span) is **noise** — these four are statistically indistinguishable with 500 games per pair; detecting a 0.4 pts/game gap (if it exists) would need roughly 10× more deals. The same is true for nomem vs hunter vs greedy. See `plots/ratings.png`, `plots/tournament_heatmap.png`, `plots/training_curves.png`.
 
 ## 3. Exploitability
 
 True Nash-distance is intractable here, so we report a lower bound: train a **best response** (MaskablePPO warm-started from the strongest agent, 1.5M specialization steps) against each frozen *stochastic* target, then measure its edge over 400 mirrored deals.
 
-| target | BR edge (pts/game) | BR win rate |
-|---|---|---|
-| ppo @ 250k steps | +11.04 ±0.97 | 0.78 |
-| ppo @ 500k | +9.95 ±0.99 | 0.74 |
-| ppo @ 1M | +6.58 ±0.97 | 0.67 |
-| ppo @ 2M | +2.96 ±0.98 | 0.59 |
-| ppo @ 4M | **+0.59 ±1.00** | 0.53 |
-| ppo @ 6M (final) | **+0.48 ±0.93** | 0.50 |
-| greedy | +3.20 ±1.01 | 0.59 |
-| hunter | +3.25 ±0.99 | 0.59 |
-| expectimax (light) | **+0.06 ±0.96** | 0.49 |
+| target | BR edge (pts/game) | BR win rate | p (edge ≠ 0) |
+|---|---|---|---|
+| ppo @ 250k steps | +11.04 ±0.97 | 0.78 | <1e-15 |
+| ppo @ 500k | +9.95 ±0.99 | 0.74 | <1e-15 |
+| ppo @ 1M | +6.58 ±0.97 | 0.67 | <1e-15 |
+| ppo @ 2M | +2.96 ±0.98 | 0.59 | 3.5e-09 |
+| ppo @ 4M | **+0.59 ±1.00** | 0.53 | 0.24 |
+| ppo @ 6M (final) | **+0.48 ±0.93** | 0.50 | 0.31 |
+| greedy | +3.20 ±1.01 | 0.59 | 4.3e-10 |
+| hunter | +3.25 ±0.99 | 0.59 | 1.4e-10 |
+| expectimax (light) | **+0.06 ±0.96** | 0.49 | 0.90 |
+
+The exploitability of the 4M and final policies is **not statistically distinguishable from zero** (p = 0.24, 0.31), while every checkpoint up to 2M and both scripted heuristics are exploitable at overwhelming significance. Read the final numbers as "≤ ~1.4 pts/game with 95% confidence" (upper end of the CI), not as exactly zero — and as lower bounds given the fixed BR protocol.
 
 Three observations (`plots/exploitability.png`):
 
@@ -91,7 +102,7 @@ Three observations (`plots/exploitability.png`):
 
 `ppo_nomem` trains identically but cannot see which cards have been played (the `seen` vector is zeroed; opponents keep full memory).
 
-- Head-to-head vs its three memory-equipped twins: **−2.49 ±1.31, −2.87 ±1.19, −2.11 ±1.26 pts/game**.
+- Head-to-head vs its three memory-equipped twins: **−2.49 ±1.31, −2.87 ±1.19, −2.11 ±1.26 pts/game** (all three significant after Holm correction: p = 0.004, 7e-05, 0.014).
 - On the ladder it falls from the top group (~1545) to heuristic level (1510), statistically tied with `hunter`.
 - Against greedy it manages only −0.09 ±1.25 (a tie), where memory-equipped seeds score +2.4 to +2.5.
 
@@ -118,6 +129,8 @@ Behavioral statistics over 400 games vs greedy (`results/behavior.json`):
 | bait rate (duplicate-rank discards on empty table) | 0.10 | 0.05 | 0.08 | 0.08 |
 
 The RL agent learned **jack discipline** (holding Jacks until piles are ~17% larger than greedy tolerates) and the highest capture tempo, without ever being told these concepts exist — its only signal was the final score differential.
+
+*(These behavioral counts are descriptive, from 400 games each without significance tests; treat differences smaller than ~10% as suggestive rather than established.)*
 
 ## 7. Reproducibility
 
