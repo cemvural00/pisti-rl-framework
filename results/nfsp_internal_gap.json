@@ -1,0 +1,15 @@
+{
+  "agent_a": "nfsp_br",
+  "agent_b": "nfsp_avg",
+  "n_games": 800,
+  "win_rate_a": 0.535,
+  "wins_a": 408,
+  "wins_b": 352,
+  "ties": 40,
+  "mean_diff": 1.151,
+  "diff_ci95": 0.901,
+  "pistis_per_game": [
+    0.578,
+    0.478
+  ]
+}

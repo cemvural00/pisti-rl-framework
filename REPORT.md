@@ -11,7 +11,8 @@ We train reinforcement learning agents to play the Turkish card game **Pişti** 
 3. **Card counting is worth ≈ 2.5 points per game.** Ablating the agent's memory of seen cards costs 2.1–2.9 pts/game against its memory-equipped twins — roughly the entire gap between a greedy heuristic and the best agents. In Pişti, memory *is* the skill.
 4. **Luck is large but not overwhelming:** between equally strong agents the deal explains ~30–46% of outcome variance, and there is a consistent **first-mover advantage of ≈ +1.6 pts/game**.
 5. The RL agent independently discovers human-recognizable tactics: jack discipline (saving Jacks for piles of 4.2 cards on average vs greedy's 3.6) and a higher capture tempo (5.0 captures/game).
-6. **A masked DQN trained in the same league reaches the same top tier (BT 1531 [1522, 1540]) and is equally unexploitable (+0.23 ±0.98)** — falsifying our pre-registered guess that its deterministic policy would pay the "predictability tax." Private information already supplies the mixing; what matters is rich conditioning + self-play, not a stochastic action rule. DQN was also far more sample-efficient early (parity with greedy by ~50k steps vs PPO's ~1.5M).
+6. **A masked DQN trained in the same league reaches the same top tier (BT 1529 [1522, 1537]) and is equally unexploitable (+0.23 ±0.98)** — falsifying our pre-registered guess that its deterministic policy would pay the "predictability tax." Private information already supplies the mixing; what matters is rich conditioning + self-play, not a stochastic action rule. DQN was also far more sample-efficient early (parity with greedy by ~50k steps vs PPO's ~1.5M).
+7. **NFSP — the method with the Nash convergence story — matches the league agents' robustness (+0.74 ±0.99 external; +1.15 ±0.90 against its own internal best response) but lands ~25 Elo below them on the ladder** at a larger step budget (10M). The internal-vs-external gap also calibrates the whole exploitability table: read "statistically zero" as "≤ ~1–2 pts/game."
 
 ## 1. Setup
 
@@ -32,6 +33,7 @@ The engine (`engine/game.py`) runs at ~1M moves/s and exposes `determinize(playe
 | `ppo_main/s1/s2` | MaskablePPO (256×256), 6M steps, 3 seeds |
 | `ppo_nomem` | identical, but the `seen` (card-memory) observation is zeroed |
 | `dqn_main` | masked DQN (Q-values masked inside the network forward pass; ε-greedy and warm-up sample legal actions only), same 6M-step curriculum + self-play league |
+| `nfsp_main` | NFSP (Heinrich & Silver 2016): DQN best response + reservoir-averaged policy Π, η = 0.1, pure self-play with shared parameters, no curriculum, 10M steps. Π (stochastic) is what plays. |
 
 **Training:** the env's per-step reward is the change in score differential between the agent's decision points, which telescopes exactly to the final score differential — the true game objective, densely distributed, with no shaping hyperparameters. Opponents follow a curriculum of scripted baselines that transitions into a self-play league (snapshot pool + live mirror) from 1M steps. One 6M-step run ≈ 67 min on the M1.
 
@@ -43,19 +45,20 @@ Round-robin tournament, 250 mirrored deals (500 games) per pair, deterministic p
 
 | rank | agent | Bradley–Terry (Elo-like) | 95% CI |
 |---|---|---|---|
-| 1 | ppo_main | 1544.4 | [1536, 1553] |
-| 2 | ppo_s2 | 1543.4 | [1535, 1552] |
-| 3 | expectimax | 1539.4 | [1531, 1548] |
-| 4 | ppo_s1 | 1534.5 | [1527, 1542] |
-| 5 | dqn_main | 1531.2 | [1522, 1540] |
-| 6 | hunter | 1504.4 | [1497, 1513] |
-| 7 | ppo_nomem | 1504.3 | [1496, 1512] |
-| 8 | greedy | 1492.8 | [1484, 1501] |
-| 9 | random | 1305.6 | [1296, 1316] |
+| 1 | ppo_main | 1542.3 | [1534, 1550] |
+| 2 | ppo_s2 | 1541.3 | [1533, 1549] |
+| 3 | expectimax | 1537.4 | [1530, 1545] |
+| 4 | ppo_s1 | 1533.9 | [1526, 1542] |
+| 5 | dqn_main | 1529.4 | [1522, 1537] |
+| 6 | nfsp_main | 1517.0 | [1509, 1525] |
+| 7 | ppo_nomem | 1503.7 | [1496, 1512] |
+| 8 | hunter | 1502.3 | [1495, 1510] |
+| 9 | greedy | 1492.2 | [1485, 1500] |
+| 10 | random | 1300.5 | [1291, 1310] |
 
-*(9-agent tournament, `results/tournament_v2.json`; the shared matchups replicate the earlier 8-agent tournament exactly — same seeds and deals — so only the ratings refit.)*
+*(10-agent tournament, `results/tournament_v3.json`; shared matchups replicate the earlier tournaments exactly — same seeds and deals — so only the ratings refit.)*
 
-Three tiers emerge, separated by non-overlapping CIs: **{ppo seeds, expectimax, dqn} > {ppo_nomem, hunter, greedy} > {random}**. Differences *within* a tier are not statistically distinguishable.
+Three tiers emerge, separated by non-overlapping CIs: **{ppo seeds, expectimax, dqn} > {ppo_nomem, hunter, greedy} > {random}** — with NFSP occupying its own intermediate rung (1517 [1509, 1525]): significantly above greedy, significantly below the top PPO seeds, marginally overlapping DQN. Its individual head-to-heads are all statistical ties (it loses ~1 pt/game to each league agent and beats heuristics by <1; nothing survives Holm) — the rating separation comes from aggregating across all nine of its matches. Differences *within* a tier are not statistically distinguishable.
 
 Head-to-heads (mean pts/game ± 95% CI; p-values are paired t-tests on mirror-paired deal differences, Holm–Bonferroni corrected across all 28 matches; \* = significant at α=0.05):
 
@@ -97,8 +100,11 @@ True Nash-distance is intractable here, so we report a lower bound: train a **be
 | hunter | +3.25 ±0.99 | 0.59 | 1.4e-10 |
 | expectimax (light) | **+0.06 ±0.96** | 0.49 | 0.90 |
 | dqn @ 6M (deterministic) | **+0.23 ±0.98** | 0.50 | 0.64 |
+| nfsp Π @ 10M | **+0.74 ±0.99** | 0.51 | 0.14 |
 
 The exploitability of the 4M and final policies is **not statistically distinguishable from zero** (p = 0.24, 0.31), while every checkpoint up to 2M and both scripted heuristics are exploitable at overwhelming significance. Read the final numbers as "≤ ~1.4 pts/game with 95% confidence" (upper end of the CI), not as exactly zero — and as lower bounds given the fixed BR protocol.
+
+**NFSP: theory vs the league.** NFSP is the method with an actual convergence story — its averaged policy Π should approach Nash. After 10M self-play steps (no curriculum, no league): external exploitability **+0.74 ±0.99** — statistically indistinguishable from zero and from the league agents' numbers. NFSP also carries an *internal* exploitability estimate: its own Q-network is a continuously-trained best response to Π, and it beats Π by **+1.15 ±0.90** — slightly larger than what our external 1.5M-step assassin finds (+0.74), which is expected: the internal attacker trained against Π ~7× longer. Two implications: (a) all the "statistically zero" exploitability numbers in this table should be read as *≤ ~1–2 pts/game*, since a sufficiently trained attacker finds at least +1.15 against NFSP; (b) the pragmatic self-play league matched the principled method's robustness while finishing ~25 Elo stronger on the ladder at a smaller step budget — in this game, fictitious-play averaging buys theoretical reassurance, not measurable extra safety.
 
 **A falsified hypothesis (and what it taught us).** We added the DQN specifically to test the prediction that its *deterministic* greedy policy would be exploitable like the scripted heuristics (~+3), since equilibrium play in imperfect-information games requires mixing. The data said no: **+0.23 ±0.98 (p = 0.64)**. The resolution is that mixing does not require a stochastic action rule — a deterministic function of *private* information (your hidden hand, your card memory) is already unpredictable from the opponent's seat, because the deal supplies the randomness. What actually separates the exploitable from the unexploitable in our table is **conditioning richness and self-play training**: greedy/hunter are predictable *from public information alone* and have systematic habits; both league-trained agents and belief-sampling search are not. Determinism per se carries no measurable tax.
 
@@ -155,4 +161,4 @@ The RL agent learned **jack discipline** (holding Jacks until piles are ~17% lar
 
 - Exploitability numbers are lower bounds under a 1.5M-step warm-started BR protocol.
 - Deterministic tournament play slightly flatters predictable policies; stochastic-policy tournaments are one flag away.
-- Natural extensions: NFSP/regret-based methods as a principled equilibrium comparison; LSTM policies vs the explicit `seen` vector; 4-player partnership Pişti; opponent modeling (exploiting *weak* opponents on purpose — the current agent plays safe, not maximally punishing).
+- Natural extensions: regret-based methods (Deep CFR) to complete the equilibrium-method comparison; a history-conditioned best response (the sharpest test of the private-information-mixing hypothesis); LSTM policies vs the explicit `seen` vector; 4-player partnership Pişti; opponent modeling (exploiting *weak* opponents on purpose — the current agents play safe, not maximally punishing).

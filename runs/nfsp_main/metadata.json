@@ -1,0 +1,29 @@
+{
+  "algorithm": "nfsp",
+  "args": {
+    "run_name": "nfsp_main",
+    "steps": 10000000,
+    "seed": 0,
+    "eta": 0.1,
+    "lr_q": 0.0001,
+    "lr_pi": 0.0001,
+    "gamma": 1.0,
+    "reward_scale": 0.1,
+    "batch": 256,
+    "rl_buffer": 200000,
+    "sl_buffer": 500000,
+    "train_every": 16,
+    "target_every": 10000,
+    "learning_starts": 20000,
+    "eps_start": 0.12,
+    "eps_final": 0.01,
+    "eps_decay_steps": 2000000,
+    "eval_every": 500000,
+    "eval_deals": 100,
+    "ckpt_every": 1000000,
+    "threads": 4
+  },
+  "wall_seconds": 2342.7,
+  "episodes": 208333,
+  "sl_buffer_seen": 1000712
+}

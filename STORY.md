@@ -50,6 +50,14 @@ The autopsy is the best insight of the study: **you don't need dice when you hav
 
 Bonus DQN fact: off-policy replay is brutally sample-efficient here — DQN matched greedy after **~50k steps**; PPO needed ~1.5M (30×) to get there.
 
+## 2¾. Then we hired the theorist.
+
+Our league agents became unexploitable *empirically* — no guarantees, it just happened. So we brought in **NFSP**, the method with an actual theorem-shaped story: it maintains a best-response network and a long-run *average* of its own best responses, and that average provably drifts toward Nash equilibrium. Pure self-play, no curriculum, no training wheels. 10 million steps.
+
+The verdict: the theorist is **safe but not sharp**. NFSP's exploitability is statistically zero (+0.74 ±0.99) — it kept the theoretical promise. But on the ladder it sits on its own rung (1517): clearly above every heuristic, clearly below the league agents (~1530–1542), losing about a point per game to each of them. The street-trained agents got the same armor *plus* more punch, in fewer steps.
+
+One more gift from the theorist: NFSP's internal best response — which trained against the average policy 7× longer than our external assassin — finds **+1.15 pts/game**. That number quietly calibrates the entire study: when we say "unexploitable," the honest fine print is *"no attacker we built finds more than ~1 point per game."* Nash is a direction, not an address.
+
 ## 3. Card counting is the entire game
 
 We raised an identical twin of our agent with one cruelty: it can't remember which cards have been played (`seen` vector zeroed — RL amnesia). Same training, same league, same 6M steps.
@@ -103,6 +111,7 @@ The agent's only feedback, ever, was the final score differential. From that alo
 | cost of amnesia | **≈ 2.5 pts/game** — the whole skill gap |
 | the predictability tax (scripted agents) | **≈ +3.2 pts/game** of exploitability, forever |
 | the determinism tax (league-trained DQN) | **zero** — the hidden hand supplies the dice |
+| the theory premium (NFSP vs league) | same armor, **−25 Elo** of punch |
 | first-mover advantage | **≈ +1.6 pts/game** |
 | single-hand luck | ±16 pts around a +2.4 skill signal |
 | time to unexploitable | ~4M self-play steps (~45 min on an M1) |
