@@ -58,6 +58,16 @@ The verdict: the theorist is **safe but not sharp**. NFSP's exploitability is st
 
 One more gift from the theorist: NFSP's internal best response — which trained against the average policy 7× longer than our external assassin — finds **+1.15 pts/game**. That number quietly calibrates the entire study: when we say "unexploitable," the honest fine print is *"no attacker we built finds more than ~1 point per game."* Nash is a direction, not an address.
 
+## 2⅞. We built a Beast. The ceiling laughed.
+
+The obvious next move — the AlphaZero move — was to bolt search onto the trained policy. `BeastAgent` doesn't just ask the network what to play; for every legal card it imagines 32 possible worlds (honest guesses about your hidden hand), plays the card in all of them, lets the policy finish every game on both seats, and picks whatever wins on average. Hundreds of simulated games per single decision.
+
+Result: **exactly nothing.** Over 150 mirrored deals the Beast ties its own base policy dead even (−0.05 ±1.48). Here's the spooky part: it *disagrees* with the plain policy on **52% of its decisions**. It changes half the moves and none of the outcome.
+
+That's not a bug — it's the ceiling made visible. When we said the final policies were unexploitable, this is what it looks like from the inside: the actions the Beast is choosing between are genuinely near-equal in value, so hundreds of rollouts just measure noise. There is no signal left for lookahead to find. Pişti's skill game is, as far as our instruments can tell, *solved-ish* — everything above ~1540 Elo is the deck talking.
+
+(It's still the right agent to face in the GUI: same brain, and every game you play against it gets logged for future training. 🐲)
+
 ## 3. Card counting is the entire game
 
 We raised an identical twin of our agent with one cruelty: it can't remember which cards have been played (`seen` vector zeroed — RL amnesia). Same training, same league, same 6M steps.

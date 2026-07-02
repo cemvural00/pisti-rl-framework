@@ -116,6 +116,8 @@ Three observations (`plots/exploitability.png`):
 
 *Caveat: these are lower bounds under a fixed BR protocol; a stronger/longer BR could raise all numbers, but the comparisons across targets share the protocol.*
 
+**Policy + decision-time search adds nothing (the "Beast" experiment).** Following AlphaZero's recipe, `BeastAgent` wraps the trained PPO policy in determinized flat Monte-Carlo search: for each legal action, sample 32 determinizations, play the action, roll every game to terminal with the stochastic policy on both seats, and pick the best mean score differential. Over 150 mirrored deals it is statistically identical to its own base policy (**−0.05 ±1.48** vs `ppo_main`) and to `expectimax32` (−0.10 ±1.46) — despite *overriding* the policy's own choice on **52%** of multi-action decisions. Search changes half the moves and none of the outcome: the rollout value estimates are noise around actions whose true values are nearly equal. Together with the statistically-zero exploitability of the final policies, this is converging evidence that the top agents sit at (or within measurement noise of) the game's effective skill ceiling — there is little value left on the table for one-step lookahead to recover. (`results/beast_benchmark.json`)
+
 ## 4. What is memory worth?
 
 `ppo_nomem` trains identically but cannot see which cards have been played (the `seen` vector is zeroed; opponents keep full memory).
