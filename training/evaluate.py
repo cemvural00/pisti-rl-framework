@@ -10,6 +10,10 @@ Agent specs:
     expectimax[:n_samples,rollout_plies]   e.g. expectimax:32,8
     ppo:<model_path>                       MaskablePPO checkpoint
     ppo-nomem:<model_path>                 same, with the memory-ablated observer
+    ppo-stoch:<model_path>                 stochastic (sampled) PPO policy
+    dqn:<model_path>                       MaskedDQN checkpoint
+    nfsp:<path> | nfsp-br:<path>           NFSP average policy / best response
+    beast:<model_path>[:n_samples]         policy + batched PIMC rollouts
 """
 
 import argparse
