@@ -165,8 +165,9 @@ def train(args):
         row = {"timesteps": step}
         for name, opp in eval_opps.items():
             n = args.eval_deals if name != "expectimax" else max(args.eval_deals // 3, 20)
-            res = play_match(agent, opp, n_deals=n, seed=args.seed + 7777,
-                             name_a="nfsp", name_b=name)
+            res = play_match(
+                agent, opp, n_deals=n, seed=args.seed + 7777, name_a="nfsp", name_b=name
+            )
             s = res.summary()
             row[f"win_{name}"] = s["win_rate_a"]
             row[f"diff_{name}"] = s["mean_diff"]

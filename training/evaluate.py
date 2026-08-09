@@ -44,7 +44,11 @@ def build_agent(spec: str, seed: int = 0):
         n, r = 16, 6
         if ":" in spec:
             n, r = (int(x) for x in spec.split(":", 1)[1].split(","))
-        return f"expectimax{n}", ExpectimaxAgent(n_samples=n, rollout_plies=r, seed=seed), Observer()
+        return (
+            f"expectimax{n}",
+            ExpectimaxAgent(n_samples=n, rollout_plies=r, seed=seed),
+            Observer(),
+        )
     if spec.startswith("ppo-nomem:"):
         from agents.frozen import FrozenPolicyAgent
 
@@ -135,8 +139,14 @@ def run_tournament(specs: List[str], n_deals: int, seed: int, out: str) -> Dict:
     for (na, a, oa), (nb, b, ob) in itertools.combinations(agents, 2):
         t0 = time.perf_counter()
         res = play_match(
-            a, b, n_deals=n_deals, seed=seed, name_a=na, name_b=nb,
-            observer_a=oa, observer_b=ob,
+            a,
+            b,
+            n_deals=n_deals,
+            seed=seed,
+            name_a=na,
+            name_b=nb,
+            observer_a=oa,
+            observer_b=ob,
         )
         s = res.summary()
         summaries.append(s)
@@ -146,10 +156,16 @@ def run_tournament(specs: List[str], n_deals: int, seed: int, out: str) -> Dict:
         )
         records.extend(
             {
-                "a": na, "b": nb, "deal": r.deal, "a_leads": r.a_leads,
-                "score_a": r.score_a, "score_b": r.score_b,
-                "pistis_a": r.pistis_a, "pistis_b": r.pistis_b,
-                "captured_a": r.captured_a, "captured_b": r.captured_b,
+                "a": na,
+                "b": nb,
+                "deal": r.deal,
+                "a_leads": r.a_leads,
+                "score_a": r.score_a,
+                "score_b": r.score_b,
+                "pistis_a": r.pistis_a,
+                "pistis_b": r.pistis_b,
+                "captured_a": r.captured_a,
+                "captured_b": r.captured_b,
             }
             for r in res.records
         )

@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# Confirmatory paired-seed training declared in research/experiment_preregistration.md.
+set -uo pipefail
+
+repo_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+cd "$repo_dir" || exit 1
+
+mkdir -p logs
+pids=()
+labels=()
+conditions=${CONDITIONS:-"on off"}
+
+for seed in $(seq 0 9); do
+    for condition in $conditions; do
+        if [[ "$condition" != "on" && "$condition" != "off" ]]; then
+            echo "Unknown memory condition: $condition" >&2
+            exit 2
+        fi
+        run_name="study_mem_${condition}_s${seed}"
+        run_dir="runs/${run_name}"
+        if [[ -e "$run_dir" ]]; then
+            echo "Refusing to overwrite existing run: $run_dir" >&2
+            exit 2
+        fi
+        memory=true
+        if [[ "$condition" == "off" ]]; then
+            memory=false
+        fi
+        env OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
+            venv/bin/python -m training.train \
+            --config configs/default.yaml \
+            --set "run_name=${run_name}" "seed=${seed}" \
+                "observer.memory=${memory}" \
+            >"logs/${run_name}.log" 2>&1 &
+        pids+=("$!")
+        labels+=("$run_name")
+    done
+done
+
+failures=0
+for i in "${!pids[@]}"; do
+    if wait "${pids[$i]}"; then
+        echo "completed ${labels[$i]}"
+    else
+        echo "failed ${labels[$i]} (see logs/${labels[$i]}.log)" >&2
+        failures=$((failures + 1))
+    fi
+done
+
+if (( failures > 0 )); then
+    exit 1
+fi

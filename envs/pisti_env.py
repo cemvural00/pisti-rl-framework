@@ -94,9 +94,7 @@ class PistiEnv(Env):
 
         return self.observer.encode(self.game, 0), {}
 
-    def step(
-        self, action
-    ) -> Tuple[Dict[str, np.ndarray], float, bool, bool, Dict[str, Any]]:
+    def step(self, action) -> Tuple[Dict[str, np.ndarray], float, bool, bool, Dict[str, Any]]:
         game = self.game
         if game is None or game.done:
             raise RuntimeError("call reset() before step()")
@@ -133,9 +131,7 @@ class PistiEnv(Env):
     def _opponent_move(self) -> None:
         obs = self.opponent_observer.encode(self.game, 1)
         if getattr(self.opponent, "wants_game", False):
-            action = self.opponent.predict(
-                obs, obs["action_mask"], game=self.game, player=1
-            )
+            action = self.opponent.predict(obs, obs["action_mask"], game=self.game, player=1)
         else:
             action = self.opponent.predict(obs, obs["action_mask"])
         self.game.step(int(action))

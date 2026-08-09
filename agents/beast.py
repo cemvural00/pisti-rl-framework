@@ -24,8 +24,9 @@ from engine.game import PistiGame
 class BeastAgent:
     wants_game = True
 
-    def __init__(self, model_path: str, n_samples: int = 32,
-                 seed: Optional[int] = None, name: str = "beast"):
+    def __init__(
+        self, model_path: str, n_samples: int = 32, seed: Optional[int] = None, name: str = "beast"
+    ):
         from sb3_contrib import MaskablePPO
 
         model = MaskablePPO.load(model_path, device="cpu")
@@ -48,9 +49,7 @@ class BeastAgent:
             encs = [self.observer.encode(g, g.current) for g in alive]
             obs_b = {k: np.stack([e[k] for e in encs]) for k in encs[0]}
             masks = obs_b["action_mask"].astype(bool)
-            actions, _ = self.policy.predict(
-                obs_b, deterministic=False, action_masks=masks
-            )
+            actions, _ = self.policy.predict(obs_b, deterministic=False, action_masks=masks)
             for g, a in zip(alive, actions):
                 g.step(int(a))
 

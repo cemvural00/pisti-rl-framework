@@ -3,9 +3,11 @@
 import numpy as np
 
 from agents.baselines import GreedyAgent, RandomAgent
+from agents.frozen import League
 from encoding.obs import Observer
 from envs.pisti_env import PistiEnv
 from training.match import play_match
+from training.train import load_config, make_vec_env
 
 
 def _run_episode(env, rng):
@@ -36,12 +38,10 @@ def test_sparse_reward_equals_final_diff():
 
 def test_env_alternates_seats():
     env = PistiEnv(opponent=RandomAgent(0), seed=3)
-    rng = np.random.default_rng(0)
     leads = []
     for _ in range(6):
         env.reset()
         leads.append(env.game.first_player == 0)
-        _run = _run_episode  # keep episodes short-circuit free
     assert True in leads and False in leads
 
 
@@ -57,10 +57,40 @@ def test_memory_ablation_zeroes_seen():
             break
 
 
+def test_observations_remain_inside_declared_space():
+    env = PistiEnv(opponent=RandomAgent(11), seed=12)
+    rng = np.random.default_rng(13)
+    for _ in range(100):
+        obs, _ = env.reset()
+        assert env.observation_space.contains(obs)
+        done = False
+        while not done:
+            legal = np.flatnonzero(env.action_masks())
+            obs, _, done, _, _ = env.step(rng.choice(legal))
+            assert env.observation_space.contains(obs)
+
+
+def test_training_memory_condition_applies_to_both_seats():
+    cfg = load_config(
+        "configs/default.yaml",
+        ["observer.memory=false", "n_envs=2"],
+    )
+    env = make_vec_env(cfg, League(seed=cfg["seed"]))
+    try:
+        assert all(not item.observer.memory for item in env.envs)
+        assert all(not item.opponent_observer.memory for item in env.envs)
+    finally:
+        env.close()
+
+
 def test_mirrored_match_pairs_deals():
     res = play_match(
-        GreedyAgent(0), RandomAgent(0), n_deals=20, seed=5,
-        name_a="g", name_b="r",
+        GreedyAgent(0),
+        RandomAgent(0),
+        n_deals=20,
+        seed=5,
+        name_a="g",
+        name_b="r",
     )
     assert res.n_games == 40
     # each deal appears exactly twice with both seatings

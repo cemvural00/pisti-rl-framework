@@ -1,5 +1,7 @@
 # Learning Pişti: a self-play RL and game-theory study
 
+> **Historical exploratory report.** These results predate the confirmatory rule and information-set corrections documented in `research/experiment_preregistration.md`. They describe the earlier game variant and are not pooled with the seed-replicated study in `paper/main.tex`.
+
 *June 12, 2026 — single overnight run on an Apple M1 (8 cores, no GPU).*
 
 ## Summary
@@ -35,7 +37,7 @@ The engine (`engine/game.py`) runs at ~1M moves/s and exposes `determinize(playe
 | `dqn_main` | masked DQN (Q-values masked inside the network forward pass; ε-greedy and warm-up sample legal actions only), same 6M-step curriculum + self-play league |
 | `nfsp_main` | NFSP (Heinrich & Silver 2016): DQN best response + reservoir-averaged policy Π, η = 0.1, pure self-play with shared parameters, no curriculum, 10M steps. Π (stochastic) is what plays. |
 
-**Training:** the env's per-step reward is the change in score differential between the agent's decision points, which telescopes exactly to the final score differential — the true game objective, densely distributed, with no shaping hyperparameters. Opponents follow a curriculum of scripted baselines that transitions into a self-play league (snapshot pool + live mirror) from 1M steps. One 6M-step run ≈ 67 min on the M1.
+**Training:** the undiscounted sum of per-step score-differential changes telescopes exactly to the final score differential. The historical PPO configuration used `gamma=0.999`, so it added slight temporal weighting. Opponents follow a curriculum of scripted baselines that transitions into a self-play league (snapshot pool + live mirror) from 1M steps. One 6M-step run ≈ 67 min on the M1.
 
 **Evaluation:** all matches use **mirrored deals** (each deck played twice with seats/hands swapped) and report 95% CIs over deal-paired differences. This matters: deal luck is large, and pairing roughly halves the sample size needed for a given precision.
 

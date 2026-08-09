@@ -36,9 +36,7 @@ class FrozenPolicyAgent:
         self.policy = policy
         self.deterministic = deterministic
         self.name = name
-        self._takes_masks = (
-            "action_masks" in inspect.signature(policy.predict).parameters
-        )
+        self._takes_masks = "action_masks" in inspect.signature(policy.predict).parameters
 
     @classmethod
     def snapshot(cls, model, name: str = "snapshot") -> "FrozenPolicyAgent":
@@ -66,9 +64,7 @@ class FrozenPolicyAgent:
                 action_masks=np.asarray(action_mask, dtype=bool),
             )
         else:
-            action, _state = self.policy.predict(
-                obs, deterministic=self.deterministic
-            )
+            action, _state = self.policy.predict(obs, deterministic=self.deterministic)
         return int(action)
 
 
@@ -83,9 +79,7 @@ class League:
         self.rng = np.random.default_rng(seed)
 
     def add_snapshot(self, model, step: int) -> None:
-        self.snapshots.append(
-            FrozenPolicyAgent.snapshot(model, name=f"snap_{step}")
-        )
+        self.snapshots.append(FrozenPolicyAgent.snapshot(model, name=f"snap_{step}"))
         if len(self.snapshots) > self.pool_size:
             # Drop a random old snapshot, keep the newest always
             drop = self.rng.integers(0, len(self.snapshots) - 1)
@@ -101,8 +95,7 @@ class MixtureOpponent:
 
     wants_game = True  # sub-agents may need the game (expectimax)
 
-    def __init__(self, league: League, seed: int = 0,
-                 expectimax_kwargs: Optional[dict] = None):
+    def __init__(self, league: League, seed: int = 0, expectimax_kwargs: Optional[dict] = None):
         self.league = league
         self.rng = np.random.default_rng(seed)
         self._fixed = {

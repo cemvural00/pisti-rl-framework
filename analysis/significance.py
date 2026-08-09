@@ -14,7 +14,7 @@ Usage:
 """
 
 import json
-import sys
+import argparse
 from collections import defaultdict
 from typing import Dict, List
 
@@ -29,9 +29,7 @@ def paired_deal_diffs(records: List[dict], a: str, b: str) -> np.ndarray:
     for r in records:
         if r["a"] == a and r["b"] == b:
             by_deal[r["deal"]][r["a_leads"]] = r["score_a"] - r["score_b"]
-    return np.array(
-        [(v[True] + v[False]) / 2 for v in by_deal.values() if len(v) == 2]
-    )
+    return np.array([(v[True] + v[False]) / 2 for v in by_deal.values() if len(v) == 2])
 
 
 def match_tests(tournament: Dict) -> List[Dict]:
@@ -73,9 +71,7 @@ def match_tests(tournament: Dict) -> List[Dict]:
     return out
 
 
-def bootstrap_ratings(
-    tournament: Dict, n_boot: int = 1000, seed: int = 0
-) -> Dict[str, Dict]:
+def bootstrap_ratings(tournament: Dict, n_boot: int = 1000, seed: int = 0) -> Dict[str, Dict]:
     """Deal-level bootstrap CIs for Bradley-Terry ratings."""
     rng = np.random.default_rng(seed)
     names = tournament["agents"]
@@ -89,9 +85,7 @@ def bootstrap_ratings(
         cell = matches[key][r["deal"]]
         cell[0] += wa
         cell[1] += 1.0 - wa
-    match_arrays = {
-        key: np.array(list(deals.values())) for key, deals in matches.items()
-    }
+    match_arrays = {key: np.array(list(deals.values())) for key, deals in matches.items()}
 
     samples = {n: [] for n in names}
     for _ in range(n_boot):
@@ -136,7 +130,15 @@ def exploitability_tests(paths: List[str]) -> List[Dict]:
 
 
 def main():
-    path = sys.argv[1] if len(sys.argv) > 1 else "results/tournament.json"
+    parser = argparse.ArgumentParser()
+    parser.add_argument("input", nargs="?", default="results/tournament.json")
+    parser.add_argument(
+        "--no-exploits",
+        action="store_true",
+        help="do not attach historical results/exploit/*.json tests",
+    )
+    args = parser.parse_args()
+    path = args.input
     tournament = json.load(open(path))
 
     tests = match_tests(tournament)
@@ -144,7 +146,8 @@ def main():
 
     import glob
 
-    exploits = exploitability_tests(sorted(glob.glob("results/exploit/*.json")))
+    exploit_paths = [] if args.no_exploits else sorted(glob.glob("results/exploit/*.json"))
+    exploits = exploitability_tests(exploit_paths)
 
     result = {"match_tests": tests, "rating_ci": ratings, "exploitability": exploits}
     out = path.replace(".json", "_significance.json")

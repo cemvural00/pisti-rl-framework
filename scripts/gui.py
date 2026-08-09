@@ -1,7 +1,7 @@
 """Browser GUI for playing Pişti against any agent.
 
-    venv/bin/python scripts/gui.py            # then open http://localhost:8777
-    venv/bin/python scripts/gui.py --port 9000
+venv/bin/python scripts/gui.py            # then open http://localhost:8777
+venv/bin/python scripts/gui.py --port 9000
 """
 
 import argparse
@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from flask import Flask, jsonify, request
 
 from encoding.obs import Observer
-from engine.game import CARD_POINTS, PistiGame, card_name, new_deck, rank_of
+from engine.game import CARD_POINTS, PistiGame, card_name, new_deck
 from training.evaluate import build_agent
 
 app = Flask(__name__)
@@ -30,9 +30,7 @@ GAME_LOG = "data/human_games.jsonl"
 def available_agents():
     agents = []
     if os.path.exists("runs/ppo_main/final_model.zip"):
-        agents.append(
-            ("beast:runs/ppo_main/final_model:24", "🐲 THE BEAST (policy + search)")
-        )
+        agents.append(("beast:runs/ppo_main/final_model:24", "🐲 THE BEAST (policy + search)"))
     agents += [
         ("greedy", "Greedy (heuristic)"),
         ("hunter", "Pişti Hunter (heuristic)"),
@@ -78,7 +76,9 @@ class Session:
         self.game = PistiGame(deck=list(self.deck), first_player=self.first_player)
         if hasattr(self.agent, "reset"):
             self.agent.reset()
-        self.log = [f"Game {self.game_no} — {'you lead' if self.game.current == self.human else self.agent_name + ' leads'}"]
+        self.log = [
+            f"Game {self.game_no} — {'you lead' if self.game.current == self.human else self.agent_name + ' leads'}"
+        ]
         events = []
         if self.game.current != self.human:
             events += self._agent_moves()
@@ -134,8 +134,7 @@ class Session:
             "human_score": g.scores()[self.human],
             "agent_score": g.scores()[1 - self.human],
             "winner": (
-                "human" if g.winner() == self.human
-                else ("tie" if g.winner() is None else "agent")
+                "human" if g.winner() == self.human else ("tie" if g.winner() is None else "agent")
             ),
         }
         os.makedirs(os.path.dirname(GAME_LOG), exist_ok=True)
@@ -169,7 +168,9 @@ class Session:
         s = g.scores()
         winner = None
         if g.done:
-            winner = "you" if g.winner() == h else ("tie" if g.winner() is None else self.agent_name)
+            winner = (
+                "you" if g.winner() == h else ("tie" if g.winner() is None else self.agent_name)
+            )
         return {
             "agent": self.agent_name,
             "game_no": self.game_no,

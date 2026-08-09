@@ -39,9 +39,7 @@ def main():
         "ppo:runs/ppo_s2/final_model",
         "ppo-nomem:runs/ppo_nomem/final_model",
     ]
-    tournament = run_tournament(
-        agents, n_deals=250, seed=123, out="results/tournament.json"
-    )
+    tournament = run_tournament(agents, n_deals=250, seed=123, out="results/tournament.json")
 
     behavior = compare_agents(
         ["greedy", "hunter", "expectimax:16,6", "ppo:runs/ppo_main/final_model"],

@@ -1,0 +1,79 @@
+{
+  "protocol": {
+    "target_seeds": 5,
+    "attack_steps": 1000000,
+    "evaluation_deals": 500,
+    "paired_target_comparison": true
+  },
+  "pairs": [
+    {
+      "target_seed": 0,
+      "attacker_seed": 100,
+      "league_attack_edge": 0.983,
+      "fixed_attack_edge": 0.652,
+      "fixed_minus_league": -0.33099999999999996
+    },
+    {
+      "target_seed": 1,
+      "attacker_seed": 101,
+      "league_attack_edge": 0.268,
+      "fixed_attack_edge": -0.026,
+      "fixed_minus_league": -0.29400000000000004
+    },
+    {
+      "target_seed": 2,
+      "attacker_seed": 102,
+      "league_attack_edge": 0.757,
+      "fixed_attack_edge": 0.849,
+      "fixed_minus_league": 0.09199999999999997
+    },
+    {
+      "target_seed": 3,
+      "attacker_seed": 103,
+      "league_attack_edge": 1.232,
+      "fixed_attack_edge": 0.166,
+      "fixed_minus_league": -1.066
+    },
+    {
+      "target_seed": 4,
+      "attacker_seed": 104,
+      "league_attack_edge": 0.255,
+      "fixed_attack_edge": 0.916,
+      "fixed_minus_league": 0.661
+    }
+  ],
+  "fixed_minus_league": {
+    "seed_effects": [
+      -0.331,
+      -0.294,
+      0.092,
+      -1.066,
+      0.661
+    ],
+    "mean": -0.1876,
+    "seed_t_ci95": [
+      -0.9733,
+      0.5981
+    ],
+    "positive_seeds": 2,
+    "exact_sign_flip_p_two_sided": 0.625
+  },
+  "principal_target_replicated_attacks": [
+    {
+      "attacker_seed": 100,
+      "edge": 0.983,
+      "deal_ci95_half_width": 0.867
+    },
+    {
+      "attacker_seed": 201,
+      "edge": 0.075,
+      "deal_ci95_half_width": 0.834
+    },
+    {
+      "attacker_seed": 202,
+      "edge": -0.076,
+      "deal_ci95_half_width": 0.906
+    }
+  ],
+  "principal_max_discovered_edge": 0.983
+}

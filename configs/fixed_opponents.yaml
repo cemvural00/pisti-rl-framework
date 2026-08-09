@@ -1,0 +1,47 @@
+# Confirmatory fixed-opponent control for the self-play league.
+
+run_name: study_fixed_s0
+out_dir: runs
+seed: 0
+n_envs: 8
+total_timesteps: 6_000_000
+
+reward:
+  mode: delta
+  scale: 0.1
+
+observer:
+  memory: true
+
+ppo:
+  learning_rate: 3.0e-4
+  n_steps: 256
+  batch_size: 512
+  n_epochs: 4
+  gamma: 0.999
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.01
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  net_arch: [256, 256]
+
+# The first two phases match configs/default.yaml. Later phases remove
+# pool/latest and renormalize the remaining scripted-opponent weights.
+curriculum:
+  - at: 0
+    weights: {random: 0.5, greedy: 0.5}
+  - at: 300_000
+    weights: {greedy: 0.6, hunter: 0.4}
+  - at: 1_000_000
+    weights: {greedy: 0.5, hunter: 0.5}
+  - at: 2_500_000
+    weights: {greedy: 0.333333, hunter: 0.333333, expectimax: 0.333334}
+
+selfplay:
+  snapshot_freq: 250_000
+  pool_size: 12
+
+eval:
+  freq: 250_000
+  n_deals: 150
