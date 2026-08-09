@@ -1,5 +1,7 @@
 # Pişti RL — a reinforcement learning & game theory study
 
+**Author:** Cem Vural
+
 Teaching RL agents the Turkish card game **Pişti** (2-player, zero-sum, imperfect information), and measuring what they learn with game-theoretic tools: mirrored-deal tournaments, Bradley–Terry ratings, approximate exploitability via best-response training, and a card-counting ablation.
 
 ## The game

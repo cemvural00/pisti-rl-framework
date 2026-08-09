@@ -10,4 +10,5 @@ latexmk -pdf -interaction=nonstopmode main.tex
 
 `analysis.paper_assets` writes `generated_results.tex` and the compact result tables consumed by `main.tex`. Run the complete study first with the scripts documented in the repository README. The compiled manuscript is `paper/main.pdf`.
 
-The author line is intentionally anonymous for review. Replace it only when preparing a named submission.
+The manuscript is credited to Cem Vural. Update the author line and PDF metadata in
+`main.tex` only when preparing a different submission version.

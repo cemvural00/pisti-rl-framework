@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = "MIT"
 authors = [
-    {name = "Pişti RL contributors"},
+    {name = "Cem Vural"},
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",

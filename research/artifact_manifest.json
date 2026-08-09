@@ -1,6 +1,6 @@
 {
-  "created_utc": "2026-08-09T09:08:56.571159+00:00",
-  "git_head": "465fe24192e332062b7cb17f130e9a0607ced2ff",
+  "created_utc": "2026-08-09T09:18:00.836062+00:00",
+  "git_head": "9ab962c94e8f11a82a5ca22627712719f1abe1bb",
   "git_dirty": true,
   "protocol": "research/experiment_preregistration.md",
   "files": {
@@ -209,8 +209,8 @@
       "sha256": "9591cca6cc57287e5b2e68b792219e9d266e18553d1dc5e416861cff080aacee"
     },
     "pyproject.toml": {
-      "bytes": 1705,
-      "sha256": "19add8beef6fcf711814520350fd7888234cf3bb5801c7b507e44ce60cf09484"
+      "bytes": 1692,
+      "sha256": "40d21ba68ac13b8a4a67a7003a6db6f45965dea645222d59f46f60da41f89a62"
     },
     "requirements-research.txt": {
       "bytes": 397,
@@ -253,16 +253,16 @@
       "sha256": "ae3ef9f2a03452746d3471366750f803c0b037194e6be321510e95c7c678a418"
     },
     "paper/main.tex": {
-      "bytes": 28613,
-      "sha256": "130ffa868d76ad7002cab1d3981670444f7676863a72a28c0d632776b627a6e7"
+      "bytes": 28738,
+      "sha256": "fe70814aca343019e5ddad8303d445b3df2db1789c182eb4d32846ff1fa7d617"
     },
     "paper/references.bib": {
       "bytes": 6335,
       "sha256": "a67e291021e9d42f8c3e847c13cc66181d11353214495c17593806d8e191792f"
     },
     "paper/main.pdf": {
-      "bytes": 510239,
-      "sha256": "429551c54420e797f9d13c91a9eb990194231e71a0f87476f4862fa2582d57d7"
+      "bytes": 509824,
+      "sha256": "06c09de47cea91c60e61ab9dd7a49cba729cab936c656a7f415931554ed3084d"
     },
     "BLOG_OUTLINE.md": {
       "bytes": 6995,
