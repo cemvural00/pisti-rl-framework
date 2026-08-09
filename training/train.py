@@ -15,6 +15,7 @@ Outputs land in runs/<run_name>/:
 
 import argparse
 import csv
+import importlib.metadata
 import json
 import os
 import platform
@@ -22,13 +23,12 @@ import subprocess
 import time
 from typing import Dict
 
-import numpy as np
 import yaml
 from sb3_contrib import MaskablePPO
 from stable_baselines3.common.callbacks import BaseCallback
 from stable_baselines3.common.vec_env import DummyVecEnv
 
-from agents.baselines import GreedyAgent, PistiHunterAgent, RandomAgent
+from agents.baselines import GreedyAgent, PistiHunterAgent
 from agents.expectimax import ExpectimaxAgent
 from agents.frozen import FrozenPolicyAgent, League, MixtureOpponent
 from encoding.obs import Observer
@@ -51,23 +51,52 @@ def load_config(path: str, overrides=None) -> Dict:
 
 def git_hash() -> str:
     try:
-        return subprocess.check_output(
-            ["git", "rev-parse", "HEAD"], text=True
-        ).strip()
+        return subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
     except Exception:
         return "unknown"
+
+
+def git_dirty() -> bool:
+    try:
+        return bool(subprocess.check_output(["git", "status", "--porcelain"], text=True).strip())
+    except Exception:
+        return True
+
+
+def package_versions() -> Dict[str, str]:
+    packages = (
+        "numpy",
+        "gymnasium",
+        "stable-baselines3",
+        "sb3-contrib",
+        "torch",
+        "PyYAML",
+        "scipy",
+    )
+    versions = {}
+    for package in packages:
+        try:
+            versions[package] = importlib.metadata.version(package)
+        except importlib.metadata.PackageNotFoundError:
+            versions[package] = "not-installed"
+    return versions
 
 
 def make_vec_env(cfg: Dict, league: League) -> DummyVecEnv:
     n_envs = cfg["n_envs"]
     seed = cfg["seed"]
     obs_cfg = cfg.get("observer", {})
+    use_memory = obs_cfg.get("memory", True)
 
     def make(i):
         def _init():
             return PistiEnv(
                 opponent=MixtureOpponent(league, seed=seed * 1000 + i),
-                observer=Observer(memory=obs_cfg.get("memory", True)),
+                observer=Observer(memory=use_memory),
+                # Frozen self-play policies must receive the representation
+                # they were trained on. Nonzero `seen` features would activate
+                # untrained input weights in a no-memory snapshot.
+                opponent_observer=Observer(memory=use_memory),
                 reward_mode=cfg["reward"]["mode"],
                 reward_scale=cfg["reward"]["scale"],
                 seed=seed * 1000 + i,
@@ -116,9 +145,7 @@ class LeagueCallback(BaseCallback):
 
     def _snapshot(self):
         self.league.add_snapshot(self.model, self.num_timesteps)
-        path = os.path.join(
-            self.run_dir, "checkpoints", f"ckpt_{self.num_timesteps}"
-        )
+        path = os.path.join(self.run_dir, "checkpoints", f"ckpt_{self.num_timesteps}")
         self.model.save(path)
 
     def _evaluate(self):
@@ -128,8 +155,13 @@ class LeagueCallback(BaseCallback):
         for name, opp in self._eval_opponents.items():
             n = self.eval_deals if name != "expectimax" else max(self.eval_deals // 3, 20)
             res = play_match(
-                agent, opp, n_deals=n, seed=self.eval_seed,
-                name_a="agent", name_b=name, observer_a=self.observer,
+                agent,
+                opp,
+                n_deals=n,
+                seed=self.eval_seed,
+                name_a="agent",
+                name_b=name,
+                observer_a=self.observer,
             )
             s = res.summary()
             row[f"win_{name}"] = s["win_rate_a"]
@@ -231,9 +263,11 @@ def train(cfg: Dict) -> str:
 
     meta = {
         "git_hash": git_hash(),
+        "git_dirty": git_dirty(),
         "started": time.strftime("%Y-%m-%d %H:%M:%S"),
         "platform": platform.platform(),
         "python": platform.python_version(),
+        "packages": package_versions(),
         "config": cfg,
     }
 
@@ -253,9 +287,7 @@ def train(cfg: Dict) -> str:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default="configs/default.yaml")
-    parser.add_argument(
-        "--set", nargs="*", default=[], help="config overrides: key=value"
-    )
+    parser.add_argument("--set", nargs="*", default=[], help="config overrides: key=value")
     args = parser.parse_args()
     cfg = load_config(args.config, args.set)
     train(cfg)

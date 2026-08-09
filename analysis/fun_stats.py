@@ -117,8 +117,7 @@ def main(out_dir="plots", tournament_path="results/tournament.json"):
     ax.bar(x + 0.2, match, 0.4, label="match to 151", color="#08519c")
     for i, (s, m) in enumerate(zip(single, match)):
         ax.text(i - 0.2, s + 0.012, f"{s:.0%}", ha="center", fontsize=12)
-        ax.text(i + 0.2, m + 0.012, f"{m:.0%}", ha="center", fontsize=12,
-                fontweight="bold")
+        ax.text(i + 0.2, m + 0.012, f"{m:.0%}", ha="center", fontsize=12, fontweight="bold")
     ax.axhline(0.5, color="gray", ls=":", lw=1.5)
     ax.set_xticks(x, labels, fontsize=12)
     ax.set_ylim(0.4, 1.05)
@@ -148,11 +147,27 @@ def main(out_dir="plots", tournament_path="results/tournament.json"):
     y = np.arange(len(labels2))
     fig, ax = plt.subplots(figsize=(11, 5.5))
     ax.barh(y, sames, color="#d95f02", label="same side wins both seatings\n(the deck decided)")
-    ax.barh(y, splits, left=sames, color="#1b9e77", label="winner flips with the seats\n(skill/seat decided)")
-    ax.barh(y, ties, left=np.array(sames) + np.array(splits), color="#cccccc", label="a tie involved")
+    ax.barh(
+        y,
+        splits,
+        left=sames,
+        color="#1b9e77",
+        label="winner flips with the seats\n(skill/seat decided)",
+    )
+    ax.barh(
+        y, ties, left=np.array(sames) + np.array(splits), color="#cccccc", label="a tie involved"
+    )
     for i, s in enumerate(sames):
-        ax.text(s / 2, i, f"{s:.0%}", ha="center", va="center", color="white",
-                fontsize=13, fontweight="bold")
+        ax.text(
+            s / 2,
+            i,
+            f"{s:.0%}",
+            ha="center",
+            va="center",
+            color="white",
+            fontsize=13,
+            fontweight="bold",
+        )
     ax.set_yticks(y, labels2, fontsize=12)
     ax.set_xlim(0, 1)
     ax.set_xlabel("share of decks")
@@ -166,22 +181,28 @@ def main(out_dir="plots", tournament_path="results/tournament.json"):
     recs = pair_records(t, "greedy", "ppo_main")
     d = np.array([r["score_b"] - r["score_a"] for r in recs])  # RL perspective
     fig, ax = plt.subplots(figsize=(11, 6))
-    sns.histplot(d, bins=np.arange(-25.5, 26.5, 2), ax=ax, color="#6baed6",
-                 edgecolor="white")
+    sns.histplot(d, bins=np.arange(-25.5, 26.5, 2), ax=ax, color="#6baed6", edgecolor="white")
     ax.axvline(0, color="gray", lw=1.5, ls=":")
     ax.axvline(d.mean(), color="crimson", lw=3)
     ax.annotate(
         f"the skill edge: {d.mean():+.1f} pts",
         xy=(d.mean(), ax.get_ylim()[1] * 0.92),
         xytext=(d.mean() + 6, ax.get_ylim()[1] * 0.92),
-        color="crimson", fontsize=14, fontweight="bold",
+        color="crimson",
+        fontsize=14,
+        fontweight="bold",
         arrowprops=dict(arrowstyle="->", color="crimson"),
     )
     ax.set_xlabel("RL agent score − greedy score (one hand)")
-    ax.set_title(f"A +{d.mean():.1f} whisper in a ±{d.std():.0f} storm "
-                 f"(std of single-hand outcomes)")
-    fun["storm"] = {"mean": round(float(d.mean()), 2), "std": round(float(d.std()), 2),
-                    "min": int(d.min()), "max": int(d.max())}
+    ax.set_title(
+        f"A +{d.mean():.1f} whisper in a ±{d.std():.0f} storm " f"(std of single-hand outcomes)"
+    )
+    fun["storm"] = {
+        "mean": round(float(d.mean()), 2),
+        "std": round(float(d.std()), 2),
+        "min": int(d.min()),
+        "max": int(d.max()),
+    }
     fig.tight_layout()
     fig.savefig(f"{out_dir}/fun_storm.png", dpi=150, bbox_inches="tight")
     plt.close(fig)

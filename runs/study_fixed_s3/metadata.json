@@ -1,0 +1,87 @@
+{
+  "git_hash": "465fe24192e332062b7cb17f130e9a0607ced2ff",
+  "git_dirty": true,
+  "started": "2026-08-09 00:20:34",
+  "platform": "Linux-6.8.0-1061-aws-x86_64-with-glibc2.35",
+  "python": "3.12.2",
+  "packages": {
+    "numpy": "2.5.1",
+    "gymnasium": "1.3.0",
+    "stable-baselines3": "2.9.0",
+    "sb3-contrib": "2.9.0",
+    "torch": "2.13.0",
+    "PyYAML": "6.0.3",
+    "scipy": "1.18.0"
+  },
+  "config": {
+    "run_name": "study_fixed_s3",
+    "out_dir": "runs",
+    "seed": 3,
+    "n_envs": 8,
+    "total_timesteps": 6000000,
+    "reward": {
+      "mode": "delta",
+      "scale": 0.1
+    },
+    "observer": {
+      "memory": true
+    },
+    "ppo": {
+      "learning_rate": 0.0003,
+      "n_steps": 256,
+      "batch_size": 512,
+      "n_epochs": 4,
+      "gamma": 0.999,
+      "gae_lambda": 0.95,
+      "clip_range": 0.2,
+      "ent_coef": 0.01,
+      "vf_coef": 0.5,
+      "max_grad_norm": 0.5,
+      "net_arch": [
+        256,
+        256
+      ]
+    },
+    "curriculum": [
+      {
+        "at": 0,
+        "weights": {
+          "random": 0.5,
+          "greedy": 0.5
+        }
+      },
+      {
+        "at": 300000,
+        "weights": {
+          "greedy": 0.6,
+          "hunter": 0.4
+        }
+      },
+      {
+        "at": 1000000,
+        "weights": {
+          "greedy": 0.5,
+          "hunter": 0.5
+        }
+      },
+      {
+        "at": 2500000,
+        "weights": {
+          "greedy": 0.333333,
+          "hunter": 0.333333,
+          "expectimax": 0.333334
+        }
+      }
+    ],
+    "selfplay": {
+      "snapshot_freq": 250000,
+      "pool_size": 12
+    },
+    "eval": {
+      "freq": 250000,
+      "n_deals": 150
+    }
+  },
+  "wall_seconds": 2009.2,
+  "finished": "2026-08-09 00:54:03"
+}

@@ -5,7 +5,6 @@ import random
 import pytest
 
 from engine.game import (
-    ACE,
     CARD_POINTS,
     JACK,
     TEN_DIAMONDS,
@@ -15,6 +14,7 @@ from engine.game import (
     new_deck,
     rank_of,
 )
+from encoding.obs import Observer
 
 
 def cid(rank: str, suit: str) -> int:
@@ -58,12 +58,27 @@ def test_faceup_skips_jack():
     assert cid("J", "S") in g.hidden_center
 
 
+def test_all_jack_opening_requires_redeal():
+    deck = make_deck(cid("J", "S"), cid("J", "H"), cid("J", "D"), cid("J", "C"))
+    with pytest.raises(ValueError, match="requires a redeal"):
+        PistiGame(deck=deck)
+
+
 def test_rank_match_capture_and_points():
     # Table face-up: 5H. P0 holds 5S -> rank-match capture sweeps hidden too.
     deck = make_deck(
-        cid("5", "H"), cid("2", "S"), cid("3", "S"), cid("4", "S"),  # table
-        cid("5", "S"), cid("6", "S"), cid("7", "S"), cid("8", "S"),  # P0
-        cid("6", "H"), cid("7", "H"), cid("8", "H"), cid("9", "H"),  # P1
+        cid("5", "H"),
+        cid("2", "S"),
+        cid("3", "S"),
+        cid("4", "S"),  # table
+        cid("5", "S"),
+        cid("6", "S"),
+        cid("7", "S"),
+        cid("8", "S"),  # P0
+        cid("6", "H"),
+        cid("7", "H"),
+        cid("8", "H"),
+        cid("9", "H"),  # P1
     )
     g = PistiGame(deck=deck)
     info = g.step(cid("5", "S"))
@@ -77,9 +92,18 @@ def test_rank_match_capture_and_points():
 
 def test_no_pisti_on_first_capture_with_hidden_cards():
     deck = make_deck(
-        cid("5", "H"), cid("2", "S"), cid("3", "S"), cid("4", "S"),
-        cid("5", "S"), cid("6", "S"), cid("7", "S"), cid("8", "S"),
-        cid("6", "H"), cid("7", "H"), cid("8", "H"), cid("9", "H"),
+        cid("5", "H"),
+        cid("2", "S"),
+        cid("3", "S"),
+        cid("4", "S"),
+        cid("5", "S"),
+        cid("6", "S"),
+        cid("7", "S"),
+        cid("8", "S"),
+        cid("6", "H"),
+        cid("7", "H"),
+        cid("8", "H"),
+        cid("9", "H"),
     )
     g = PistiGame(deck=deck)
     info = g.step(cid("5", "S"))
@@ -87,16 +111,76 @@ def test_no_pisti_on_first_capture_with_hidden_cards():
     assert g.points[0] == 0  # no scoring cards involved
 
 
+def test_first_capturer_privately_observes_hidden_center_cards():
+    deck = make_deck(
+        cid("5", "H"),
+        cid("2", "S"),
+        cid("3", "S"),
+        cid("4", "S"),
+        cid("5", "S"),
+        cid("6", "S"),
+        cid("7", "S"),
+        cid("8", "S"),
+        cid("6", "H"),
+        cid("7", "H"),
+        cid("8", "H"),
+        cid("9", "H"),
+    )
+    g = PistiGame(deck=deck)
+    hidden = set(g.hidden_center)
+    g.step(cid("5", "S"))
+
+    assert hidden <= set(g.seen_cards(0))
+    assert hidden.isdisjoint(g.seen_cards(1))
+
+    capturer_view = g.determinize(0, random.Random(17))
+    assert capturer_view.captured_hidden == g.captured_hidden
+
+
+def test_hidden_center_points_are_private_to_capturer():
+    deck = make_deck(
+        cid("5", "H"),
+        cid("A", "S"),
+        cid("2", "C"),
+        cid("4", "S"),
+        cid("5", "S"),
+        cid("6", "S"),
+        cid("7", "S"),
+        cid("8", "S"),
+        cid("6", "H"),
+        cid("7", "H"),
+        cid("8", "H"),
+        cid("9", "H"),
+    )
+    g = PistiGame(deck=deck)
+    g.step(cid("5", "S"))
+    hidden_points = sum(CARD_POINTS[card] for card in g.captured_hidden)
+
+    capturer_obs = Observer().encode(g, 0)
+    opponent_obs = Observer().encode(g, 1)
+    assert capturer_obs["stats"][6] * 30 == pytest.approx(g.points[0])
+    assert opponent_obs["stats"][7] * 30 == pytest.approx(g.points[0] - hidden_points)
+
+
 def test_pisti_on_single_card_pile():
     # P0 plays 6S (no capture), P1 plays 6H on it after P0 captured everything
     deck = make_deck(
-        cid("5", "H"), cid("2", "S"), cid("3", "S"), cid("4", "S"),
-        cid("5", "S"), cid("6", "S"), cid("7", "S"), cid("8", "S"),
-        cid("6", "H"), cid("7", "H"), cid("8", "H"), cid("9", "H"),
+        cid("5", "H"),
+        cid("2", "S"),
+        cid("3", "S"),
+        cid("4", "S"),
+        cid("5", "S"),
+        cid("6", "S"),
+        cid("7", "S"),
+        cid("8", "S"),
+        cid("6", "H"),
+        cid("7", "H"),
+        cid("8", "H"),
+        cid("9", "H"),
     )
     g = PistiGame(deck=deck)
-    g.step(cid("5", "S"))   # P0 captures table (incl. hidden) -> table empty
-    g.step(cid("6", "H"))   # P1 plays to empty table
+    g.step(cid("5", "S"))  # P0 captures table (incl. hidden) -> table empty
+    g.step(cid("6", "H"))  # P1 plays to empty table
     info = g.step(cid("6", "S"))  # P0 rank-matches a single-card pile: PIŞTI
     assert info["captured"] and info["pisti"] == 1
     assert g.pistis[0] == 1
@@ -105,13 +189,22 @@ def test_pisti_on_single_card_pile():
 
 def test_jack_captures_but_no_pisti_on_single_nonjack():
     deck = make_deck(
-        cid("5", "H"), cid("2", "S"), cid("3", "S"), cid("4", "S"),
-        cid("5", "S"), cid("J", "S"), cid("7", "S"), cid("8", "S"),
-        cid("6", "H"), cid("7", "H"), cid("8", "H"), cid("9", "H"),
+        cid("5", "H"),
+        cid("2", "S"),
+        cid("3", "S"),
+        cid("4", "S"),
+        cid("5", "S"),
+        cid("J", "S"),
+        cid("7", "S"),
+        cid("8", "S"),
+        cid("6", "H"),
+        cid("7", "H"),
+        cid("8", "H"),
+        cid("9", "H"),
     )
     g = PistiGame(deck=deck)
-    g.step(cid("5", "S"))   # P0 captures
-    g.step(cid("6", "H"))   # P1 -> single card on table
+    g.step(cid("5", "S"))  # P0 captures
+    g.step(cid("6", "H"))  # P1 -> single card on table
     info = g.step(cid("J", "S"))  # Jack takes single non-Jack: capture, NO pişti
     assert info["captured"] and info["pisti"] == 0
     # Jack itself is worth 1 point
@@ -120,32 +213,66 @@ def test_jack_captures_but_no_pisti_on_single_nonjack():
 
 def test_double_pisti_jack_on_jack():
     deck = make_deck(
-        cid("5", "H"), cid("2", "S"), cid("3", "S"), cid("4", "S"),
-        cid("5", "S"), cid("J", "S"), cid("7", "S"), cid("8", "S"),
-        cid("J", "H"), cid("7", "H"), cid("8", "H"), cid("9", "H"),
+        cid("5", "H"),
+        cid("2", "S"),
+        cid("3", "S"),
+        cid("4", "S"),
+        cid("5", "S"),
+        cid("J", "S"),
+        cid("7", "S"),
+        cid("8", "S"),
+        cid("J", "H"),
+        cid("7", "H"),
+        cid("8", "H"),
+        cid("9", "H"),
     )
     g = PistiGame(deck=deck)
-    g.step(cid("5", "S"))   # P0 captures table
-    g.step(cid("J", "H"))   # P1 plays Jack onto EMPTY table -> no capture
+    g.step(cid("5", "S"))  # P0 captures table
+    g.step(cid("J", "H"))  # P1 plays Jack onto EMPTY table -> no capture
     info = g.step(cid("J", "S"))  # P0 Jack-on-Jack: double pişti
     assert info["captured"] and info["pisti"] == 2
     assert g.double_pistis[0] == 1
     assert g.points[0] == 20 + 2  # bonus + two jacks
 
 
+def test_final_card_capture_is_not_pisti():
+    g = PistiGame(deck=list(range(52)))
+    g.hidden_center = []
+    g.table = [cid("4", "H")]
+    g.hands = [[cid("4", "S")], []]
+    g.stock = []
+    g.current = 0
+
+    info = g.step(cid("4", "S"))
+
+    assert g.done
+    assert info["captured"] and info["pisti"] == 0
+    assert g.pistis == [0, 0]
+    assert g.points[0] == 0
+
+
 def test_jack_does_not_capture_empty_table():
     deck = make_deck(
-        cid("5", "H"), cid("2", "S"), cid("3", "S"), cid("4", "S"),
-        cid("5", "S"), cid("J", "S"), cid("7", "S"), cid("8", "S"),
-        cid("6", "H"), cid("7", "H"), cid("8", "H"), cid("9", "H"),
+        cid("5", "H"),
+        cid("2", "S"),
+        cid("3", "S"),
+        cid("4", "S"),
+        cid("5", "S"),
+        cid("J", "S"),
+        cid("7", "S"),
+        cid("8", "S"),
+        cid("6", "H"),
+        cid("7", "H"),
+        cid("8", "H"),
+        cid("9", "H"),
     )
     g = PistiGame(deck=deck)
-    g.step(cid("5", "S"))       # P0 captures -> empty table
+    g.step(cid("5", "S"))  # P0 captures -> empty table
     info = g.step(cid("6", "H"))  # wait, P1 to move
     assert not info["captured"]
     # Now check Jack on empty: clear table first via P0 jack capture
     g2 = PistiGame(deck=deck)
-    g2.step(cid("5", "S"))      # P0 captures -> table empty, P1 to move
+    g2.step(cid("5", "S"))  # P0 captures -> table empty, P1 to move
     g2_hand = list(g2.hands[1])
     info = g2.step(g2_hand[0])  # P1 plays onto empty table
     assert not info["captured"]
@@ -182,10 +309,7 @@ def test_full_game_invariants():
         assert g.captured_count[0] + g.captured_count[1] == 52
         s0, s1 = g.scores()
         base = s0 + s1
-        bonus = (
-            10 * (g.pistis[0] + g.pistis[1])
-            + 20 * (g.double_pistis[0] + g.double_pistis[1])
-        )
+        bonus = 10 * (g.pistis[0] + g.pistis[1]) + 20 * (g.double_pistis[0] + g.double_pistis[1])
         majority = 0 if g.captured_count[0] == g.captured_count[1] else 3
         assert base == TOTAL_CARD_POINTS + bonus + majority
         assert not g.table and not g.hidden_center and not g.stock
@@ -251,17 +375,15 @@ def test_determinize_preserves_information_set():
         assert len(det.stock) == len(g.stock)
         assert len(det.hidden_center) == len(g.hidden_center)
         assert len(det.captured_hidden) == len(g.captured_hidden)
-        # Still a permutation of 52 cards across all locations
-        allcards = (
-            det.hands[0] + det.hands[1] + det.table + det.hidden_center
-            + det.stock + det.captured_hidden
-            + [m[1] for m in det.history if m[2]]  # captured via play
-        )
         # captured cards: count check via captured_count instead
         total = (
-            len(det.hands[0]) + len(det.hands[1]) + len(det.table)
-            + len(det.hidden_center) + len(det.stock)
-            + det.captured_count[0] + det.captured_count[1]
+            len(det.hands[0])
+            + len(det.hands[1])
+            + len(det.table)
+            + len(det.hidden_center)
+            + len(det.stock)
+            + det.captured_count[0]
+            + det.captured_count[1]
         )
         assert total == 52
         # Determinized game must play out without errors

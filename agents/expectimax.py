@@ -37,9 +37,7 @@ def _greedy_action(game: PistiGame) -> int:
         for c in hand:
             if rank_of(c) == JACK:
                 return c
-    return min(
-        hand, key=lambda c: (CARD_POINTS[c], rank_of(c) == JACK, rank_of(c))
-    )
+    return min(hand, key=lambda c: (CARD_POINTS[c], rank_of(c) == JACK, rank_of(c)))
 
 
 def _evaluate(game: PistiGame, player: int) -> float:

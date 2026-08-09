@@ -12,7 +12,8 @@ Rules implemented (standard Turkish 2-player Pişti):
     card is a Jack (Jack does not capture an empty table).
   - Pişti: capturing a pile of exactly one card by rank match scores 10
     (Jack-on-Jack scores 20). A Jack capturing a single non-Jack is NOT a
-    pişti. A capture that sweeps the hidden center cards is never a pişti.
+    pişti. A capture that sweeps the hidden center cards and a capture by
+    the final card of the deal are never a pişti.
   - First capture also takes the 3 hidden center cards.
   - Game end: when all cards are played, the leftover table pile (and any
     never-captured hidden cards) goes to the player who made the last
@@ -60,10 +61,13 @@ def card_name(card: int) -> str:
 
 
 def new_deck(rng: Optional[random.Random] = None) -> List[int]:
-    """Return a shuffled deck of card ids."""
-    deck = list(range(52))
-    (rng or random).shuffle(deck)
-    return deck
+    """Return a shuffled deck with a valid non-Jack opening center."""
+    shuffler = rng or random
+    while True:
+        deck = list(range(52))
+        shuffler.shuffle(deck)
+        if any(rank_of(card) != JACK for card in deck[:4]):
+            return deck
 
 
 class PistiGame:
@@ -105,11 +109,11 @@ class PistiGame:
             raise ValueError("deck must be a permutation of 0..51")
 
         # Table: face-up card is the first non-Jack among the first 4;
-        # the other three stay hidden. (If all four are Jacks — ~4e-6
-        # probability — the first card is used face-up; the hidden-center
-        # rule already prevents a pişti on it.)
+        # the other three stay hidden. An all-Jack center requires a redeal.
         first4 = deck[:4]
-        up_idx = next((i for i, c in enumerate(first4) if rank_of(c) != JACK), 0)
+        if all(rank_of(card) == JACK for card in first4):
+            raise ValueError("all-Jack opening center requires a redeal")
+        up_idx = next(i for i, card in enumerate(first4) if rank_of(card) != JACK)
         self.initial_upcard = first4[up_idx]
         self.table: List[int] = [self.initial_upcard]
         self.hidden_center: List[int] = [c for i, c in enumerate(first4) if i != up_idx]
@@ -147,20 +151,19 @@ class PistiGame:
         try:
             self.hands[player].remove(card)
         except ValueError:
-            raise ValueError(
-                f"illegal action: {card_name(card)} not in hand of player {player}"
-            )
+            raise ValueError(f"illegal action: {card_name(card)} not in hand of player {player}")
 
         captured = False
         pisti_kind = 0  # 0=no, 1=pişti, 2=double pişti
         gained = 0
+        is_final_play = not self.stock and not self.hands[0] and not self.hands[1]
 
         if self.table:
             top = self.table[-1]
             if rank_of(card) == rank_of(top) or rank_of(card) == JACK:
                 captured = True
                 # Pişti requires a single-card pile with no hidden cards under it
-                if len(self.table) == 1 and not self.hidden_center:
+                if len(self.table) == 1 and not self.hidden_center and not is_final_play:
                     if rank_of(card) == rank_of(top):
                         if rank_of(card) == JACK:
                             pisti_kind = 2
@@ -237,10 +240,13 @@ class PistiGame:
     # ------------------------------------------------------------------
     def seen_cards(self, player: int) -> List[int]:
         """Cards `player` has observed: every card played face-up plus
-        their own current hand. Hidden center cards are never seen."""
+        their own current hand. The first capturer also privately observes
+        the three initially face-down center cards."""
         seen = [move[1] for move in self.history]
         seen.append(self.initial_upcard)
         seen.extend(self.hands[player])
+        if self.captured_hidden_by == player:
+            seen.extend(self.captured_hidden)
         return seen
 
     def clone(self) -> "PistiGame":
@@ -266,11 +272,11 @@ class PistiGame:
     def determinize(self, player: int, rng) -> "PistiGame":
         """Clone with all information hidden from `player` resampled.
 
-        Unseen cards (opponent hand, stock, hidden center, and captured
-        hidden cards) are redistributed uniformly among those same
-        locations. The capturer's points are adjusted for the resampled
-        captured-hidden cards, so a search over determinized clones uses
-        exactly the information set of `player` — no private info leaks.
+        Unseen cards (opponent hand, stock, unrevealed center, and center
+        cards privately held by the opponent) are redistributed uniformly
+        among those same locations. The holder's points are adjusted for
+        resampled captured-center cards, so a search over determinized clones
+        uses exactly the information set of `player` — no private info leaks.
 
         `rng` needs shuffle(); both random.Random and numpy Generators work.
         """
@@ -282,7 +288,9 @@ class PistiGame:
 
         n_opp = len(g.hands[opp])
         n_hc = len(g.hidden_center)
-        n_ch = len(g.captured_hidden)
+        # The first capturer privately knows the center cards it collected;
+        # only the opponent must resample their identities.
+        n_ch = len(g.captured_hidden) if g.captured_hidden_by != player else 0
         if len(pool) != n_opp + n_hc + n_ch + len(g.stock):
             raise AssertionError("information-set accounting is broken")
 

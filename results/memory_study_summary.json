@@ -1,0 +1,132 @@
+{
+  "protocol": {
+    "n_training_seeds": 10,
+    "n_deals_per_match": 500,
+    "games_per_match": 1000,
+    "evaluation_seed": 20260808,
+    "stochastic_policy_seed_rule": "evaluation_seed + training_seed",
+    "mirrored": true,
+    "primary_policy_mode": "deterministic"
+  },
+  "direct": {
+    "seed_effects": [
+      2.708,
+      2.779,
+      2.935,
+      1.958,
+      2.257,
+      3.048,
+      2.866,
+      2.847,
+      2.742,
+      2.42
+    ],
+    "mean": 2.656,
+    "median": 2.7605,
+    "sd_across_seeds": 0.3398,
+    "seed_t_ci95": [
+      2.4129,
+      2.8991
+    ],
+    "crossed_bootstrap_ci95": [
+      2.1646,
+      3.1485
+    ],
+    "exact_sign_flip_p_two_sided": 0.001953,
+    "positive_seeds": 10,
+    "n_seeds": 10,
+    "n_deals_per_seed": 500
+  },
+  "acute": {
+    "seed_effects": [
+      2.436,
+      2.731,
+      2.791,
+      2.988,
+      1.824,
+      3.202,
+      3.072,
+      2.831,
+      1.804,
+      2.666
+    ],
+    "mean": 2.6345,
+    "median": 2.761,
+    "sd_across_seeds": 0.4828,
+    "seed_t_ci95": [
+      2.2891,
+      2.9799
+    ],
+    "crossed_bootstrap_ci95": [
+      2.1128,
+      3.1454
+    ],
+    "exact_sign_flip_p_two_sided": 0.001953,
+    "positive_seeds": 10,
+    "n_seeds": 10,
+    "n_deals_per_seed": 500
+  },
+  "stochastic_sensitivity": {
+    "seed_effects": [
+      2.176,
+      2.657,
+      2.763,
+      2.096,
+      2.555,
+      2.33,
+      2.289,
+      2.465,
+      1.927,
+      2.556
+    ],
+    "mean": 2.3814,
+    "median": 2.3975,
+    "sd_across_seeds": 0.2647,
+    "seed_t_ci95": [
+      2.1921,
+      2.5707
+    ],
+    "crossed_bootstrap_ci95": [
+      1.9048,
+      2.8654
+    ],
+    "exact_sign_flip_p_two_sided": 0.001953,
+    "positive_seeds": 10,
+    "n_seeds": 10,
+    "n_deals_per_seed": 500
+  },
+  "anchors": {
+    "seed_effects": [
+      2.733,
+      2.3373,
+      3.1007,
+      1.2647,
+      2.3203,
+      2.6637,
+      2.4157,
+      2.7133,
+      2.1077,
+      2.479
+    ],
+    "mean": 2.4135,
+    "exact_sign_flip_p_two_sided": 0.001953,
+    "positive_seeds": 10
+  },
+  "adaptation": {
+    "acute_minus_retrained_by_seed": [
+      -0.272,
+      -0.048,
+      -0.144,
+      1.03,
+      -0.433,
+      0.154,
+      0.206,
+      -0.016,
+      -0.938,
+      0.246
+    ],
+    "mean": -0.0215,
+    "positive_seeds": 4,
+    "exact_sign_flip_p_two_sided": 0.882812
+  }
+}

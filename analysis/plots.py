@@ -6,7 +6,6 @@ come from training.train.
 """
 
 import csv
-import json
 import os
 from collections import defaultdict
 from typing import Dict, List, Optional
@@ -47,8 +46,10 @@ def training_curves(run_dirs: List[str], out_dir: str, label_map=None) -> str:
             for li, opp in enumerate(("greedy", "expectimax")):
                 vals = [float(r[f"{metric}_{opp}"]) for r in rows]
                 ax.plot(
-                    steps, vals,
-                    color=colors[ri], alpha=1.0 if opp == "greedy" else 0.45,
+                    steps,
+                    vals,
+                    color=colors[ri],
+                    alpha=1.0 if opp == "greedy" else 0.45,
                     linestyle="-" if opp == "greedy" else "--",
                     label=f"{label} vs {opp}",
                 )
@@ -88,8 +89,15 @@ def tournament_heatmap(tournament: Dict, out_dir: str) -> str:
         mat = mat[np.ix_(re, re)]
         center = 0.5 if key == "win" else 0.0
         sns.heatmap(
-            mat, annot=True, fmt=fmt, cmap=cmap, center=center,
-            xticklabels=order, yticklabels=order, ax=ax, cbar=False,
+            mat,
+            annot=True,
+            fmt=fmt,
+            cmap=cmap,
+            center=center,
+            xticklabels=order,
+            yticklabels=order,
+            ax=ax,
+            cbar=False,
         )
         ax.set_title(title)
     return _save(fig, out_dir, "tournament_heatmap.png")
@@ -155,9 +163,7 @@ def luck_vs_skill(tournament: Dict, out_dir: str) -> Dict:
 
 
 # ----------------------------------------------------------------------
-def exploitability_curve(
-    points: List[Dict], out_dir: str, baselines: Optional[Dict] = None
-) -> str:
+def exploitability_curve(points: List[Dict], out_dir: str, baselines: Optional[Dict] = None) -> str:
     """points: [{steps, exploitability_pts, ci95}], baselines: name->pts."""
     fig, ax = plt.subplots(figsize=(10, 6))
     pts = sorted(points, key=lambda p: p["steps"])

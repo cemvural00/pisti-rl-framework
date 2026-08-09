@@ -106,8 +106,8 @@ class PistiHunterAgent:
             duplicate = len(ranks_held[r]) > 1
             return (
                 CARD_POINTS[c],  # don't give away points
-                r == JACK,       # never bait with a Jack
-                not duplicate,   # prefer ranks we can re-match
+                r == JACK,  # never bait with a Jack
+                not duplicate,  # prefer ranks we can re-match
                 r,
             )
 

@@ -21,9 +21,9 @@ FEAT_DIM = 52 * 3 + 12  # hand, table_top, seen, stats
 
 
 def featurize(obs: Dict[str, np.ndarray]) -> np.ndarray:
-    return np.concatenate(
-        [obs["hand"], obs["table_top"], obs["seen"], obs["stats"]]
-    ).astype(np.float32)
+    return np.concatenate([obs["hand"], obs["table_top"], obs["seen"], obs["stats"]]).astype(
+        np.float32
+    )
 
 
 class MLP(nn.Module):
@@ -81,8 +81,9 @@ class NFSPAgent:
     mode="br":   masked argmax of Q — the exploitative best response.
     """
 
-    def __init__(self, nets: NFSPNets, mode: str = "avg",
-                 seed: Optional[int] = None, name: str = "nfsp"):
+    def __init__(
+        self, nets: NFSPNets, mode: str = "avg", seed: Optional[int] = None, name: str = "nfsp"
+    ):
         self.nets = nets
         self.mode = mode
         self.rng = np.random.default_rng(seed)

@@ -3,8 +3,17 @@ __pycache__/
 venv/
 .DS_Store
 .pytest_cache/
+.coverage
+build/
 logs/
 runs/*/tb/
 runs/*/checkpoints/
 *.egg-info/
 data/
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out

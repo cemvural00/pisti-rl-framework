@@ -18,8 +18,6 @@ imperfect-information games this is a structural handicap (predictability
 is exploitable) — which is exactly the hypothesis this agent exists to test.
 """
 
-from typing import Optional
-
 import numpy as np
 import torch as th
 from stable_baselines3 import DQN
@@ -35,9 +33,7 @@ class MaskedQNetwork(QNetwork):
 
 class MaskedDQNPolicy(MultiInputPolicy):
     def make_q_net(self) -> MaskedQNetwork:
-        net_args = self._update_features_extractor(
-            self.net_args, features_extractor=None
-        )
+        net_args = self._update_features_extractor(self.net_args, features_extractor=None)
         return MaskedQNetwork(**net_args).to(self.device)
 
 

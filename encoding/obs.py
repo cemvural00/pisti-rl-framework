@@ -18,7 +18,7 @@ from typing import Dict
 import numpy as np
 from gymnasium import spaces
 
-from engine.game import PistiGame
+from engine.game import CARD_POINTS, PistiGame
 
 STATS_DIM = 12
 
@@ -54,6 +54,14 @@ class Observer:
         if self.memory:
             seen[game.seen_cards(player)] = 1.0
 
+        # Captured center cards are private to the first capturer. Everyone
+        # can track points from face-up play, but the opponent must not learn
+        # the center cards' point total through these scalar features.
+        visible_points = list(game.points)
+        holder = game.captured_hidden_by
+        if holder is not None and holder != player:
+            visible_points[holder] -= sum(CARD_POINTS[card] for card in game.captured_hidden)
+
         last_cap = game.last_capturer
         stats = np.array(
             [
@@ -63,8 +71,8 @@ class Observer:
                 len(game.hands[opp]) / 4.0,
                 game.captured_count[player] / 52.0,
                 game.captured_count[opp] / 52.0,
-                game.points[player] / 30.0,
-                game.points[opp] / 30.0,
+                visible_points[player] / 30.0,
+                visible_points[opp] / 30.0,
                 (game.pistis[player] + 2 * game.double_pistis[player]) / 4.0,
                 (game.pistis[opp] + 2 * game.double_pistis[opp]) / 4.0,
                 1.0 if last_cap == player else 0.0,
@@ -72,6 +80,7 @@ class Observer:
             ],
             dtype=np.float32,
         )
+        stats = np.clip(stats, 0.0, 1.0)
 
         return {
             "hand": hand,

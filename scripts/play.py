@@ -13,7 +13,6 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from encoding.obs import Observer
 from engine.game import CARD_POINTS, PistiGame, card_name, new_deck
 
 
@@ -27,7 +26,6 @@ def main():
 
     name, agent, agent_obs = build_agent(args.agent, seed=args.seed or 0)
     rng = random.Random(args.seed)
-    observer = Observer()
 
     human_score_total, agent_score_total = 0, 0
     game_no = 0
@@ -37,8 +35,10 @@ def main():
         game = PistiGame(deck=new_deck(rng), first_player=(game_no + 1) % 2)
         if hasattr(agent, "reset"):
             agent.reset()
-        print(f"\n=== Game {game_no} — you are Player {human}, "
-              f"{'you lead' if game.current == human else f'{name} leads'} ===")
+        print(
+            f"\n=== Game {game_no} — you are Player {human}, "
+            f"{'you lead' if game.current == human else f'{name} leads'} ==="
+        )
 
         while not game.done:
             p_id = game.current
@@ -46,9 +46,11 @@ def main():
                 top = card_name(game.table[-1]) if game.table else "(empty)"
                 hidden = f" +{len(game.hidden_center)} hidden" if game.hidden_center else ""
                 print(f"\ntable [{len(game.table)} cards{hidden}], top: {top}")
-                print(f"score: you {game.points[human]} — {name} {game.points[1-human]}"
-                      f"   captured: {game.captured_count[human]}-{game.captured_count[1-human]}"
-                      f"   stock: {len(game.stock)}")
+                print(
+                    f"score: you {game.points[human]} — {name} {game.points[1-human]}"
+                    f"   captured: {game.captured_count[human]}-{game.captured_count[1-human]}"
+                    f"   stock: {len(game.stock)}"
+                )
                 hand = sorted(game.hands[human])
                 for i, c in enumerate(hand):
                     pts = f" ({CARD_POINTS[c]}p)" if CARD_POINTS[c] else ""

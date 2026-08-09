@@ -1,0 +1,10028 @@
+{
+  "target": "ppo-stoch:runs/study_fixed_s4/final_model.zip",
+  "br_steps": 1000000,
+  "br_init_from": "runs/ppo_main/final_model.zip",
+  "br_save_path": "runs/robustness_attackers/attack_fixed_s4_a104.zip",
+  "seed": 104,
+  "train_seconds": 782.4,
+  "exploitability_pts": 0.916,
+  "ci95": 0.882,
+  "br_win_rate": 0.5335,
+  "match": {
+    "agent_a": "BR",
+    "agent_b": "stoch-final_model",
+    "n_games": 1000,
+    "win_rate_a": 0.5335,
+    "wins_a": 513,
+    "wins_b": 446,
+    "ties": 41,
+    "mean_diff": 0.916,
+    "diff_ci95": 0.882,
+    "pistis_per_game": [
+      0.621,
+      0.564
+    ]
+  },
+  "records": [
+    {
+      "deal": 0,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 0,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 47,
+      "captured_b": 5
+    },
+    {
+      "deal": 0,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 16,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 0,
+      "captured_b": 52
+    },
+    {
+      "deal": 1,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 42,
+      "pistis_a": 0,
+      "pistis_b": 3,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 1,
+      "a_leads": false,
+      "score_a": 25,
+      "score_b": 11,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 2,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 12,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 2,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 23,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 3,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 3,
+      "a_leads": false,
+      "score_a": 18,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 4,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 4,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 5,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 5,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 6,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 6,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 7,
+      "a_leads": true,
+      "score_a": 18,
+      "score_b": 18,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 7,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 41,
+      "pistis_a": 0,
+      "pistis_b": 3,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 8,
+      "a_leads": true,
+      "score_a": 18,
+      "score_b": 18,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 8,
+      "a_leads": false,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 9,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 9,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 10,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 10,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 11,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 11,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 12,
+      "a_leads": true,
+      "score_a": 6,
+      "score_b": 10,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 12,
+      "a_leads": false,
+      "score_a": 15,
+      "score_b": 1,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 47,
+      "captured_b": 5
+    },
+    {
+      "deal": 13,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 19,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 13,
+      "a_leads": false,
+      "score_a": 29,
+      "score_b": 7,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 14,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 14,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 10,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 15,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 15,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 16,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 16,
+      "a_leads": true,
+      "score_a": 26,
+      "score_b": 0,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 52,
+      "captured_b": 0
+    },
+    {
+      "deal": 16,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 26,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 0,
+      "captured_b": 52
+    },
+    {
+      "deal": 17,
+      "a_leads": true,
+      "score_a": 19,
+      "score_b": 7,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 17,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 21,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 18,
+      "a_leads": true,
+      "score_a": 43,
+      "score_b": 3,
+      "pistis_a": 3,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 18,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 19,
+      "a_leads": true,
+      "score_a": 33,
+      "score_b": 3,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 19,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 20,
+      "a_leads": true,
+      "score_a": 35,
+      "score_b": 11,
+      "pistis_a": 3,
+      "pistis_b": 0,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 20,
+      "a_leads": false,
+      "score_a": 39,
+      "score_b": 17,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 21,
+      "a_leads": true,
+      "score_a": 0,
+      "score_b": 36,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 0,
+      "captured_b": 52
+    },
+    {
+      "deal": 21,
+      "a_leads": false,
+      "score_a": 24,
+      "score_b": 2,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 43,
+      "captured_b": 9
+    },
+    {
+      "deal": 22,
+      "a_leads": true,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 22,
+      "a_leads": false,
+      "score_a": 4,
+      "score_b": 22,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 23,
+      "a_leads": true,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 23,
+      "a_leads": false,
+      "score_a": 4,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 24,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 24,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 19,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 25,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 1,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 44,
+      "captured_b": 8
+    },
+    {
+      "deal": 25,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 35,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 11,
+      "captured_b": 41
+    },
+    {
+      "deal": 26,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 26,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 27,
+      "a_leads": true,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 27,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 20,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 11,
+      "captured_b": 41
+    },
+    {
+      "deal": 28,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 19,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 28,
+      "a_leads": false,
+      "score_a": 34,
+      "score_b": 2,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 29,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 29,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 29,
+      "a_leads": false,
+      "score_a": 17,
+      "score_b": 9,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 30,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 30,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 31,
+      "a_leads": true,
+      "score_a": 35,
+      "score_b": 1,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 31,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 32,
+      "a_leads": true,
+      "score_a": 27,
+      "score_b": 9,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 32,
+      "a_leads": false,
+      "score_a": 16,
+      "score_b": 10,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 33,
+      "a_leads": true,
+      "score_a": 19,
+      "score_b": 7,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 33,
+      "a_leads": false,
+      "score_a": 16,
+      "score_b": 0,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 47,
+      "captured_b": 5
+    },
+    {
+      "deal": 34,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 2,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 34,
+      "a_leads": false,
+      "score_a": 2,
+      "score_b": 34,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 35,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 35,
+      "a_leads": false,
+      "score_a": 2,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 36,
+      "a_leads": true,
+      "score_a": 6,
+      "score_b": 10,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 36,
+      "a_leads": false,
+      "score_a": 25,
+      "score_b": 1,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 37,
+      "a_leads": true,
+      "score_a": 26,
+      "score_b": 17,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 37,
+      "a_leads": false,
+      "score_a": 23,
+      "score_b": 33,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 38,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 43,
+      "captured_b": 9
+    },
+    {
+      "deal": 38,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 2,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 39,
+      "a_leads": true,
+      "score_a": 17,
+      "score_b": 9,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 39,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 20,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 40,
+      "a_leads": true,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 40,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 41,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 10,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 41,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 42,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 52,
+      "pistis_a": 0,
+      "pistis_b": 4,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 42,
+      "a_leads": false,
+      "score_a": 15,
+      "score_b": 21,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 43,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 1,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 49,
+      "captured_b": 3
+    },
+    {
+      "deal": 43,
+      "a_leads": false,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 44,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 20,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 44,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 31,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 45,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 32,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 45,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 30,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 46,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 24,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 46,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 47,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 23,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 47,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 48,
+      "a_leads": true,
+      "score_a": 0,
+      "score_b": 56,
+      "pistis_a": 0,
+      "pistis_b": 3,
+      "captured_a": 6,
+      "captured_b": 46
+    },
+    {
+      "deal": 48,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 49,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 49,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 20,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 50,
+      "a_leads": true,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 50,
+      "a_leads": false,
+      "score_a": 18,
+      "score_b": 8,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 51,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 51,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 52,
+      "a_leads": true,
+      "score_a": 29,
+      "score_b": 7,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 52,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 53,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 53,
+      "a_leads": false,
+      "score_a": 17,
+      "score_b": 19,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 54,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 31,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 54,
+      "a_leads": false,
+      "score_a": 17,
+      "score_b": 19,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 55,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 23,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 55,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 20,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 56,
+      "a_leads": true,
+      "score_a": 25,
+      "score_b": 1,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 56,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 25,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 57,
+      "a_leads": true,
+      "score_a": 1,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 57,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 58,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 32,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 58,
+      "a_leads": false,
+      "score_a": 34,
+      "score_b": 2,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 41,
+      "captured_b": 11
+    },
+    {
+      "deal": 59,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 21,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 59,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 60,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 31,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 60,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 61,
+      "a_leads": true,
+      "score_a": 20,
+      "score_b": 16,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 61,
+      "a_leads": false,
+      "score_a": 17,
+      "score_b": 19,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 62,
+      "a_leads": true,
+      "score_a": 18,
+      "score_b": 8,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 62,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 30,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 63,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 44,
+      "pistis_a": 1,
+      "pistis_b": 3,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 63,
+      "a_leads": false,
+      "score_a": 51,
+      "score_b": 25,
+      "pistis_a": 3,
+      "pistis_b": 2,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 64,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 64,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 65,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 65,
+      "a_leads": false,
+      "score_a": 23,
+      "score_b": 13,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 66,
+      "a_leads": true,
+      "score_a": 10,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 66,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 46,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 0,
+      "captured_b": 52
+    },
+    {
+      "deal": 67,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 67,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 21,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 68,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 25,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 68,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 19,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 69,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 38,
+      "pistis_a": 0,
+      "pistis_b": 3,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 69,
+      "a_leads": false,
+      "score_a": 31,
+      "score_b": 15,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 70,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 18,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 70,
+      "a_leads": false,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 71,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 0,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 52,
+      "captured_b": 0
+    },
+    {
+      "deal": 71,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 16,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 0,
+      "captured_b": 52
+    },
+    {
+      "deal": 72,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 19,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 72,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 21,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 73,
+      "a_leads": true,
+      "score_a": 54,
+      "score_b": 2,
+      "pistis_a": 4,
+      "pistis_b": 0,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 73,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 15,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 74,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 74,
+      "a_leads": false,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 75,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 25,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 75,
+      "a_leads": false,
+      "score_a": 18,
+      "score_b": 8,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 76,
+      "a_leads": true,
+      "score_a": 32,
+      "score_b": 14,
+      "pistis_a": 3,
+      "pistis_b": 0,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 76,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 36,
+      "pistis_a": 0,
+      "pistis_b": 3,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 77,
+      "a_leads": true,
+      "score_a": 1,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 3,
+      "captured_b": 49
+    },
+    {
+      "deal": 77,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 78,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 22,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 78,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 26,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 79,
+      "a_leads": true,
+      "score_a": 17,
+      "score_b": 19,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 79,
+      "a_leads": false,
+      "score_a": 24,
+      "score_b": 2,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 80,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 22,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 80,
+      "a_leads": false,
+      "score_a": 32,
+      "score_b": 4,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 81,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 19,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 81,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 25,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 11,
+      "captured_b": 41
+    },
+    {
+      "deal": 82,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 82,
+      "a_leads": false,
+      "score_a": 24,
+      "score_b": 2,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 83,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 54,
+      "pistis_a": 0,
+      "pistis_b": 4,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 83,
+      "a_leads": false,
+      "score_a": 53,
+      "score_b": 13,
+      "pistis_a": 3,
+      "pistis_b": 1,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 84,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 84,
+      "a_leads": false,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 85,
+      "a_leads": true,
+      "score_a": 25,
+      "score_b": 1,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 41,
+      "captured_b": 11
+    },
+    {
+      "deal": 85,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 86,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 86,
+      "a_leads": false,
+      "score_a": 18,
+      "score_b": 8,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 87,
+      "a_leads": true,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 87,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 9,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 88,
+      "a_leads": true,
+      "score_a": 6,
+      "score_b": 20,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 88,
+      "a_leads": false,
+      "score_a": 19,
+      "score_b": 7,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 89,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 89,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 19,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 90,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 90,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 91,
+      "a_leads": true,
+      "score_a": 6,
+      "score_b": 30,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 91,
+      "a_leads": false,
+      "score_a": 43,
+      "score_b": 3,
+      "pistis_a": 3,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 92,
+      "a_leads": true,
+      "score_a": 10,
+      "score_b": 26,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 92,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 93,
+      "a_leads": true,
+      "score_a": 17,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 93,
+      "a_leads": false,
+      "score_a": 24,
+      "score_b": 2,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 94,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 94,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 16,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 95,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 95,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 96,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 31,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 96,
+      "a_leads": false,
+      "score_a": 44,
+      "score_b": 32,
+      "pistis_a": 3,
+      "pistis_b": 2,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 97,
+      "a_leads": true,
+      "score_a": 25,
+      "score_b": 1,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 97,
+      "a_leads": false,
+      "score_a": 2,
+      "score_b": 24,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 98,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 20,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 98,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 99,
+      "a_leads": true,
+      "score_a": 33,
+      "score_b": 3,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 99,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 36,
+      "pistis_a": 2,
+      "pistis_b": 2,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 100,
+      "a_leads": true,
+      "score_a": 33,
+      "score_b": 3,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 100,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 101,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 14,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 101,
+      "a_leads": false,
+      "score_a": 16,
+      "score_b": 17,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 102,
+      "a_leads": true,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 102,
+      "a_leads": false,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 7,
+      "captured_b": 45
+    },
+    {
+      "deal": 103,
+      "a_leads": true,
+      "score_a": 32,
+      "score_b": 4,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 103,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 33,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 104,
+      "a_leads": true,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 104,
+      "a_leads": false,
+      "score_a": 2,
+      "score_b": 34,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 105,
+      "a_leads": true,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 105,
+      "a_leads": false,
+      "score_a": 8,
+      "score_b": 28,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 106,
+      "a_leads": true,
+      "score_a": 6,
+      "score_b": 10,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 11,
+      "captured_b": 41
+    },
+    {
+      "deal": 106,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 107,
+      "a_leads": true,
+      "score_a": 1,
+      "score_b": 55,
+      "pistis_a": 0,
+      "pistis_b": 4,
+      "captured_a": 6,
+      "captured_b": 46
+    },
+    {
+      "deal": 107,
+      "a_leads": false,
+      "score_a": 24,
+      "score_b": 12,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 108,
+      "a_leads": true,
+      "score_a": 29,
+      "score_b": 17,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 108,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 109,
+      "a_leads": true,
+      "score_a": 44,
+      "score_b": 2,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 109,
+      "a_leads": false,
+      "score_a": 4,
+      "score_b": 32,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 110,
+      "a_leads": true,
+      "score_a": 18,
+      "score_b": 8,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 110,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 111,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 111,
+      "a_leads": false,
+      "score_a": 34,
+      "score_b": 2,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 112,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 112,
+      "a_leads": false,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 113,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 43,
+      "pistis_a": 1,
+      "pistis_b": 3,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 113,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 114,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 10,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 114,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 115,
+      "a_leads": true,
+      "score_a": 34,
+      "score_b": 12,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 115,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 116,
+      "a_leads": true,
+      "score_a": 19,
+      "score_b": 7,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 116,
+      "a_leads": false,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 117,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 22,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 117,
+      "a_leads": false,
+      "score_a": 29,
+      "score_b": 17,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 118,
+      "a_leads": true,
+      "score_a": 43,
+      "score_b": 3,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 118,
+      "a_leads": false,
+      "score_a": 44,
+      "score_b": 22,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 119,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 33,
+      "pistis_a": 2,
+      "pistis_b": 2,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 119,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 42,
+      "pistis_a": 1,
+      "pistis_b": 3,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 120,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 22,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 120,
+      "a_leads": false,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 121,
+      "a_leads": true,
+      "score_a": 45,
+      "score_b": 11,
+      "pistis_a": 4,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 121,
+      "a_leads": false,
+      "score_a": 42,
+      "score_b": 4,
+      "pistis_a": 3,
+      "pistis_b": 0,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 122,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 33,
+      "pistis_a": 2,
+      "pistis_b": 2,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 122,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 30,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 123,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 123,
+      "a_leads": false,
+      "score_a": 8,
+      "score_b": 18,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 124,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 124,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 41,
+      "captured_b": 11
+    },
+    {
+      "deal": 125,
+      "a_leads": true,
+      "score_a": 10,
+      "score_b": 16,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 125,
+      "a_leads": false,
+      "score_a": 24,
+      "score_b": 22,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 126,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 126,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 127,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 127,
+      "a_leads": false,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 49,
+      "captured_b": 3
+    },
+    {
+      "deal": 128,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 128,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 129,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 129,
+      "a_leads": false,
+      "score_a": 15,
+      "score_b": 11,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 130,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 1,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 130,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 131,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 131,
+      "a_leads": false,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 132,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 132,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 133,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 133,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 33,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 134,
+      "a_leads": true,
+      "score_a": 1,
+      "score_b": 25,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 134,
+      "a_leads": false,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 135,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 37,
+      "pistis_a": 0,
+      "pistis_b": 3,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 135,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 35,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 136,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 23,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 136,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 20,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 137,
+      "a_leads": true,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 137,
+      "a_leads": false,
+      "score_a": 8,
+      "score_b": 18,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 138,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 10,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 138,
+      "a_leads": false,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 45,
+      "captured_b": 7
+    },
+    {
+      "deal": 139,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 23,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 7,
+      "captured_b": 45
+    },
+    {
+      "deal": 139,
+      "a_leads": false,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 43,
+      "captured_b": 9
+    },
+    {
+      "deal": 140,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 140,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 31,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 141,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 141,
+      "a_leads": false,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 142,
+      "a_leads": true,
+      "score_a": 58,
+      "score_b": 5,
+      "pistis_a": 4,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 142,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 143,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 143,
+      "a_leads": false,
+      "score_a": 25,
+      "score_b": 1,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 45,
+      "captured_b": 7
+    },
+    {
+      "deal": 144,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 144,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 145,
+      "a_leads": true,
+      "score_a": 0,
+      "score_b": 16,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 145,
+      "a_leads": false,
+      "score_a": 26,
+      "score_b": 0,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 52,
+      "captured_b": 0
+    },
+    {
+      "deal": 146,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 146,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 147,
+      "a_leads": true,
+      "score_a": 19,
+      "score_b": 17,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 147,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 22,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 148,
+      "a_leads": true,
+      "score_a": 32,
+      "score_b": 4,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 148,
+      "a_leads": false,
+      "score_a": 17,
+      "score_b": 29,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 149,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 11,
+      "captured_b": 41
+    },
+    {
+      "deal": 149,
+      "a_leads": false,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 150,
+      "a_leads": true,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 150,
+      "a_leads": false,
+      "score_a": 8,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 151,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 151,
+      "a_leads": false,
+      "score_a": 25,
+      "score_b": 11,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 152,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 41,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 152,
+      "a_leads": false,
+      "score_a": 37,
+      "score_b": 19,
+      "pistis_a": 3,
+      "pistis_b": 1,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 153,
+      "a_leads": true,
+      "score_a": 33,
+      "score_b": 13,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 153,
+      "a_leads": false,
+      "score_a": 41,
+      "score_b": 25,
+      "pistis_a": 2,
+      "pistis_b": 2,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 154,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 27,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 154,
+      "a_leads": false,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 155,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 155,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 156,
+      "a_leads": true,
+      "score_a": 21,
+      "score_b": 15,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 156,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 23,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 157,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 157,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 158,
+      "a_leads": true,
+      "score_a": 29,
+      "score_b": 17,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 158,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 159,
+      "a_leads": true,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 159,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 33,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 160,
+      "a_leads": true,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 160,
+      "a_leads": false,
+      "score_a": 23,
+      "score_b": 13,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 161,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 22,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 161,
+      "a_leads": false,
+      "score_a": 19,
+      "score_b": 17,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 162,
+      "a_leads": true,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 162,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 163,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 44,
+      "captured_b": 8
+    },
+    {
+      "deal": 163,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 164,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 164,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 10,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 165,
+      "a_leads": true,
+      "score_a": 34,
+      "score_b": 2,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 49,
+      "captured_b": 3
+    },
+    {
+      "deal": 165,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 12,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 166,
+      "a_leads": true,
+      "score_a": 32,
+      "score_b": 4,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 166,
+      "a_leads": false,
+      "score_a": 17,
+      "score_b": 19,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 167,
+      "a_leads": true,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 167,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 17,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 168,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 29,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 11,
+      "captured_b": 41
+    },
+    {
+      "deal": 168,
+      "a_leads": false,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 45,
+      "captured_b": 7
+    },
+    {
+      "deal": 169,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 169,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 33,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 170,
+      "a_leads": true,
+      "score_a": 0,
+      "score_b": 26,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 3,
+      "captured_b": 49
+    },
+    {
+      "deal": 170,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 2,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 41,
+      "captured_b": 11
+    },
+    {
+      "deal": 171,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 10,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 171,
+      "a_leads": false,
+      "score_a": 23,
+      "score_b": 13,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 45,
+      "captured_b": 7
+    },
+    {
+      "deal": 172,
+      "a_leads": true,
+      "score_a": 1,
+      "score_b": 35,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 172,
+      "a_leads": false,
+      "score_a": 18,
+      "score_b": 8,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 173,
+      "a_leads": true,
+      "score_a": 35,
+      "score_b": 1,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 173,
+      "a_leads": false,
+      "score_a": 8,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 174,
+      "a_leads": true,
+      "score_a": 18,
+      "score_b": 8,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 174,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 175,
+      "a_leads": true,
+      "score_a": 1,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 175,
+      "a_leads": false,
+      "score_a": 28,
+      "score_b": 8,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 176,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 29,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 176,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 16,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 177,
+      "a_leads": true,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 177,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 30,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 178,
+      "a_leads": true,
+      "score_a": 34,
+      "score_b": 2,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 178,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 19,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 179,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 179,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 180,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 21,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 180,
+      "a_leads": false,
+      "score_a": 30,
+      "score_b": 6,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 181,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 181,
+      "a_leads": false,
+      "score_a": 27,
+      "score_b": 9,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 182,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 1,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 46,
+      "captured_b": 6
+    },
+    {
+      "deal": 182,
+      "a_leads": false,
+      "score_a": 2,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 183,
+      "a_leads": true,
+      "score_a": 24,
+      "score_b": 12,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 183,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 184,
+      "a_leads": true,
+      "score_a": 45,
+      "score_b": 31,
+      "pistis_a": 4,
+      "pistis_b": 2,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 184,
+      "a_leads": false,
+      "score_a": 29,
+      "score_b": 27,
+      "pistis_a": 2,
+      "pistis_b": 2,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 185,
+      "a_leads": true,
+      "score_a": 22,
+      "score_b": 14,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 185,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 186,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 186,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 187,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 21,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 187,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 44,
+      "captured_b": 8
+    },
+    {
+      "deal": 188,
+      "a_leads": true,
+      "score_a": 17,
+      "score_b": 19,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 188,
+      "a_leads": false,
+      "score_a": 16,
+      "score_b": 7,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 189,
+      "a_leads": true,
+      "score_a": 26,
+      "score_b": 0,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 43,
+      "captured_b": 9
+    },
+    {
+      "deal": 189,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 26,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 0,
+      "captured_b": 52
+    },
+    {
+      "deal": 190,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 1,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 190,
+      "a_leads": false,
+      "score_a": 15,
+      "score_b": 11,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 191,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 10,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 191,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 192,
+      "a_leads": true,
+      "score_a": 20,
+      "score_b": 16,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 192,
+      "a_leads": false,
+      "score_a": 8,
+      "score_b": 38,
+      "pistis_a": 0,
+      "pistis_b": 3,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 193,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 27,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 193,
+      "a_leads": false,
+      "score_a": 17,
+      "score_b": 9,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 194,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 12,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 194,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 17,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 195,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 195,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 17,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 196,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 2,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 196,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 23,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 197,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 0,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 52,
+      "captured_b": 0
+    },
+    {
+      "deal": 197,
+      "a_leads": false,
+      "score_a": 8,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 198,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 198,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 33,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 199,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 199,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 200,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 35,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 200,
+      "a_leads": false,
+      "score_a": 23,
+      "score_b": 13,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 201,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 201,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 202,
+      "a_leads": true,
+      "score_a": 26,
+      "score_b": 0,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 202,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 14,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 203,
+      "a_leads": true,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 203,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 43,
+      "pistis_a": 1,
+      "pistis_b": 3,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 204,
+      "a_leads": true,
+      "score_a": 31,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 204,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 205,
+      "a_leads": true,
+      "score_a": 29,
+      "score_b": 17,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 205,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 23,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 206,
+      "a_leads": true,
+      "score_a": 33,
+      "score_b": 3,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 206,
+      "a_leads": false,
+      "score_a": 4,
+      "score_b": 32,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 207,
+      "a_leads": true,
+      "score_a": 35,
+      "score_b": 1,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 207,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 17,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 208,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 208,
+      "a_leads": false,
+      "score_a": 24,
+      "score_b": 2,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 209,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 209,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 9,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 210,
+      "a_leads": true,
+      "score_a": 21,
+      "score_b": 15,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 210,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 26,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 211,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 211,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 212,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 212,
+      "a_leads": false,
+      "score_a": 24,
+      "score_b": 2,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 41,
+      "captured_b": 11
+    },
+    {
+      "deal": 213,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 11,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 213,
+      "a_leads": false,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 214,
+      "a_leads": true,
+      "score_a": 19,
+      "score_b": 7,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 214,
+      "a_leads": false,
+      "score_a": 72,
+      "score_b": 4,
+      "pistis_a": 6,
+      "pistis_b": 0,
+      "captured_a": 43,
+      "captured_b": 9
+    },
+    {
+      "deal": 215,
+      "a_leads": true,
+      "score_a": 6,
+      "score_b": 20,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 215,
+      "a_leads": false,
+      "score_a": 19,
+      "score_b": 17,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 216,
+      "a_leads": true,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 216,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 217,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 33,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 217,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 23,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 218,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 19,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 218,
+      "a_leads": false,
+      "score_a": 24,
+      "score_b": 12,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 219,
+      "a_leads": true,
+      "score_a": 19,
+      "score_b": 7,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 219,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 220,
+      "a_leads": true,
+      "score_a": 6,
+      "score_b": 10,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 220,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 14,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 221,
+      "a_leads": true,
+      "score_a": 21,
+      "score_b": 15,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 221,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 222,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 21,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 222,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 223,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 18,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 223,
+      "a_leads": false,
+      "score_a": 38,
+      "score_b": 18,
+      "pistis_a": 3,
+      "pistis_b": 1,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 224,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 224,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 2,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 225,
+      "a_leads": true,
+      "score_a": 22,
+      "score_b": 14,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 225,
+      "a_leads": false,
+      "score_a": 2,
+      "score_b": 24,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 9,
+      "captured_b": 43
+    },
+    {
+      "deal": 226,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 28,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 226,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 35,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 227,
+      "a_leads": true,
+      "score_a": 26,
+      "score_b": 0,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 46,
+      "captured_b": 6
+    },
+    {
+      "deal": 227,
+      "a_leads": false,
+      "score_a": 2,
+      "score_b": 24,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 228,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 2,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 228,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 229,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 229,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 230,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 230,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 19,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 231,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 231,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 232,
+      "a_leads": true,
+      "score_a": 25,
+      "score_b": 1,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 232,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 36,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 3,
+      "captured_b": 49
+    },
+    {
+      "deal": 233,
+      "a_leads": true,
+      "score_a": 19,
+      "score_b": 7,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 233,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 234,
+      "a_leads": true,
+      "score_a": 0,
+      "score_b": 46,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 234,
+      "a_leads": false,
+      "score_a": 56,
+      "score_b": 0,
+      "pistis_a": 3,
+      "pistis_b": 0,
+      "captured_a": 52,
+      "captured_b": 0
+    },
+    {
+      "deal": 235,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 235,
+      "a_leads": false,
+      "score_a": 16,
+      "score_b": 0,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 52,
+      "captured_b": 0
+    },
+    {
+      "deal": 236,
+      "a_leads": true,
+      "score_a": 31,
+      "score_b": 15,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 236,
+      "a_leads": false,
+      "score_a": 73,
+      "score_b": 3,
+      "pistis_a": 5,
+      "pistis_b": 0,
+      "captured_a": 43,
+      "captured_b": 9
+    },
+    {
+      "deal": 237,
+      "a_leads": true,
+      "score_a": 41,
+      "score_b": 5,
+      "pistis_a": 3,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 237,
+      "a_leads": false,
+      "score_a": 34,
+      "score_b": 2,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 238,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 238,
+      "a_leads": false,
+      "score_a": 29,
+      "score_b": 7,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 239,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 23,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 239,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 33,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 8,
+      "captured_b": 44
+    },
+    {
+      "deal": 240,
+      "a_leads": true,
+      "score_a": 26,
+      "score_b": 10,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 240,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 241,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 34,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 8,
+      "captured_b": 44
+    },
+    {
+      "deal": 241,
+      "a_leads": false,
+      "score_a": 18,
+      "score_b": 8,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 242,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 21,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 242,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 16,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 41,
+      "captured_b": 11
+    },
+    {
+      "deal": 243,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 6,
+      "captured_b": 46
+    },
+    {
+      "deal": 243,
+      "a_leads": false,
+      "score_a": 15,
+      "score_b": 1,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 41,
+      "captured_b": 11
+    },
+    {
+      "deal": 244,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 28,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 244,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 245,
+      "a_leads": true,
+      "score_a": 27,
+      "score_b": 19,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 245,
+      "a_leads": false,
+      "score_a": 34,
+      "score_b": 2,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 43,
+      "captured_b": 9
+    },
+    {
+      "deal": 246,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 246,
+      "a_leads": false,
+      "score_a": 18,
+      "score_b": 18,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 247,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 247,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 16,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 248,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 29,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 248,
+      "a_leads": false,
+      "score_a": 29,
+      "score_b": 7,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 249,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 249,
+      "a_leads": false,
+      "score_a": 8,
+      "score_b": 18,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 250,
+      "a_leads": true,
+      "score_a": 34,
+      "score_b": 12,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 250,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 24,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 251,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 23,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 251,
+      "a_leads": false,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 252,
+      "a_leads": true,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 252,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 23,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 253,
+      "a_leads": true,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 253,
+      "a_leads": false,
+      "score_a": 16,
+      "score_b": 0,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 52,
+      "captured_b": 0
+    },
+    {
+      "deal": 254,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 24,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 254,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 255,
+      "a_leads": true,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 255,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 256,
+      "a_leads": true,
+      "score_a": 25,
+      "score_b": 11,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 256,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 35,
+      "pistis_a": 0,
+      "pistis_b": 3,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 257,
+      "a_leads": true,
+      "score_a": 26,
+      "score_b": 0,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 257,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 258,
+      "a_leads": true,
+      "score_a": 38,
+      "score_b": 8,
+      "pistis_a": 3,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 258,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 44,
+      "pistis_a": 1,
+      "pistis_b": 3,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 259,
+      "a_leads": true,
+      "score_a": 24,
+      "score_b": 12,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 259,
+      "a_leads": false,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 260,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 22,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 260,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 41,
+      "captured_b": 11
+    },
+    {
+      "deal": 261,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 18,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 261,
+      "a_leads": false,
+      "score_a": 31,
+      "score_b": 15,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 262,
+      "a_leads": true,
+      "score_a": 10,
+      "score_b": 26,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 262,
+      "a_leads": false,
+      "score_a": 36,
+      "score_b": 7,
+      "pistis_a": 3,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 263,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 23,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 263,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 24,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 264,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 23,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 5,
+      "captured_b": 47
+    },
+    {
+      "deal": 264,
+      "a_leads": false,
+      "score_a": 17,
+      "score_b": 9,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 265,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 265,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 266,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 18,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 266,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 267,
+      "a_leads": true,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 267,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 26,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 5,
+      "captured_b": 47
+    },
+    {
+      "deal": 268,
+      "a_leads": true,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 268,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 269,
+      "a_leads": true,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 269,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 31,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 270,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 270,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 271,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 24,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 3,
+      "captured_b": 49
+    },
+    {
+      "deal": 271,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 272,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 272,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 26,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 7,
+      "captured_b": 45
+    },
+    {
+      "deal": 273,
+      "a_leads": true,
+      "score_a": 1,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 273,
+      "a_leads": false,
+      "score_a": 26,
+      "score_b": 0,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 274,
+      "a_leads": true,
+      "score_a": 26,
+      "score_b": 10,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 45,
+      "captured_b": 7
+    },
+    {
+      "deal": 274,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 25,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 5,
+      "captured_b": 47
+    },
+    {
+      "deal": 275,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 23,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 275,
+      "a_leads": false,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 276,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 276,
+      "a_leads": false,
+      "score_a": 18,
+      "score_b": 8,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 277,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 1,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 277,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 25,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 278,
+      "a_leads": true,
+      "score_a": 0,
+      "score_b": 26,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 0,
+      "captured_b": 52
+    },
+    {
+      "deal": 278,
+      "a_leads": false,
+      "score_a": 24,
+      "score_b": 2,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 44,
+      "captured_b": 8
+    },
+    {
+      "deal": 279,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 13,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 279,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 2,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 280,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 280,
+      "a_leads": false,
+      "score_a": 15,
+      "score_b": 1,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 281,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 22,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 281,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 33,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 282,
+      "a_leads": true,
+      "score_a": 27,
+      "score_b": 29,
+      "pistis_a": 2,
+      "pistis_b": 2,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 282,
+      "a_leads": false,
+      "score_a": 33,
+      "score_b": 23,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 283,
+      "a_leads": true,
+      "score_a": 6,
+      "score_b": 30,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 283,
+      "a_leads": false,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 284,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 284,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 285,
+      "a_leads": true,
+      "score_a": 28,
+      "score_b": 8,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 285,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 3,
+      "captured_b": 49
+    },
+    {
+      "deal": 286,
+      "a_leads": true,
+      "score_a": 30,
+      "score_b": 6,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 286,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 20,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 287,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 287,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 43,
+      "captured_b": 9
+    },
+    {
+      "deal": 288,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 288,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 26,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 289,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 17,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 289,
+      "a_leads": false,
+      "score_a": 8,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 290,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 290,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 21,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 291,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 291,
+      "a_leads": false,
+      "score_a": 2,
+      "score_b": 44,
+      "pistis_a": 0,
+      "pistis_b": 3,
+      "captured_a": 6,
+      "captured_b": 46
+    },
+    {
+      "deal": 292,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 292,
+      "a_leads": false,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 293,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 21,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 293,
+      "a_leads": false,
+      "score_a": 31,
+      "score_b": 5,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 294,
+      "a_leads": true,
+      "score_a": 18,
+      "score_b": 8,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 294,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 23,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 295,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 14,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 295,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 296,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 7,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 296,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 297,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 297,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 26,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 298,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 298,
+      "a_leads": false,
+      "score_a": 33,
+      "score_b": 3,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 299,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 299,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 300,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 300,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 301,
+      "a_leads": true,
+      "score_a": 0,
+      "score_b": 16,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 9,
+      "captured_b": 43
+    },
+    {
+      "deal": 301,
+      "a_leads": false,
+      "score_a": 8,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 302,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 302,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 303,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 303,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 10,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 304,
+      "a_leads": true,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 304,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 305,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 24,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 305,
+      "a_leads": false,
+      "score_a": 8,
+      "score_b": 28,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 306,
+      "a_leads": true,
+      "score_a": 45,
+      "score_b": 1,
+      "pistis_a": 3,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 306,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 29,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 307,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 307,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 2,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 308,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 308,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 309,
+      "a_leads": true,
+      "score_a": 21,
+      "score_b": 55,
+      "pistis_a": 2,
+      "pistis_b": 4,
+      "captured_a": 11,
+      "captured_b": 41
+    },
+    {
+      "deal": 309,
+      "a_leads": false,
+      "score_a": 46,
+      "score_b": 10,
+      "pistis_a": 3,
+      "pistis_b": 1,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 310,
+      "a_leads": true,
+      "score_a": 34,
+      "score_b": 2,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 310,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 21,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 311,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 311,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 41,
+      "captured_b": 11
+    },
+    {
+      "deal": 312,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 312,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 44,
+      "captured_b": 8
+    },
+    {
+      "deal": 313,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 313,
+      "a_leads": false,
+      "score_a": 4,
+      "score_b": 22,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 314,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 1,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 43,
+      "captured_b": 9
+    },
+    {
+      "deal": 314,
+      "a_leads": false,
+      "score_a": 8,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 315,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 315,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 316,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 24,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 316,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 317,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 317,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 25,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 318,
+      "a_leads": true,
+      "score_a": 1,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 6,
+      "captured_b": 46
+    },
+    {
+      "deal": 318,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 22,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 319,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 12,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 319,
+      "a_leads": false,
+      "score_a": 18,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 320,
+      "a_leads": true,
+      "score_a": 21,
+      "score_b": 35,
+      "pistis_a": 1,
+      "pistis_b": 3,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 320,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 12,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 321,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 26,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 321,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 322,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 12,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 322,
+      "a_leads": false,
+      "score_a": 32,
+      "score_b": 14,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 323,
+      "a_leads": true,
+      "score_a": 25,
+      "score_b": 21,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 323,
+      "a_leads": false,
+      "score_a": 43,
+      "score_b": 13,
+      "pistis_a": 3,
+      "pistis_b": 1,
+      "captured_a": 47,
+      "captured_b": 5
+    },
+    {
+      "deal": 324,
+      "a_leads": true,
+      "score_a": 34,
+      "score_b": 2,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 324,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 9,
+      "captured_b": 43
+    },
+    {
+      "deal": 325,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 0,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 49,
+      "captured_b": 3
+    },
+    {
+      "deal": 325,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 16,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 3,
+      "captured_b": 49
+    },
+    {
+      "deal": 326,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 23,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 326,
+      "a_leads": false,
+      "score_a": 19,
+      "score_b": 17,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 327,
+      "a_leads": true,
+      "score_a": 10,
+      "score_b": 16,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 327,
+      "a_leads": false,
+      "score_a": 17,
+      "score_b": 16,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 328,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 2,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 328,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 329,
+      "a_leads": true,
+      "score_a": 1,
+      "score_b": 35,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 5,
+      "captured_b": 47
+    },
+    {
+      "deal": 329,
+      "a_leads": false,
+      "score_a": 18,
+      "score_b": 28,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 330,
+      "a_leads": true,
+      "score_a": 24,
+      "score_b": 2,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 330,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 36,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 0,
+      "captured_b": 52
+    },
+    {
+      "deal": 331,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 331,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 20,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 332,
+      "a_leads": true,
+      "score_a": 18,
+      "score_b": 18,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 332,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 24,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 7,
+      "captured_b": 45
+    },
+    {
+      "deal": 333,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 13,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 333,
+      "a_leads": false,
+      "score_a": 2,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 334,
+      "a_leads": true,
+      "score_a": 6,
+      "score_b": 10,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 334,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 335,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 335,
+      "a_leads": false,
+      "score_a": 2,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 7,
+      "captured_b": 45
+    },
+    {
+      "deal": 336,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 12,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 336,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 14,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 337,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 32,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 337,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 338,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 338,
+      "a_leads": false,
+      "score_a": 19,
+      "score_b": 17,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 339,
+      "a_leads": true,
+      "score_a": 24,
+      "score_b": 12,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 339,
+      "a_leads": false,
+      "score_a": 31,
+      "score_b": 15,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 340,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 340,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 341,
+      "a_leads": true,
+      "score_a": 34,
+      "score_b": 2,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 341,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 17,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 342,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 342,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 43,
+      "pistis_a": 1,
+      "pistis_b": 3,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 343,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 1,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 45,
+      "captured_b": 7
+    },
+    {
+      "deal": 343,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 9,
+      "captured_b": 43
+    },
+    {
+      "deal": 344,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 344,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 24,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 345,
+      "a_leads": true,
+      "score_a": 19,
+      "score_b": 27,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 345,
+      "a_leads": false,
+      "score_a": 21,
+      "score_b": 25,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 346,
+      "a_leads": true,
+      "score_a": 41,
+      "score_b": 5,
+      "pistis_a": 3,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 346,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 347,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 347,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 17,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 348,
+      "a_leads": true,
+      "score_a": 17,
+      "score_b": 9,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 348,
+      "a_leads": false,
+      "score_a": 29,
+      "score_b": 17,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 349,
+      "a_leads": true,
+      "score_a": 22,
+      "score_b": 14,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 349,
+      "a_leads": false,
+      "score_a": 30,
+      "score_b": 26,
+      "pistis_a": 2,
+      "pistis_b": 2,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 350,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 350,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 351,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 351,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 352,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 23,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 352,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 353,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 21,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 353,
+      "a_leads": false,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 354,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 14,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 354,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 355,
+      "a_leads": true,
+      "score_a": 1,
+      "score_b": 35,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 355,
+      "a_leads": false,
+      "score_a": 27,
+      "score_b": 9,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 356,
+      "a_leads": true,
+      "score_a": 17,
+      "score_b": 19,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 356,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 14,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 357,
+      "a_leads": true,
+      "score_a": 19,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 357,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 33,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 358,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 358,
+      "a_leads": false,
+      "score_a": 21,
+      "score_b": 15,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 45,
+      "captured_b": 7
+    },
+    {
+      "deal": 359,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 41,
+      "pistis_a": 0,
+      "pistis_b": 3,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 359,
+      "a_leads": false,
+      "score_a": 4,
+      "score_b": 22,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 360,
+      "a_leads": true,
+      "score_a": 20,
+      "score_b": 16,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 360,
+      "a_leads": false,
+      "score_a": 35,
+      "score_b": 1,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 45,
+      "captured_b": 7
+    },
+    {
+      "deal": 361,
+      "a_leads": true,
+      "score_a": 26,
+      "score_b": 10,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 45,
+      "captured_b": 7
+    },
+    {
+      "deal": 361,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 36,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 3,
+      "captured_b": 49
+    },
+    {
+      "deal": 362,
+      "a_leads": true,
+      "score_a": 33,
+      "score_b": 13,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 362,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 27,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 363,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 2,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 363,
+      "a_leads": false,
+      "score_a": 26,
+      "score_b": 10,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 364,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 364,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 3,
+      "captured_b": 49
+    },
+    {
+      "deal": 365,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 12,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 365,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 366,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 366,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 45,
+      "captured_b": 7
+    },
+    {
+      "deal": 367,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 367,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 368,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 368,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 369,
+      "a_leads": true,
+      "score_a": 17,
+      "score_b": 9,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 369,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 370,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 18,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 370,
+      "a_leads": false,
+      "score_a": 19,
+      "score_b": 7,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 47,
+      "captured_b": 5
+    },
+    {
+      "deal": 371,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 371,
+      "a_leads": false,
+      "score_a": 4,
+      "score_b": 22,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 372,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 372,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 373,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 373,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 374,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 14,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 374,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 375,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 15,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 375,
+      "a_leads": false,
+      "score_a": 31,
+      "score_b": 5,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 376,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 376,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 16,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 377,
+      "a_leads": true,
+      "score_a": 24,
+      "score_b": 2,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 377,
+      "a_leads": false,
+      "score_a": 2,
+      "score_b": 24,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 378,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 378,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 14,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 379,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 8,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 379,
+      "a_leads": false,
+      "score_a": 8,
+      "score_b": 18,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 380,
+      "a_leads": true,
+      "score_a": 1,
+      "score_b": 25,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 380,
+      "a_leads": false,
+      "score_a": 19,
+      "score_b": 17,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 381,
+      "a_leads": true,
+      "score_a": 28,
+      "score_b": 18,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 381,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 50,
+      "pistis_a": 0,
+      "pistis_b": 4,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 382,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 31,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 382,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 35,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 8,
+      "captured_b": 44
+    },
+    {
+      "deal": 383,
+      "a_leads": true,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 383,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 20,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 384,
+      "a_leads": true,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 384,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 385,
+      "a_leads": true,
+      "score_a": 19,
+      "score_b": 7,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 385,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 36,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 0,
+      "captured_b": 52
+    },
+    {
+      "deal": 386,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 9,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 386,
+      "a_leads": false,
+      "score_a": 19,
+      "score_b": 17,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 387,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 17,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 387,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 41,
+      "captured_b": 11
+    },
+    {
+      "deal": 388,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 11,
+      "captured_b": 41
+    },
+    {
+      "deal": 388,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 389,
+      "a_leads": true,
+      "score_a": 34,
+      "score_b": 12,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 389,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 30,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 390,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 10,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 390,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 24,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 391,
+      "a_leads": true,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 391,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 7,
+      "captured_b": 45
+    },
+    {
+      "deal": 392,
+      "a_leads": true,
+      "score_a": 30,
+      "score_b": 6,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 392,
+      "a_leads": false,
+      "score_a": 27,
+      "score_b": 19,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 393,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 13,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 9,
+      "captured_b": 43
+    },
+    {
+      "deal": 393,
+      "a_leads": false,
+      "score_a": 27,
+      "score_b": 19,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 394,
+      "a_leads": true,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 394,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 395,
+      "a_leads": true,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 395,
+      "a_leads": false,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 396,
+      "a_leads": true,
+      "score_a": 35,
+      "score_b": 1,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 396,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 397,
+      "a_leads": true,
+      "score_a": 26,
+      "score_b": 20,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 397,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 398,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 15,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 398,
+      "a_leads": false,
+      "score_a": 46,
+      "score_b": 0,
+      "pistis_a": 3,
+      "pistis_b": 0,
+      "captured_a": 44,
+      "captured_b": 8
+    },
+    {
+      "deal": 399,
+      "a_leads": true,
+      "score_a": 29,
+      "score_b": 14,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 399,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 400,
+      "a_leads": true,
+      "score_a": 29,
+      "score_b": 7,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 400,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 15,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 7,
+      "captured_b": 45
+    },
+    {
+      "deal": 401,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 401,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 402,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 2,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 402,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 14,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 403,
+      "a_leads": true,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 403,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 404,
+      "a_leads": true,
+      "score_a": 6,
+      "score_b": 10,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 404,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 405,
+      "a_leads": true,
+      "score_a": 1,
+      "score_b": 35,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 405,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 406,
+      "a_leads": true,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 406,
+      "a_leads": false,
+      "score_a": 18,
+      "score_b": 8,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 407,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 407,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 14,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 408,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 408,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 409,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 409,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 410,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 410,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 411,
+      "a_leads": true,
+      "score_a": 20,
+      "score_b": 16,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 411,
+      "a_leads": false,
+      "score_a": 2,
+      "score_b": 44,
+      "pistis_a": 0,
+      "pistis_b": 3,
+      "captured_a": 7,
+      "captured_b": 45
+    },
+    {
+      "deal": 412,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 32,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 412,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 26,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 413,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 0,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 44,
+      "captured_b": 8
+    },
+    {
+      "deal": 413,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 25,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 414,
+      "a_leads": true,
+      "score_a": 34,
+      "score_b": 2,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 414,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 29,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 415,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 23,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 415,
+      "a_leads": false,
+      "score_a": 29,
+      "score_b": 17,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 416,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 31,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 416,
+      "a_leads": false,
+      "score_a": 15,
+      "score_b": 1,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 41,
+      "captured_b": 11
+    },
+    {
+      "deal": 417,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 417,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 418,
+      "a_leads": true,
+      "score_a": 54,
+      "score_b": 2,
+      "pistis_a": 3,
+      "pistis_b": 0,
+      "captured_a": 46,
+      "captured_b": 6
+    },
+    {
+      "deal": 418,
+      "a_leads": false,
+      "score_a": 27,
+      "score_b": 9,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 419,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 419,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 17,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 420,
+      "a_leads": true,
+      "score_a": 26,
+      "score_b": 20,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 420,
+      "a_leads": false,
+      "score_a": 23,
+      "score_b": 13,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 421,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 421,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 422,
+      "a_leads": true,
+      "score_a": 25,
+      "score_b": 1,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 43,
+      "captured_b": 9
+    },
+    {
+      "deal": 422,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 16,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 3,
+      "captured_b": 49
+    },
+    {
+      "deal": 423,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 423,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 424,
+      "a_leads": true,
+      "score_a": 0,
+      "score_b": 16,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 3,
+      "captured_b": 49
+    },
+    {
+      "deal": 424,
+      "a_leads": false,
+      "score_a": 36,
+      "score_b": 0,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 52,
+      "captured_b": 0
+    },
+    {
+      "deal": 425,
+      "a_leads": true,
+      "score_a": 24,
+      "score_b": 2,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 425,
+      "a_leads": false,
+      "score_a": 17,
+      "score_b": 19,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 426,
+      "a_leads": true,
+      "score_a": 24,
+      "score_b": 22,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 426,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 22,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 427,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 31,
+      "captured_b": 21
+    },
+    {
+      "deal": 427,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 428,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 33,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 428,
+      "a_leads": false,
+      "score_a": 53,
+      "score_b": 3,
+      "pistis_a": 4,
+      "pistis_b": 0,
+      "captured_a": 47,
+      "captured_b": 5
+    },
+    {
+      "deal": 429,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 32,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 429,
+      "a_leads": false,
+      "score_a": 43,
+      "score_b": 13,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 430,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 430,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 431,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 25,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 431,
+      "a_leads": false,
+      "score_a": 64,
+      "score_b": 12,
+      "pistis_a": 5,
+      "pistis_b": 1,
+      "captured_a": 44,
+      "captured_b": 8
+    },
+    {
+      "deal": 432,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 432,
+      "a_leads": false,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 433,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 34,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 433,
+      "a_leads": false,
+      "score_a": 24,
+      "score_b": 2,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 41,
+      "captured_b": 11
+    },
+    {
+      "deal": 434,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 434,
+      "a_leads": false,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 435,
+      "a_leads": true,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 435,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 436,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 45,
+      "captured_b": 7
+    },
+    {
+      "deal": 436,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 23,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 437,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 1,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 49,
+      "captured_b": 3
+    },
+    {
+      "deal": 437,
+      "a_leads": false,
+      "score_a": 2,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 7,
+      "captured_b": 45
+    },
+    {
+      "deal": 438,
+      "a_leads": true,
+      "score_a": 12,
+      "score_b": 34,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 438,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 20,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 439,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 24,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 11,
+      "captured_b": 41
+    },
+    {
+      "deal": 439,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 14,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 45,
+      "captured_b": 7
+    },
+    {
+      "deal": 440,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 15,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 440,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 441,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 441,
+      "a_leads": false,
+      "score_a": 14,
+      "score_b": 12,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 442,
+      "a_leads": true,
+      "score_a": 1,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 442,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 443,
+      "a_leads": true,
+      "score_a": 1,
+      "score_b": 35,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 443,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 26,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 444,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 21,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 15,
+      "captured_b": 37
+    },
+    {
+      "deal": 444,
+      "a_leads": false,
+      "score_a": 18,
+      "score_b": 18,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 445,
+      "a_leads": true,
+      "score_a": 6,
+      "score_b": 10,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 445,
+      "a_leads": false,
+      "score_a": 24,
+      "score_b": 2,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 446,
+      "a_leads": true,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 446,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 24,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 447,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 25,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 447,
+      "a_leads": false,
+      "score_a": 16,
+      "score_b": 20,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 448,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 2,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 448,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 26,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 449,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 10,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 449,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 43,
+      "captured_b": 9
+    },
+    {
+      "deal": 450,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 23,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 10,
+      "captured_b": 42
+    },
+    {
+      "deal": 450,
+      "a_leads": false,
+      "score_a": 21,
+      "score_b": 15,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 451,
+      "a_leads": true,
+      "score_a": 18,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 451,
+      "a_leads": false,
+      "score_a": 9,
+      "score_b": 7,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 452,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 452,
+      "a_leads": false,
+      "score_a": 8,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 453,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 18,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 453,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 19,
+      "captured_b": 33
+    },
+    {
+      "deal": 454,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 10,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 454,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 455,
+      "a_leads": true,
+      "score_a": 17,
+      "score_b": 19,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 455,
+      "a_leads": false,
+      "score_a": 24,
+      "score_b": 12,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 456,
+      "a_leads": true,
+      "score_a": 6,
+      "score_b": 10,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 456,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 15,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 457,
+      "a_leads": true,
+      "score_a": 40,
+      "score_b": 6,
+      "pistis_a": 3,
+      "pistis_b": 0,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 457,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 10,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 458,
+      "a_leads": true,
+      "score_a": 6,
+      "score_b": 20,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 458,
+      "a_leads": false,
+      "score_a": 25,
+      "score_b": 1,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 43,
+      "captured_b": 9
+    },
+    {
+      "deal": 459,
+      "a_leads": true,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 459,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 10,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 11,
+      "captured_b": 41
+    },
+    {
+      "deal": 460,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 10,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 460,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 461,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 461,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 462,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 12,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 11,
+      "captured_b": 41
+    },
+    {
+      "deal": 462,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 25,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 463,
+      "a_leads": true,
+      "score_a": 4,
+      "score_b": 32,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 463,
+      "a_leads": false,
+      "score_a": 12,
+      "score_b": 4,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 464,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 31,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 21,
+      "captured_b": 31
+    },
+    {
+      "deal": 464,
+      "a_leads": false,
+      "score_a": 8,
+      "score_b": 18,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 465,
+      "a_leads": true,
+      "score_a": 19,
+      "score_b": 7,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 465,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 14,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 466,
+      "a_leads": true,
+      "score_a": 10,
+      "score_b": 26,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 466,
+      "a_leads": false,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 42,
+      "captured_b": 10
+    },
+    {
+      "deal": 467,
+      "a_leads": true,
+      "score_a": 10,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 467,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 20,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 23,
+      "captured_b": 29
+    },
+    {
+      "deal": 468,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 468,
+      "a_leads": false,
+      "score_a": 6,
+      "score_b": 30,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 469,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 28,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 469,
+      "a_leads": false,
+      "score_a": 15,
+      "score_b": 21,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 470,
+      "a_leads": true,
+      "score_a": 8,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 470,
+      "a_leads": false,
+      "score_a": 32,
+      "score_b": 4,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 471,
+      "a_leads": true,
+      "score_a": 53,
+      "score_b": 3,
+      "pistis_a": 4,
+      "pistis_b": 0,
+      "captured_a": 32,
+      "captured_b": 20
+    },
+    {
+      "deal": 471,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 23,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 472,
+      "a_leads": true,
+      "score_a": 26,
+      "score_b": 10,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 472,
+      "a_leads": false,
+      "score_a": 15,
+      "score_b": 1,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 473,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 29,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 473,
+      "a_leads": false,
+      "score_a": 26,
+      "score_b": 10,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 474,
+      "a_leads": true,
+      "score_a": 25,
+      "score_b": 1,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 474,
+      "a_leads": false,
+      "score_a": 8,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 24,
+      "captured_b": 28
+    },
+    {
+      "deal": 475,
+      "a_leads": true,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 33,
+      "captured_b": 19
+    },
+    {
+      "deal": 475,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 35,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 17,
+      "captured_b": 35
+    },
+    {
+      "deal": 476,
+      "a_leads": true,
+      "score_a": 7,
+      "score_b": 6,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 476,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 477,
+      "a_leads": true,
+      "score_a": 24,
+      "score_b": 12,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 477,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 45,
+      "pistis_a": 0,
+      "pistis_b": 3,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 478,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 21,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 41,
+      "captured_b": 11
+    },
+    {
+      "deal": 478,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 46,
+      "pistis_a": 2,
+      "pistis_b": 2,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 479,
+      "a_leads": true,
+      "score_a": 10,
+      "score_b": 26,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 479,
+      "a_leads": false,
+      "score_a": 5,
+      "score_b": 11,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 480,
+      "a_leads": true,
+      "score_a": 26,
+      "score_b": 0,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 480,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 15,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 14,
+      "captured_b": 38
+    },
+    {
+      "deal": 481,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 1,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 39,
+      "captured_b": 13
+    },
+    {
+      "deal": 481,
+      "a_leads": false,
+      "score_a": 2,
+      "score_b": 14,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 22,
+      "captured_b": 30
+    },
+    {
+      "deal": 482,
+      "a_leads": true,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 482,
+      "a_leads": false,
+      "score_a": 13,
+      "score_b": 13,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 483,
+      "a_leads": true,
+      "score_a": 16,
+      "score_b": 0,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 52,
+      "captured_b": 0
+    },
+    {
+      "deal": 483,
+      "a_leads": false,
+      "score_a": 0,
+      "score_b": 16,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 0,
+      "captured_b": 52
+    },
+    {
+      "deal": 484,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 8,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 484,
+      "a_leads": false,
+      "score_a": 10,
+      "score_b": 26,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 485,
+      "a_leads": true,
+      "score_a": 2,
+      "score_b": 24,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 12,
+      "captured_b": 40
+    },
+    {
+      "deal": 485,
+      "a_leads": false,
+      "score_a": 25,
+      "score_b": 1,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 486,
+      "a_leads": true,
+      "score_a": 15,
+      "score_b": 1,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 486,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 10,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 26,
+      "captured_b": 26
+    },
+    {
+      "deal": 487,
+      "a_leads": true,
+      "score_a": 33,
+      "score_b": 3,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 35,
+      "captured_b": 17
+    },
+    {
+      "deal": 487,
+      "a_leads": false,
+      "score_a": 3,
+      "score_b": 33,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 488,
+      "a_leads": true,
+      "score_a": 24,
+      "score_b": 2,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 45,
+      "captured_b": 7
+    },
+    {
+      "deal": 488,
+      "a_leads": false,
+      "score_a": 1,
+      "score_b": 25,
+      "pistis_a": 0,
+      "pistis_b": 1,
+      "captured_a": 11,
+      "captured_b": 41
+    },
+    {
+      "deal": 489,
+      "a_leads": true,
+      "score_a": 21,
+      "score_b": 5,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 489,
+      "a_leads": false,
+      "score_a": 34,
+      "score_b": 2,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 40,
+      "captured_b": 12
+    },
+    {
+      "deal": 490,
+      "a_leads": true,
+      "score_a": 28,
+      "score_b": 8,
+      "pistis_a": 2,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 490,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 25,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 36,
+      "captured_b": 16
+    },
+    {
+      "deal": 491,
+      "a_leads": true,
+      "score_a": 45,
+      "score_b": 1,
+      "pistis_a": 3,
+      "pistis_b": 0,
+      "captured_a": 34,
+      "captured_b": 18
+    },
+    {
+      "deal": 491,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 35,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 20,
+      "captured_b": 32
+    },
+    {
+      "deal": 492,
+      "a_leads": true,
+      "score_a": 3,
+      "score_b": 33,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 492,
+      "a_leads": false,
+      "score_a": 33,
+      "score_b": 13,
+      "pistis_a": 2,
+      "pistis_b": 1,
+      "captured_a": 30,
+      "captured_b": 22
+    },
+    {
+      "deal": 493,
+      "a_leads": true,
+      "score_a": 14,
+      "score_b": 42,
+      "pistis_a": 1,
+      "pistis_b": 3,
+      "captured_a": 13,
+      "captured_b": 39
+    },
+    {
+      "deal": 493,
+      "a_leads": false,
+      "score_a": 39,
+      "score_b": 7,
+      "pistis_a": 3,
+      "pistis_b": 0,
+      "captured_a": 25,
+      "captured_b": 27
+    },
+    {
+      "deal": 494,
+      "a_leads": true,
+      "score_a": 22,
+      "score_b": 4,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 41,
+      "captured_b": 11
+    },
+    {
+      "deal": 494,
+      "a_leads": false,
+      "score_a": 11,
+      "score_b": 5,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 29,
+      "captured_b": 23
+    },
+    {
+      "deal": 495,
+      "a_leads": true,
+      "score_a": 5,
+      "score_b": 31,
+      "pistis_a": 0,
+      "pistis_b": 2,
+      "captured_a": 16,
+      "captured_b": 36
+    },
+    {
+      "deal": 495,
+      "a_leads": false,
+      "score_a": 23,
+      "score_b": 3,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 38,
+      "captured_b": 14
+    },
+    {
+      "deal": 496,
+      "a_leads": true,
+      "score_a": 24,
+      "score_b": 2,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 46,
+      "captured_b": 6
+    },
+    {
+      "deal": 496,
+      "a_leads": false,
+      "score_a": 7,
+      "score_b": 9,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 27,
+      "captured_b": 25
+    },
+    {
+      "deal": 497,
+      "a_leads": true,
+      "score_a": 25,
+      "score_b": 11,
+      "pistis_a": 1,
+      "pistis_b": 1,
+      "captured_a": 43,
+      "captured_b": 9
+    },
+    {
+      "deal": 497,
+      "a_leads": false,
+      "score_a": 16,
+      "score_b": 10,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 18,
+      "captured_b": 34
+    },
+    {
+      "deal": 498,
+      "a_leads": true,
+      "score_a": 13,
+      "score_b": 3,
+      "pistis_a": 0,
+      "pistis_b": 0,
+      "captured_a": 46,
+      "captured_b": 6
+    },
+    {
+      "deal": 498,
+      "a_leads": false,
+      "score_a": 20,
+      "score_b": 6,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 28,
+      "captured_b": 24
+    },
+    {
+      "deal": 499,
+      "a_leads": true,
+      "score_a": 18,
+      "score_b": 8,
+      "pistis_a": 1,
+      "pistis_b": 0,
+      "captured_a": 37,
+      "captured_b": 15
+    },
+    {
+      "deal": 499,
+      "a_leads": false,
+      "score_a": 15,
+      "score_b": 31,
+      "pistis_a": 1,
+      "pistis_b": 2,
+      "captured_a": 21,
+      "captured_b": 31
+    }
+  ]
+}

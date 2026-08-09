@@ -1,5 +1,7 @@
 # We taught a neural network Pişti. Then we tried to break it.
 
+> **Historical narrative.** This story uses the earlier exploratory artifacts. See `paper/main.tex` and `research/final_research_summary.md` for the corrected, seed-replicated study.
+
 *The fun version of [REPORT.md](REPORT.md) — same data, same statistics, better story. One overnight run on a MacBook, ~30,000 games of Pişti, one agent that learned to count cards.*
 
 ---

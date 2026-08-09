@@ -1,0 +1,52 @@
+curriculum:
+- at: 0
+  weights:
+    greedy: 0.5
+    random: 0.5
+- at: 300000
+  weights:
+    greedy: 0.6
+    hunter: 0.4
+- at: 1000000
+  weights:
+    greedy: 0.2
+    hunter: 0.2
+    latest: 0.2
+    pool: 0.4
+- at: 2500000
+  weights:
+    expectimax: 0.1
+    greedy: 0.1
+    hunter: 0.1
+    latest: 0.25
+    pool: 0.45
+eval:
+  freq: 250000
+  n_deals: 150
+n_envs: 8
+observer:
+  memory: true
+out_dir: runs
+ppo:
+  batch_size: 512
+  clip_range: 0.2
+  ent_coef: 0.01
+  gae_lambda: 0.95
+  gamma: 0.999
+  learning_rate: 0.0003
+  max_grad_norm: 0.5
+  n_epochs: 4
+  n_steps: 256
+  net_arch:
+  - 256
+  - 256
+  vf_coef: 0.5
+reward:
+  mode: delta
+  scale: 0.1
+run_name: study_mem_on_s9
+seed: 9
+selfplay:
+  pool_size: 12
+  snapshot_freq: 250000
+total_timesteps: 6000000
